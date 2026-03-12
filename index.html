@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -8,23 +7,24 @@
 
 <title>Navneet Mallick | Developer Portfolio</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- PARTICLES -->
-<div id="particles-js"></div>
+<div class="gradient-bg"></div>
 
-<!-- NAVBAR -->
+<div id="particles-js"></div>
 
 <header>
 
@@ -39,6 +39,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <li><a href="#projects">Projects</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#github">GitHub</a></li>
 <li><a href="#contact">Contact</a></li>
 
 </ul>
@@ -51,33 +52,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </header>
 
-<!-- HERO -->
-
-<section id="home" class="hero">
+<section id="home" class="hero reveal">
 
 <div class="hero-left">
 
-<h1>Hi I'm <span>Navneet Mallick</span></h1>
+<h1>Hi, I'm <span>Navneet Mallick</span></h1>
 
 <h3 class="typed"></h3>
 
 <p>
-Computer Engineering Student passionate about
-Web Development, Machine Learning and Data Science.
+Computer Engineering Student passionate about Web Development and Machine Learning.
 </p>
-
-<div class="hero-buttons">
 
 <a href="#contact" class="btn">Hire Me</a>
 
-<a href="cv/NavneetCV.pdf" download class="btn-outline">
-Download CV
-</a>
-
 </div>
-
-</div>
-
 
 <div class="hero-right">
 
@@ -87,235 +76,199 @@ Download CV
 
 </section>
 
+<section id="about" class="reveal">
 
-<!-- ABOUT -->
+<h1 class="section-title">About Me</h1>
 
-<section id="about">
+<p class="about-text">
 
-<h2 class="section-title">About Me</h2>
-
-<div class="about-container">
-
-<div class="about-text">
-
-<p>
-
-I am a passionate Computer Engineering student specializing in
-modern Web Development, Machine Learning and Data Science.
-
-I love designing beautiful websites and solving real world problems.
+I build modern websites and explore Machine Learning and Data Science.
 
 </p>
 
-<div class="about-cards">
-
-<div class="card">
-<i class="fa-solid fa-code"></i>
-<h4>Web Development</h4>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-brain"></i>
-<h4>Machine Learning</h4>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-database"></i>
-<h4>Data Science</h4>
-</div>
-
-</div>
-
-</div>
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h3>2020</h3>
-<p>Started Bachelor of Computer Engineering</p>
-</div>
-
-<div class="timeline-item">
-<h3>2022</h3>
-<p>Completed major Web Development projects</p>
-</div>
-
-<div class="timeline-item">
-<h3>2023</h3>
-<p>Worked on Machine Learning & Data Science</p>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
+<section id="projects" class="reveal">
 
-<!-- PROJECTS -->
-
-<section id="projects">
-
-<h2 class="section-title">Projects</h2>
+<h1 class="section-title">Projects</h1>
 
 <div class="projects">
 
-<div class="project">
-
+<div class="project-card">
 <img src="images/project1.jpg">
-
-<div class="project-overlay">
-
-<h3>Library Management System</h3>
-
+<div class="overlay">
+<h3>Library Management</h3>
 <a href="https://github.com/NMcoder07/Library-Management-System" class="btn">View</a>
-
+</div>
 </div>
 
-</div>
-
-
-<div class="project">
-
+<div class="project-card">
 <img src="images/project2.jpg">
-
-<div class="project-overlay">
-
+<div class="overlay">
 <h3>Quiz Game</h3>
-
 <a href="#" class="btn">View</a>
-
+</div>
 </div>
 
-</div>
-
-
-<div class="project">
-
+<div class="project-card">
 <img src="images/project3.jpg">
-
-<div class="project-overlay">
-
-<h3>Portfolio Website</h3>
-
+<div class="overlay">
+<h3>Portfolio</h3>
 <a href="#" class="btn">View</a>
-
 </div>
-
 </div>
-
 
 </div>
 
 </section>
 
+<section id="skills" class="reveal">
 
-<!-- SKILLS -->
-
-<section id="skills">
-
-<h2 class="section-title">Skills</h2>
+<h1 class="section-title">Skills</h1>
 
 <div class="skills">
 
 <div class="skill">
 <p>HTML</p>
-<div class="bar"><span style="width:95%"></span></div>
+<div class="bar"><span data-width="95%"></span></div>
 </div>
 
 <div class="skill">
 <p>CSS</p>
-<div class="bar"><span style="width:90%"></span></div>
+<div class="bar"><span data-width="90%"></span></div>
 </div>
 
 <div class="skill">
 <p>JavaScript</p>
-<div class="bar"><span style="width:85%"></span></div>
+<div class="bar"><span data-width="85%"></span></div>
 </div>
 
 <div class="skill">
 <p>Python</p>
-<div class="bar"><span style="width:80%"></span></div>
-</div>
-
-<div class="skill">
-<p>Django</p>
-<div class="bar"><span style="width:75%"></span></div>
+<div class="bar"><span data-width="80%"></span></div>
 </div>
 
 </div>
 
 </section>
 
+<section id="testimonials" class="reveal">
 
-<!-- TESTIMONIALS -->
+<h1 class="section-title">Testimonials</h1>
 
-<section id="testimonials">
+<div class="testimonial-slider">
 
-<h2 class="section-title">Testimonials</h2>
-
-<div class="testimonial-container">
-
-<div class="testimonial">
-<p>"Amazing developer and delivered high quality work."</p>
+<div class="testimonial active">
+<p>"Amazing developer."</p>
 <h4>- Client</h4>
 </div>
 
 <div class="testimonial">
-<p>"Professional and reliable developer."</p>
+<p>"Very professional."</p>
 <h4>- Mentor</h4>
 </div>
 
 <div class="testimonial">
-<p>"Creative and problem solving mindset."</p>
-<h4>- Team Member</h4>
+<p>"Great problem solver."</p>
+<h4>- Teammate</h4>
 </div>
 
 </div>
 
 </section>
 
+<section id="github" class="reveal">
 
-<!-- CONTACT -->
+<h1 class="section-title">GitHub Stats</h1>
 
-<section id="contact">
+<img src="https://github-readme-stats.vercel.app/api?username=NMcoder07&show_icons=true&theme=tokyonight">
 
-<h2 class="section-title">Contact Me</h2>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=NMcoder07&layout=compact&theme=tokyonight">
 
-<form class="contact-form">
+</section>
 
-<input type="text" placeholder="Your Name" required>
+<section id="contact" class="reveal">
 
-<input type="email" placeholder="Your Email" required>
+<h1 class="section-title">Contact</h1>
 
-<textarea placeholder="Your Message"></textarea>
+<form action="https://formspree.io/f/yourID" method="POST" class="contact-form">
 
-<button class="btn">Send Message</button>
+<input type="text" name="name" placeholder="Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<textarea name="message" placeholder="Message"></textarea>
+
+<button class="btn">Send</button>
 
 </form>
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
 
 <p>© 2026 Navneet Mallick</p>
 
-<div class="socials">
-
-<i class="fab fa-github"></i>
-<i class="fab fa-linkedin"></i>
-<i class="fab fa-instagram"></i>
-
-</div>
-
 </footer>
 
+<script>
 
-<script src="js/script.js"></script>
+particlesJS.load('particles-js','particles.json')
+
+const hamburger=document.querySelector(".hamburger")
+const nav=document.querySelector(".nav-links")
+
+hamburger.onclick=()=>nav.classList.toggle("open")
+
+const reveal=document.querySelectorAll(".reveal")
+
+window.addEventListener("scroll",()=>{
+
+reveal.forEach(el=>{
+
+const top=el.getBoundingClientRect().top
+
+if(top<window.innerHeight-100){
+el.classList.add("active")
+}
+
+})
+
+})
+
+VanillaTilt.init(document.querySelectorAll(".project-card"),{
+max:15,
+speed:400
+})
+
+const skills=document.querySelectorAll(".bar span")
+
+window.addEventListener("scroll",()=>{
+
+skills.forEach(skill=>{
+skill.style.width=skill.dataset.width
+})
+
+})
+
+let i=0
+const t=document.querySelectorAll(".testimonial")
+
+function slide(){
+
+t.forEach(e=>e.classList.remove("active"))
+
+t[i].classList.add("active")
+
+i++
+
+if(i>=t.length)i=0
+
+}
+
+setInterval(slide,3000)
+
+</script>
 
 </body>
-
 </html>
