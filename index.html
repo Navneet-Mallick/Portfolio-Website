@@ -1,265 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navneet Mallick | Portfolio</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="CSS/style.css">
+<title>Navneet Mallick | Developer Portfolio</title>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
 
-<!-- Google Fonts -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Particles.js -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<header>
-  <nav class="navbar">
-    <div class="logo">Navneet</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="./cv/NavneetCV.pdf" download class="btn">Download CV</a></li>
-    </ul>
-    <div class="hamburger"><i class="fas fa-bars"></i></div>
-  </nav>
-</header>
+<!-- PARTICLES -->
+<div id="particles-js"></div>
 
-<!-- DRAGGABLE 3 DOT MENU -->
-<div id="dot-menu">
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
+<!-- NAVBAR -->
+
+<header>
+
+<nav class="navbar">
+
+<h2 class="logo">Navneet</h2>
+
+<ul class="nav-links">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="hamburger">
+<i class="fas fa-bars"></i>
 </div>
 
+</nav>
+
+</header>
+
 <!-- HERO -->
+
 <section id="home" class="hero">
-  <div id="particles-js"></div>
-  <div class="hero-content">
-    <div class="hero-left">
-      <h1>Hi, I'm <span>Navneet Mallick</span></h1>
-      <h3 class="typed-text"></h3>
-      <p>Computer Engineering Student | Web & ML Enthusiast</p>
-      <a href="#contact" class="btn">Hire Me</a>
-    </div>
-    <div class="hero-right">
-      <img src="./images/developer.jpg" alt="Developer Image">
-    </div>
-  </div>
+
+<div class="hero-left">
+
+<h1>Hi I'm <span>Navneet Mallick</span></h1>
+
+<h3 class="typed"></h3>
+
+<p>
+Computer Engineering Student passionate about
+Web Development, Machine Learning and Data Science.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#contact" class="btn">Hire Me</a>
+
+<a href="cv/NavneetCV.pdf" download class="btn-outline">
+Download CV
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-right">
+
+<img src="images/developer.jpg">
+
+</div>
+
 </section>
 
-<!-- ABOUT ME -->
+
+<!-- ABOUT -->
+
 <section id="about">
-  <h1 class="section-title">About Me</h1>
-  <div class="about-container">
-    <p>I am a passionate computer engineering student with expertise in web development, data science, and machine learning. I love creating dynamic web applications and solving complex problems.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="year">2020</span>
-        <p>Started Bachelor of Computer Engineering</p>
-      </div>
-      <div class="timeline-item">
-        <span class="year">2022</span>
-        <p>Completed first major Web Dev Project</p>
-      </div>
-      <div class="timeline-item">
-        <span class="year">2023</span>
-        <p>Worked on Machine Learning & Data Science Projects</p>
-      </div>
-    </div>
-  </div>
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about-container">
+
+<div class="about-text">
+
+<p>
+
+I am a passionate Computer Engineering student specializing in
+modern Web Development, Machine Learning and Data Science.
+
+I love designing beautiful websites and solving real world problems.
+
+</p>
+
+<div class="about-cards">
+
+<div class="card">
+<i class="fa-solid fa-code"></i>
+<h4>Web Development</h4>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-brain"></i>
+<h4>Machine Learning</h4>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-database"></i>
+<h4>Data Science</h4>
+</div>
+
+</div>
+
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>2020</h3>
+<p>Started Bachelor of Computer Engineering</p>
+</div>
+
+<div class="timeline-item">
+<h3>2022</h3>
+<p>Completed major Web Development projects</p>
+</div>
+
+<div class="timeline-item">
+<h3>2023</h3>
+<p>Worked on Machine Learning & Data Science</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
+
 
 <!-- PROJECTS -->
+
 <section id="projects">
-  <h1 class="section-title">Projects</h1>
-  <div class="project-container">
-    <div class="project-card">
-      <img src="books-2463779_1280.jpg" alt="LMS Project">
-      <div class="overlay">
-        <h3>LMS Project</h3>
-        <p>C Programming</p>
-        <a href="https://github.com/NMcoder07/Library-Management-System" class="btn">View</a>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <img src="img2.jpg" alt="Quiz Game">
-      <div class="overlay">
-        <h3>Quiz Game</h3>
-        <p>Interactive Quiz Game</p>
-        <a href="#" class="btn">View</a>
-      </div>
-    </div>
+<h2 class="section-title">Projects</h2>
 
-    <div class="project-card">
-      <img src="./images/developer.jpg" alt="Portfolio Website">
-      <div class="overlay">
-        <h3>Portfolio Website</h3>
-        <p>HTML, CSS, JS</p>
-        <a href="https://navneet-mallick.github.io/Web-dev-Project-" class="btn">View</a>
-      </div>
-    </div>
+<div class="projects">
 
-    <div class="project-card">
-      <img src="joystick1.jpg.png" alt="Game Project">
-      <div class="overlay">
-        <h3>Game Project</h3>
-        <p>JavaScript / HTML</p>
-        <a href="#" class="btn">View</a>
-      </div>
-    </div>
-    
-    <!-- Add more projects as needed -->
-  </div>
+<div class="project">
+
+<img src="images/project1.jpg">
+
+<div class="project-overlay">
+
+<h3>Library Management System</h3>
+
+<a href="https://github.com/NMcoder07/Library-Management-System" class="btn">View</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img src="images/project2.jpg">
+
+<div class="project-overlay">
+
+<h3>Quiz Game</h3>
+
+<a href="#" class="btn">View</a>
+
+</div>
+
+</div>
+
+
+<div class="project">
+
+<img src="images/project3.jpg">
+
+<div class="project-overlay">
+
+<h3>Portfolio Website</h3>
+
+<a href="#" class="btn">View</a>
+
+</div>
+
+</div>
+
+
+</div>
+
 </section>
+
 
 <!-- SKILLS -->
+
 <section id="skills">
-  <h1 class="section-title">My Skills</h1>
-  <div class="skills-container">
-    <div class="skill">
-      <i class="fab fa-html5"></i>
-      <p>HTML</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fab fa-css3-alt"></i>
-      <p>CSS</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fab fa-js"></i>
-      <p>JavaScript</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fab fa-node-js"></i>
-      <p>Node.js</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fab fa-python"></i>
-      <p>Python</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fas fa-database"></i>
-      <p>SQL</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fas fa-brain"></i>
-      <p>Machine Learning</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fas fa-chart-line"></i>
-      <p>Data Science</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-    </div>
-    <div class="skill">
-      <i class="fas fa-server"></i>
-      <p>Django</p>
-      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-    </div>
-  </div>
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">
+<p>HTML</p>
+<div class="bar"><span style="width:95%"></span></div>
+</div>
+
+<div class="skill">
+<p>CSS</p>
+<div class="bar"><span style="width:90%"></span></div>
+</div>
+
+<div class="skill">
+<p>JavaScript</p>
+<div class="bar"><span style="width:85%"></span></div>
+</div>
+
+<div class="skill">
+<p>Python</p>
+<div class="bar"><span style="width:80%"></span></div>
+</div>
+
+<div class="skill">
+<p>Django</p>
+<div class="bar"><span style="width:75%"></span></div>
+</div>
+
+</div>
+
 </section>
+
 
 <!-- TESTIMONIALS -->
+
 <section id="testimonials">
-  <h1 class="section-title">Testimonials</h1>
-  <div class="testimonial-container">
-    <div class="testimonial-card">
-      <p>"Navneet delivered an amazing project with excellent quality!"</p>
-      <h4>- Client A</h4>
-    </div>
-    <div class="testimonial-card">
-      <p>"Highly professional and skilled in web development."</p>
-      <h4>- Client B</h4>
-    </div>
-    <div class="testimonial-card">
-      <p>"Creative, reliable, and great problem solver."</p>
-      <h4>- Mentor C</h4>
-    </div>
-  </div>
+
+<h2 class="section-title">Testimonials</h2>
+
+<div class="testimonial-container">
+
+<div class="testimonial">
+<p>"Amazing developer and delivered high quality work."</p>
+<h4>- Client</h4>
+</div>
+
+<div class="testimonial">
+<p>"Professional and reliable developer."</p>
+<h4>- Mentor</h4>
+</div>
+
+<div class="testimonial">
+<p>"Creative and problem solving mindset."</p>
+<h4>- Team Member</h4>
+</div>
+
+</div>
+
 </section>
+
 
 <!-- CONTACT -->
+
 <section id="contact">
-  <h1 class="section-title">Contact Me</h1>
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn">Send</button>
-  </form>
+
+<h2 class="section-title">Contact Me</h2>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Your Message"></textarea>
+
+<button class="btn">Send Message</button>
+
+</form>
+
 </section>
 
+
 <!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Navneet Mallick</p>
-  <div class="socials">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-  </div>
+
+<p>© 2026 Navneet Mallick</p>
+
+<div class="socials">
+
+<i class="fab fa-github"></i>
+<i class="fab fa-linkedin"></i>
+<i class="fab fa-instagram"></i>
+
+</div>
+
 </footer>
 
-<!-- SCRIPTS -->
+
 <script src="js/script.js"></script>
-<script>
-/* Hamburger */
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', ()=> navLinks.classList.toggle('open'));
-
-/* Typing Effect */
-const typedText = document.querySelector('.typed-text');
-const phrases = ["Web Developer","Machine Learning Enthusiast","Problem Solver"];
-let i=0,j=0,current='',isDeleting=false;
-function type(){
-  if(i<phrases.length){
-    if(!isDeleting && j<=phrases[i].length){
-      current=phrases[i].slice(0,j++);
-      typedText.textContent=current;
-    } else if(isDeleting && j>=0){
-      current=phrases[i].slice(0,j--);
-      typedText.textContent=current;
-    }
-    if(j===phrases[i].length){isDeleting=true;setTimeout(type,1000);return;}
-    if(j===0 && isDeleting){isDeleting=false;i++;if(i===phrases.length)i=0;}
-  }
-  setTimeout(type,isDeleting?50:150);
-}
-type();
-
-/* Particles */
-particlesJS.load('particles-js','js/particles.json', function(){console.log('particles loaded');});
-
-/* Drag 3-dot menu */
-const dotMenu=document.getElementById('dot-menu');
-dotMenu.onmousedown=function(e){
-  let shiftX=e.clientX-dotMenu.getBoundingClientRect().left;
-  let shiftY=e.clientY-dotMenu.getBoundingClientRect().top;
-  function moveAt(pageX,pageY){dotMenu.style.left=pageX-shiftX+'px';dotMenu.style.top=pageY-shiftY+'px';}
-  function onMouseMove(e){moveAt(e.pageX,e.pageY);}
-  document.addEventListener('mousemove',onMouseMove);
-  dotMenu.onmouseup=function(){document.removeEventListener('mousemove',onMouseMove);dotMenu.onmouseup=null;}
-}
-dotMenu.ondragstart=function(){return false;}
-</script>
 
 </body>
+
 </html>
