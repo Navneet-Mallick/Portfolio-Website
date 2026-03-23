@@ -57,7 +57,7 @@ const Navigation = {
 
       this.sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
+        if (window.scrollY >= sectionTop) {
           current = section.getAttribute('id');
         }
       });

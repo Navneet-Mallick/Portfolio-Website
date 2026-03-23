@@ -423,7 +423,8 @@ header {
   gap: 8px;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--accent);
 }
 
@@ -432,7 +433,8 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: var(--card-bg);
+  background-color: var(--bg-gradient-1);
+  background-image: var(--card-bg);
   padding: 10px 20px;
   border-radius: 50px;
   border: 2px solid var(--border-color);
@@ -471,13 +473,15 @@ header {
   position: absolute;
   top: 70px;
   right: 40px;
-  background: var(--card-bg);
+  background-color: var(--bg-gradient-1);
+  background-image: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 15px;
   min-width: 220px;
   flex-direction: column;
   z-index: 9999;
+  box-shadow: var(--shadow);
 }
 
 #nav-dropdown.active {
@@ -846,8 +850,10 @@ header {
 }
 
 .skill-row h2 {
-  color: var(--secondary);
+  color: var(--tertiary);
   font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .skill-list {
