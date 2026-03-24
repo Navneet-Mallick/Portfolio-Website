@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Ambient Music Module
  * Generates a looping ambient synth track using Web Audio API (no audio file needed).
  * Auto-starts after first user interaction (browser policy).
