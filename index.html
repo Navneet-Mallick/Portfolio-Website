@@ -22,15 +22,26 @@
 <div class="particles" id="particles"></div>
 
 <!-- Music Player -->
-<div id="music-player" data-mode="phonk">
+<div id="music-player" data-mode="phonk" data-playing="false">
+  <!-- Play / Pause -->
   <button id="music-toggle" aria-label="Toggle music">
-    <i class="fas fa-music" id="music-icon"></i>
+    <i class="fas fa-play" id="music-icon"></i>
   </button>
-  <span id="music-label">Music Off</span>
-  <div class="music-divider"></div>
-  <button id="music-mode-btn" title="Switch mode" aria-label="Switch music mode">
-    <i class="fas fa-shuffle"></i>
-    <span id="music-mode-label">Ambient</span>
+
+  <!-- Track info + progress -->
+  <div class="music-info">
+    <span id="music-track-name">Demons — Phonk</span>
+    <div class="music-progress">
+      <div id="music-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Volume -->
+  <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume">
+
+  <!-- Mode switch -->
+  <button id="music-mode-btn" aria-label="Switch music mode" title="Switch mode">
+    <i class="fas fa-moon" id="music-mode-icon"></i>
   </button>
 </div>
 
