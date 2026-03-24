@@ -513,6 +513,25 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-left h1 {
@@ -831,6 +850,97 @@ header {
 }
 
 /* ===============================================
+   CERTIFICATIONS SECTION
+   =============================================== */
+
+#certifications {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 0 10%;
+}
+
+.cert-card {
+  background: var(--card-bg);
+  padding: 35px 25px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-color);
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+  transition: left 0.6s;
+}
+
+.cert-card:hover::before {
+  left: 100%;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px var(--accent-glow), var(--glow-shadow);
+}
+
+.cert-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #fff;
+  box-shadow: 0 8px 25px var(--accent-glow);
+  transition: all 0.4s ease;
+}
+
+.cert-card:hover .cert-icon {
+  transform: rotateY(360deg) scale(1.1);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.cert-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cert-issuer {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.cert-date {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ===============================================
    SKILLS SECTION
    =============================================== */
 
@@ -1082,6 +1192,11 @@ footer a:hover {
   .map {
     padding: 0 5%;
   }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+    padding: 0 5%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1287,6 +1402,24 @@ footer a:hover {
   overflow: hidden;
   font-family: 'Courier New', Courier, monospace;
   animation: fadeInUp 0.8s ease-out 0.5s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+  transition: left 0.6s;
+  pointer-events: none;
+}
+
+.terminal:hover::before {
+  left: 100%;
 }
 
 .terminal-header {
@@ -1318,10 +1451,31 @@ footer a:hover {
 
 .terminal-body {
   padding: 20px;
-  min-height: 220px;
+  min-height: 280px;
+  max-height: 400px;
+  overflow-y: auto;
   font-size: 14px;
   line-height: 1.8;
   color: #c9d1d9;
+  scrollbar-width: thin;
+  scrollbar-color: #00d9ff #161b22;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #161b22;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #00d9ff;
+  border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
 }
 
 .t-line {
@@ -1338,12 +1492,35 @@ footer a:hover {
   to   { opacity: 1; transform: translateX(0); }
 }
 
-.t-prompt { color: #28c840; }
-.t-cmd    { color: #79c0ff; }
-.t-output { color: #c9d1d9; padding-left: 20px; }
-.t-key    { color: #ff7b72; }
-.t-val    { color: #a5d6ff; }
-.t-accent { color: #00d9ff; }
+.t-prompt { 
+  color: #28c840; 
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(40, 200, 64, 0.5);
+}
+.t-cmd { 
+  color: #79c0ff; 
+  font-weight: 500;
+}
+.t-output { 
+  color: #c9d1d9; 
+  padding-left: 20px; 
+}
+.t-key { 
+  color: #ff7b72; 
+  font-weight: 600;
+}
+.t-val { 
+  color: #a5d6ff; 
+}
+.t-accent { 
+  color: #00d9ff; 
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(0, 217, 255, 0.4);
+}
+.t-green {
+  color: #28c840;
+  font-weight: 600;
+}
 .t-cursor {
   display: inline-block;
   width: 9px;
@@ -1352,6 +1529,7 @@ footer a:hover {
   margin-left: 2px;
   vertical-align: middle;
   animation: blink 0.7s infinite;
+  box-shadow: 0 0 8px rgba(0, 217, 255, 0.6);
 }
 
 /* ===============================================
