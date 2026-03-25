@@ -7,11 +7,15 @@
   const LINES = [
     { type: 'cmd',    text: 'whoami' },
     { type: 'output', parts: [{ cls: 't-accent', text: 'Navneet Mallick' }, { cls: '', text: ' — Computer Engineering Student' }] },
+    { type: 'output', parts: [{ cls: 't-accent', text: 'Passionate About' }, { cls: '', text: ' Software Development and Programming' }] },
+
 
     { type: 'cmd',    text: 'cat about.txt' },
     { type: 'output', parts: [{ cls: 't-green', text: '📍 Location:' }, { cls: '', text: ' Dharan, Nepal' }] },
     { type: 'output', parts: [{ cls: 't-green', text: '🎓 Education:' }, { cls: '', text: ' IOE Purwanchal Campus' }] },
     { type: 'output', parts: [{ cls: 't-green', text: '💼 Role:' }, { cls: '', text: ' Intern Supervisor @ CODE IT' }] },
+    { type: 'output', parts: [{ cls: 't-green', text: '💼 Role:' }, { cls: '', text: ' Graphics Designer @ ACES' }] },
+
 
     { type: 'cmd',    text: 'ls -la skills/' },
     { type: 'output', parts: [{ cls: 't-val', text: 'drwxr-xr-x' }, { cls: '', text: '  web-development/' }] },
@@ -21,15 +25,15 @@
     { type: 'cmd',    text: 'cat skills/web-development/stack.json' },
     { type: 'output', parts: [{ cls: '', text: '{' }] },
     { type: 'output', parts: [{ cls: 't-key', text: '  "frontend"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["HTML5", "CSS3", "JavaScript", "React"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "backend"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Node.js", "Django", "SQL"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "proficiency"' }, { cls: '', text: ': ' }, { cls: 't-accent', text: '"90%"' }] },
+    { type: 'output', parts: [{ cls: 't-key', text: '  "backend"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Node.js", "Django", "SQL","PHP"],' }] },
+    { type: 'output', parts: [{ cls: 't-key', text: '  "proficiency"' }, { cls: '', text: ': ' }, { cls: 't-accent', text: '"70%"' }] },
     { type: 'output', parts: [{ cls: '', text: '}' }] },
 
     { type: 'cmd',    text: 'git log --oneline --graph -4' },
     { type: 'output', parts: [{ cls: 't-accent', text: '* a1b2c3d' }, { cls: '', text: ' 🚀 Deployed portfolio website' }] },
     { type: 'output', parts: [{ cls: 't-accent', text: '* e4f5g6h' }, { cls: '', text: ' 🤖 Built ML movie recommender' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* i7j8k9l' }, { cls: '', text: ' 🏆 Won ACES TechFest hackathon' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* m1n2o3p' }, { cls: '', text: ' 📜 Completed CS50x AI certification' }] },
+    { type: 'output', parts: [{ cls: 't-accent', text: '* i7j8k9l' }, { cls: '', text: ' 🏆 Participated in ACES TechFest & XHack hackathons' }] },
+    { type: 'output', parts: [{ cls: 't-accent', text: '* m1n2o3p' }, { cls: '', text: ' 📜 Completed CS50x AI certification @IOE Dharan' }] },
 
     { type: 'cmd',    text: 'python3 -c "import this" | head -3' },
     { type: 'output', parts: [{ cls: '', text: 'Beautiful is better than ugly.' }] },
