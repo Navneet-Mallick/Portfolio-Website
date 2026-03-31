@@ -11,14 +11,14 @@
   <meta name="keywords" content="Navneet Mallick, Web Developer, Machine Learning Engineer, Data Science, Portfolio, Computer Engineering, Nepal, IOE, Python, JavaScript, Streamlit">
   <meta name="author" content="Navneet Mallick">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://navneet-mallick.github.io/">
+  <link rel="canonical" href="https://navneetmallick.com.np/">
 
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://navneet-mallick.github.io/">
+  <meta property="og:url" content="https://navneetmallick.com.np/">
   <meta property="og:title" content="Navneet Mallick | Web Developer & ML Engineer">
   <meta property="og:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science. Check out my projects and get in touch.">
-  <meta property="og:image" content="https://navneet-mallick.github.io/profile.jpg">
+  <meta property="og:image" content="https://navneetmallick.com.np/profile.jpg">
   <meta property="og:site_name" content="Navneet Mallick Portfolio">
   <meta property="og:locale" content="en_US">
 
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Navneet Mallick | Web Developer & ML Engineer">
   <meta name="twitter:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science.">
-  <meta name="twitter:image" content="https://navneet-mallick.github.io/profile.jpg">
+  <meta name="twitter:image" content="https://navneetmallick.com.np/profile.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo.png">
@@ -38,8 +38,8 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Navneet Mallick",
-    "url": "https://navneet-mallick.github.io/",
-    "image": "https://navneet-mallick.github.io/profile.jpg",
+    "url": "https://navneetmallick.com.np/",
+    "image": "https://navneetmallick.com.np/profile.jpg",
     "jobTitle": "Computer Engineering Student & Web Developer",
     "description": "Computer Engineering student at IOE Purwanchal Campus specializing in Web Development, Machine Learning, and Data Science.",
     "sameAs": [
@@ -70,14 +70,21 @@
 
 <!-- Boot Overlay -->
 <div id="boot-overlay">
+  <div class="boot-corner tl"></div>
+  <div class="boot-corner tr"></div>
+  <div class="boot-corner bl"></div>
+  <div class="boot-corner br"></div>
   <div class="boot-content">
     <div class="boot-logo">NM</div>
+    <div class="boot-tagline">Navneet Mallick &mdash; Portfolio</div>
     <div class="boot-text" id="boot-text"></div>
     <div class="boot-bar-wrap">
       <div class="boot-bar" id="boot-bar"></div>
     </div>
-    <div class="boot-percent" id="boot-percent">30%</div>
-    <div class="boot-hint">click anywhere to enter</div>
+    <div class="boot-status-row">
+      <div class="boot-percent" id="boot-percent">0%</div>
+      <div class="boot-hint">click anywhere to enter</div>
+    </div>
   </div>
 </div>
 
@@ -85,7 +92,7 @@
 <div class="particles" id="particles"></div>
 
 <!-- Music Player -->
-<div id="music-player" data-mode="phonk" data-playing="false">
+<div id="music-player" data-mode="eagles" data-playing="false">
   <!-- Play / Pause -->
   <button id="music-toggle" aria-label="Toggle music">
     <i class="fas fa-play" id="music-icon"></i>
@@ -93,7 +100,7 @@
 
   <!-- Track info + progress -->
   <div class="music-info">
-    <span id="music-track-name">Demons &middot; Phonk</span>
+    <span id="music-track-name">Eagles</span>
     <div class="music-progress">
       <div id="music-progress-bar"></div>
     </div>
@@ -152,7 +159,7 @@
             <div id="nav-dropdown">
                 <div style="font-size: 10px; opacity: 0.6; margin-bottom: 10px;">QUICK ACTIONS</div>
                 <a href="#projects"><i class="fas fa-rocket"></i> View Projects</a>
-               <a href="#contact"><i class="fas fa-certificate"></i> Certifications</a>
+               <a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a>
                 <!-- <a href="./Assets/Navneet _CV.pdf" download><i class="fas fa-download"></i> Download CV</a> -->
                 <a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
                 <hr style="margin: 10px 0; border: 0; border-top: 1px solid var(--border-color);">
@@ -165,12 +172,13 @@
 </header>
 
 <section id="home" class="hero">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
     <div class="hero-left">
       <h1>Hi, I'm <span>Navneet Mallick</span></h1>
       <!-- <p style="font-size: 1.2rem; margin: 10px 0;">Computer Engineering Student | Web & ML Enthusiast</p> -->
       <p style="font-size: 1.5rem; margin: 10px 0; height: 1.6em;">
-  I am  <span id="typing-text" style="color: var(--secondary); font-weight: 600;"></span><span class="cursor">|</span>
-</p>
+        I'm <span id="typing-text" style="color: var(--secondary); font-weight: 600;"></span><span class="cursor">|</span>
+      </p>
       <div class="hero-buttons">
         <a href="#contact" class="btn">Hire Me</a>
         <a href="./Assets/Navneet _CV.pdf" class="btn btn-cv download-cv-btn" download>
@@ -180,7 +188,7 @@
       </div>
     </div>
     <div class="hero-right">
-        <img class="pp-img" src="profile.jpg" alt="Navneet Mallick">
+        <img class="pp-img" src="profile.jpg" alt="Navneet Mallick" loading="lazy">
     </div>
 </section>
 
@@ -446,20 +454,20 @@
     <div class="cert-card">
       <div class="cert-icon"><i class="fas fa-certificate"></i></div>
       <h3>CS50x AI Nepal</h3>
-      <p class="cert-issuer">IOE ERC, Dharan</p>
-      <p class="cert-date">2024</p>
+      <p class="cert-issuer">EXCESS,IOE ERC, Dharan</p>
+      <p class="cert-date">2025</p>
     </div>
     <div class="cert-card">
       <div class="cert-icon"><i class="fas fa-trophy"></i></div>
       <h3>ACES TechFest 7.0 &amp; X-Hack 3.0</h3>
       <p class="cert-issuer">ACES, IOE Purwanchal Campus</p>
-      <p class="cert-date">2024</p>
+      <p class="cert-date">2025</p>
     </div>
     <div class="cert-card">
       <div class="cert-icon"><i class="fab fa-node-js"></i></div>
-      <h3>Node.js Developer</h3>
-      <p class="cert-issuer">Simplilearn</p>
-      <p class="cert-date">2024</p>
+      <h3>Node.js </h3>
+      <p class="cert-issuer">ACES x Digital Pathshala</p>
+      <p class="cert-date">2026</p>
     </div>
   </div>
 </section>
@@ -467,10 +475,10 @@
 <section id="skills" class="reveal">
   <h2 class="section-title">My Skills</h2>
 
-  <div class="skills-container" style="display: flex; flex-direction: column; gap: 20px; max-width: 1000px; margin: 0 auto;">
+  <div class="skills-container">
 
-    <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255, 165, 0, 0.1); padding-bottom: 15px;">
-      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Web Dev</h3>
+    <div class="skill-row-grid">
+      <h3 class="skill-cat-label">Web Dev</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fab fa-html5"></i> <p style="display: inline; margin-left: 5px;">HTML</p>
@@ -491,8 +499,8 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255, 165, 0, 0.1); padding-bottom: 15px;">
-      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">ML &amp; AI</h3>
+    <div class="skill-row-grid">
+      <h3 class="skill-cat-label">ML &amp; AI</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fab fa-python"></i> <p style="display: inline; margin-left: 5px;">Python</p>
@@ -509,8 +517,8 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px;">
-      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Backend</h3>
+    <div class="skill-row-grid skill-row-last">
+      <h3 class="skill-cat-label">Backend</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fas fa-database"></i> <p style="display: inline; margin-left: 5px;">SQL</p>
@@ -543,12 +551,10 @@
 <section id="contact" class="reveal"> 
   <h2 class="section-title">Get In Touch</h2> 
   <form class="contact-form"> 
-    <input type="text" name="name" placeholder="Your Name" required> 
-    <input type="email" name="email" placeholder="Your Email" required> 
-    <textarea name="message" placeholder="Your Message" required></textarea> 
+    <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
+    <textarea name="message" placeholder="Your Message" aria-label="Your Message" required></textarea> 
     <button type="submit">Send Message</button> </form> </section> 
-
-  <!-- <footer style="padding:15px 20px; background:#222; color:#fff;"> <p>© 2026 Navneet Mallick</p> <a href="https://github.com/Navneet-Mallick/"><i class="fab fa-github"></i></a> <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a> <a href="https://www.instagram.com/navneet_nm07"><i class="fab fa-instagram"></i></a> </footer> -->
 
   <footer>
   <!-- Audio Visualizer -->
@@ -584,6 +590,7 @@
 <script src="js/typing.js"></script>
 <script src="js/terminal.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/hero-animation.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/music.js"></script>
 <script src="js/extras.js"></script>

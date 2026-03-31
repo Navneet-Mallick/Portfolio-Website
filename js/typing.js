@@ -1,57 +1,58 @@
 /**
- * Typing Effect Module
- * Creates animated typing effect for hero section
+ * Typing Effect — clean rewrite
  */
 
-const TypingEffect = {
-  init() {
-    this.typingText = document.getElementById('typing-text');
-    if (!this.typingText) return;
+(function () {
+  const el = document.getElementById('typing-text');
+  const cursor = document.querySelector('.cursor');
+  if (!el) return;
 
-    this.phrases = [
-      "a Web Developer",
-      "an ML Engineer",
-      "a Computer Engineering Student",
-      "a Graphics Designer"
-    ];
-    
-    this.wordIndex = 0;
-    this.charIndex = 0;
-    this.isDeleting = false;
-    this.typeSpeed = 100;
+  const phrases = [
+    'a Web Developer',
+    'an ML Engineer',
+    'a Computer Engineering Student',
+    'a Graphics Designer',
+  ];
 
-    this.type();
-  },
+  let phraseIndex = 0;
+  let charIndex    = 0;
+  let deleting     = false;
+  let paused       = false;
 
-  type() {
-    const currentWord = this.phrases[this.wordIndex];
-    
-    if (this.isDeleting) {
-      // Remove characters
-      this.typingText.textContent = currentWord.substring(0, this.charIndex - 1);
-      this.charIndex--;
-      this.typeSpeed = 50; // Faster when deleting
+  function tick() {
+    if (paused) return;
+
+    const current = phrases[phraseIndex];
+
+    if (!deleting) {
+      // Type forward
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+
+      if (charIndex === current.length) {
+        // Finished typing — pause then start deleting
+        paused = true;
+        setTimeout(() => { paused = false; deleting = true; tick(); }, 1800);
+        return;
+      }
+      setTimeout(tick, 90 + Math.random() * 40); // slight human variance
     } else {
-      // Add characters
-      this.typingText.textContent = currentWord.substring(0, this.charIndex + 1);
-      this.charIndex++;
-      this.typeSpeed = 150; // Slower when typing
-    }
+      // Delete backward
+      charIndex--;
+      el.textContent = current.slice(0, charIndex);
 
-    // Logic for switching words
-    if (!this.isDeleting && this.charIndex === currentWord.length) {
-      // Pause at the end of a word
-      this.isDeleting = true;
-      this.typeSpeed = 2000;
-    } else if (this.isDeleting && this.charIndex === 0) {
-      this.isDeleting = false;
-      this.wordIndex = (this.wordIndex + 1) % this.phrases.length;
-      this.typeSpeed = 500;
+      if (charIndex === 0) {
+        // Finished deleting — move to next phrase
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        paused = true;
+        setTimeout(() => { paused = false; tick(); }, 400);
+        return;
+      }
+      setTimeout(tick, 45);
     }
-
-    setTimeout(() => this.type(), this.typeSpeed);
   }
-};
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => TypingEffect.init());
+  // Start after a short delay so page loads first
+  setTimeout(tick, 800);
+})();

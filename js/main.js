@@ -33,7 +33,9 @@ const App = {
     window.addEventListener('load', () => {
       setTimeout(() => {
         const [entry] = performance.getEntriesByType('navigation');
-        if (entry) console.log(`⚡ Page loaded in ${Math.round(entry.duration)}ms`);
+        if (entry && entry.duration > 3000) {
+          // Only warn if page load is unusually slow
+        }
       }, 0);
     });
   }

@@ -82,8 +82,7 @@ const Animations = {
       const scrolled = window.pageYOffset;
       const hero = document.querySelector('.hero');
       if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
-        hero.style.opacity = 1 - (scrolled / 700);
+        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
       }
     });
   },
@@ -266,28 +265,32 @@ document.addEventListener('DOMContentLoaded', () => Animations.init());
 })();
 
 // 2. Section title typewriter on scroll into view
-(function setupTitleTypewriter() {
+document.addEventListener('DOMContentLoaded', function () {
   const titles = document.querySelectorAll('.section-title');
   const seen = new Set();
+
+  titles.forEach(el => {
+    // Store original text as data attribute so gradient CSS still applies
+    el.setAttribute('data-text', el.textContent.trim());
+    el.textContent = '';
+  });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting || seen.has(entry.target)) return;
       seen.add(entry.target);
       const el = entry.target;
-      const original = el.textContent.trim();
-      el.textContent = '';
-      el.style.minWidth = '1ch';
+      const original = el.getAttribute('data-text') || '';
       let i = 0;
       const iv = setInterval(() => {
         el.textContent += original[i++];
         if (i >= original.length) clearInterval(iv);
-      }, 55);
+      }, 50);
     });
-  }, { threshold: 0.6 });
+  }, { threshold: 0.5 });
 
   titles.forEach(t => observer.observe(t));
-})();
+});
 
 // 3. Skill bar tooltip — show % on hover
 (function setupSkillTooltips() {
