@@ -81,16 +81,8 @@ function patchContactAlerts() {
 
 // ── 4. BOOT PRELOADER % ───────────────────────────────────────────────────────
 function initBootPercent() {
-  const pct = document.getElementById('boot-percent');
-  const bar = document.getElementById('boot-bar');
-  if (!pct || !bar) return;
-
-  // Watch the bar width and mirror it as a percentage label
-  const observer = new MutationObserver(() => {
-    const w = parseFloat(bar.style.width) || 0;
-    pct.textContent = Math.floor(w) + '%';
-  });
-  observer.observe(bar, { attributes: true, attributeFilter: ['style'] });
+  // Percent is now driven directly by audio.js animateBarTo()
+  // This function is kept as a no-op to avoid breaking the init chain
 }
 
 // ── 5. MOBILE BOTTOM NAV ──────────────────────────────────────────────────────

@@ -9,12 +9,13 @@
   const bootBar   = document.getElementById('boot-bar');
   if (!overlay) return;
 
-  // Boot messages to type out
+  // Boot messages — each tied to a % progress step
   const messages = [
-    '> Initializing portfolio...',
-    '> Loading modules... OK',
-    '> Connecting to the matrix...',
-    '> Welcome, Navneet Mallick',
+    { text: '> Booting portfolio v2.0...',   pct: 20  },
+    { text: '> Loading assets... OK',         pct: 45  },
+    { text: '> Mounting modules... OK',       pct: 70  },
+    { text: '> Starting music player... OK',  pct: 90  },
+    { text: '> Welcome, Navneet Mallick ✔',   pct: 100 },
   ];
 
   let ctx = null;
@@ -86,27 +87,38 @@
   }
 
   // --- Boot sequence ---
-  function typeMessages(index, done) {
-    if (index >= messages.length) { done(); return; }
-    const msg = messages[index];
-    let i = 0;
-    bootText.innerHTML = '';
-    const interval = setInterval(() => {
-      bootText.innerHTML += msg[i++];
-      if (i >= msg.length) {
-        clearInterval(interval);
-        setTimeout(() => typeMessages(index + 1, done), 300);
-      }
-    }, 30);
+  const pctEl = document.getElementById('boot-percent');
+
+  function animateBarTo(target) {
+    const current = parseFloat(bootBar?.style.width) || 0;
+    if (!bootBar || current >= target) return;
+    let w = current;
+    const step = (target - current) / 20;
+    const iv = setInterval(() => {
+      w = Math.min(w + step, target);
+      bootBar.style.width = w + '%';
+      if (pctEl) pctEl.textContent = Math.floor(w) + '%';
+      if (w >= target) clearInterval(iv);
+    }, 18);
   }
 
-  function animateBar(done) {
-    let w = 0;
+  function animateBar(done) { done(); } // kept for compat
+
+  function typeMessages(index, done) {
+    if (index >= messages.length) { done(); return; }
+    const { text, pct } = messages[index];
+    let i = 0;
+    const line = document.createElement('div');
+    bootText.appendChild(line);
+    animateBarTo(pct);
     const interval = setInterval(() => {
-      w += 2;
-      bootBar.style.width = w + '%';
-      if (w >= 100) { clearInterval(interval); setTimeout(done, 200); }
-    }, 20);
+      line.textContent += text[i++];
+      if (i >= text.length) {
+        clearInterval(interval);
+        const delay = index === messages.length - 1 ? 600 : 220;
+        setTimeout(() => typeMessages(index + 1, done), delay);
+      }
+    }, 26);
   }
 
   function dismissOverlay() {
@@ -116,6 +128,9 @@
     setTimeout(() => {
       overlay.style.display = 'none';
       document.body.classList.remove('boot-active');
+      // Signal music player to start Eagles
+      window._bootDismissed = true;
+      document.dispatchEvent(new CustomEvent('bootDismissed'));
     }, 800);
   }
 
@@ -125,7 +140,8 @@
   // Start typing after short delay
   setTimeout(() => {
     typeMessages(0, () => {
-      animateBar(() => {});
+      // All messages done — auto dismiss after brief pause
+      setTimeout(dismissOverlay, 800);
     });
   }, 400);
 

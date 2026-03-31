@@ -4,11 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Navneet Mallick - Computer Engineering Student specializing in Web Development, Machine Learning, and Data Science">
-  <meta name="keywords" content="Navneet Mallick, Web Developer, ML Engineer, Portfolio, Computer Engineering">
+
+  <!-- Primary SEO -->
+  <title>Navneet Mallick | Web Developer & ML Engineer Portfolio</title>
+  <meta name="description" content="Navneet Mallick is a Computer Engineering student at IOE Purwanchal Campus specializing in Web Development, Machine Learning, and Data Science. Explore projects, skills, and experience.">
+  <meta name="keywords" content="Navneet Mallick, Web Developer, Machine Learning Engineer, Data Science, Portfolio, Computer Engineering, Nepal, IOE, Python, JavaScript, Streamlit">
   <meta name="author" content="Navneet Mallick">
-  <title>Navneet Mallick | Portfolio</title>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://navneet-mallick.github.io/">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://navneet-mallick.github.io/">
+  <meta property="og:title" content="Navneet Mallick | Web Developer & ML Engineer">
+  <meta property="og:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science. Check out my projects and get in touch.">
+  <meta property="og:image" content="https://navneet-mallick.github.io/profile.jpg">
+  <meta property="og:site_name" content="Navneet Mallick Portfolio">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Navneet Mallick | Web Developer & ML Engineer">
+  <meta name="twitter:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science.">
+  <meta name="twitter:image" content="https://navneet-mallick.github.io/profile.jpg">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Navneet Mallick",
+    "url": "https://navneet-mallick.github.io/",
+    "image": "https://navneet-mallick.github.io/profile.jpg",
+    "jobTitle": "Computer Engineering Student & Web Developer",
+    "description": "Computer Engineering student at IOE Purwanchal Campus specializing in Web Development, Machine Learning, and Data Science.",
+    "sameAs": [
+      "https://github.com/Navneet-Mallick/",
+      "https://www.linkedin.com/in/navneet-mallick-313829279",
+      "https://www.instagram.com/navneet_nm07"
+    ],
+    "knowsAbout": ["Web Development", "Machine Learning", "Data Science", "Python", "JavaScript"]
+  }
+  </script>
 
   <!-- External Styles & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -52,7 +93,7 @@
 
   <!-- Track info + progress -->
   <div class="music-info">
-    <span id="music-track-name">Demons â€” Phonk</span>
+    <span id="music-track-name">Demons &middot; Phonk</span>
     <div class="music-progress">
       <div id="music-progress-bar"></div>
     </div>
@@ -79,7 +120,7 @@
     <nav class="navbar">
         <div class="logo-container">
             <a href="#home">
-                <img src="logo.png" alt="Logo" id="nav-logo-img">
+                <img src="logo.png" alt="Navneet Mallick Portfolio Logo" id="nav-logo-img">
             </a>
         </div>
 
@@ -111,13 +152,13 @@
             <div id="nav-dropdown">
                 <div style="font-size: 10px; opacity: 0.6; margin-bottom: 10px;">QUICK ACTIONS</div>
                 <a href="#projects"><i class="fas fa-rocket"></i> View Projects</a>
-               <a href="#contact"><i class="fas fa-rocket"></i> Certfications</a>
+               <a href="#contact"><i class="fas fa-certificate"></i> Certifications</a>
                 <!-- <a href="./Assets/Navneet _CV.pdf" download><i class="fas fa-download"></i> Download CV</a> -->
                 <a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a>
                 <hr style="margin: 10px 0; border: 0; border-top: 1px solid var(--border-color);">
                 <div style="font-size: 10px; opacity: 0.6; margin-bottom: 10px;">SOCIALS</div>
-                <a href="https://github.com/Navneet-Mallick/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </nav>
@@ -178,16 +219,16 @@
       <p>GitHub Commits</p>
     </div>
     <div class="stat-card">
-      <i class="fas fa-mug-saucer"></i>
-      <span class="stat-number" data-target="500" data-suffix="+">0+</span>
-      <p>Cups of Tea</p>
+      <i class="fas fa-certificate"></i>
+      <span class="stat-number" data-target="3" data-suffix="+">0+</span>
+      <p>Certifications</p>
     </div>
   </div>
 </section>
 
 <section id="projects" class="reveal">
 
-    <h1 class="section-title">Projects</h1>
+    <h2 class="section-title">Projects</h2>
 
     <!-- Project Tabs -->
     <div class="project-tabs">
@@ -207,8 +248,8 @@
         <img src="poke.jpg" alt="Pokedex">
         <div class="overlay">
           <h3>PokeDex - DB of Pokemon</h3>
-          <p>Uses PokeAPI</p>
-          <a href="https://navneet-mallick.github.io/Pokedex_for_Pokemon/" target="_blank" class="btn">
+          <p>JavaScript &middot; PokeAPI &middot; HTML &middot; CSS</p>
+          <a href="https://navneet-mallick.github.io/Pokedex_for_Pokemon/" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> See Pokemon🤘
           </a>
         </div>
@@ -218,8 +259,8 @@
         <img src="https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg" alt="Movie Recommender System">
         <div class="overlay">
           <h3>Content Based Movie Recommender</h3>
-          <p>ML Project</p>
-          <a href="https://movie-recommender-navneet.streamlit.app/" target="_blank" class="btn">
+          <p>Python &middot; Scikit-learn &middot; Pandas &middot; Streamlit</p>
+          <a href="https://movie-recommender-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> Live Demo
           </a>
         </div>
@@ -229,9 +270,9 @@
         <img src="music.jpg" alt="GrooveBox">
         <div class="overlay">
           <h3>GrooveBox-Music Player</h3>
-          <p>Vanilla JavaScript | CSS | HTML |</p>
-          <a href="https://navneet-mallick.github.io/GrooveBox-Music/" target="_blank" class="btn">
-            <i class="fas fa-external-link-alt"></i> Listen 🎧🎶
+          <p>JavaScript &middot; HTML &middot; CSS</p>
+          <a href="https://navneet-mallick.github.io/GrooveBox-Music/" target="_blank" rel="noopener noreferrer" class="btn">
+            <i class="fas fa-external-link-alt"></i> Listen 🤘🤘
           </a>
         </div>
       </div>
@@ -239,8 +280,8 @@
         <img src="https://storage.googleapis.com/kaggle-datasets-images/4210881/7265027/7dd70275b71ef22623be2a72c655675a/dataset-cover.jpg" alt="Car Price Predictor">
         <div class="overlay">
           <h3>Car Price Predictor</h3>
-          <p>Regression Project</p>
-          <a href="https://carpredictor-navneet.streamlit.app/" target="_blank" class="btn">
+          <p>Python &middot; Linear Regression &middot; Pandas &middot; Streamlit</p>
+          <a href="https://carpredictor-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> Live Demo
           </a>
         </div>
@@ -250,8 +291,8 @@
         <img src="weather.png" alt="Weather App">
         <div class="overlay">
           <h3>Weather App</h3>
-          <p>Provides Real Time Weather Data</p>
-          <a href="https://navneet-mallick.github.io/Weather-App-/" target="_blank" class="btn">
+          <p>JavaScript &middot; OpenWeather API &middot; HTML &middot; CSS</p>
+          <a href="https://navneet-mallick.github.io/Weather-App-/" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> Live Demo
           </a>
         </div>
@@ -261,8 +302,8 @@
         <img src="rock.png" alt="Rock Paper Scissors">
         <div class="overlay">
           <h3>Rock Paper Scissors</h3>
-          <p>Interactive Browser Game</p>
-          <a href="https://navneet-mallick.github.io/Rock-Paper-Scissors/" target="_blank" class="btn">
+          <p>JavaScript &middot; HTML &middot; CSS</p>
+          <a href="https://navneet-mallick.github.io/Rock-Paper-Scissors/" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> Live Demo
           </a>
         </div>
@@ -277,8 +318,8 @@
         <img src="./images/developer.jpg" alt="voting">
         <div class="overlay">
           <h3>VoteSecure Online</h3>
-          <p>DBMS Project</p>
-          <a href="https://github.com/Navneet-Mallick/VoteSecure-OnlineVoting.git" target="_blank" class="btn">
+          <p>MySQL &middot; PHP &middot; HTML &middot; CSS</p>
+          <a href="https://github.com/Navneet-Mallick/VoteSecure-OnlineVoting.git" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fab fa-github"></i> View Repo
           </a>
         </div>
@@ -288,8 +329,8 @@
         <img src="quiz.png" alt="Quiz Game">
         <div class="overlay">
           <h3>Quiz Master Game</h3>
-          <p>Interactive C++ Quiz Game</p>
-          <a href="https://github.com/Navneet-Mallick/CPP-Project-Quiz-Master-Game.git" target="_blank" class="btn">
+          <p>C++ &middot; OOP &middot; File I/O</p>
+          <a href="https://github.com/Navneet-Mallick/CPP-Project-Quiz-Master-Game.git" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fab fa-github"></i> View Repo
           </a>
         </div>
@@ -299,8 +340,8 @@
         <img src="./images/developer.jpg" alt="Hackathon Project">
         <div class="overlay">
           <h3>Hackathon Project</h3>
-          <p>Waste Management Website</p>
-          <a href="https://github.com/Navneet-Mallick/XENOM.git" target="_blank" class="btn">
+          <p>HTML &middot; CSS &middot; JavaScript</p>
+          <a href="https://github.com/Navneet-Mallick/XENOM.git" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fab fa-github"></i> View Repo
           </a>
         </div>
@@ -309,8 +350,8 @@
         <img src="books.jpg" alt="LMS">
         <div class="overlay">
           <h3>Library Management System</h3>
-          <p>C Programming Project</p>
-          <a href="https://github.com/Navneet-Mallick/Library-Management-System.git" target="_blank" class="btn">
+          <p>C &middot; File Handling &middot; Structs</p>
+          <a href="https://github.com/Navneet-Mallick/Library-Management-System.git" target="_blank" rel="noopener noreferrer" class="btn">
             <i class="fas fa-external-link-alt"></i> View Repo
           </a>
         </div>
@@ -321,7 +362,7 @@
 
 <!-- GitHub Stats Section -->
 <section id="github-stats" class="reveal">
-  <h1 class="section-title">GitHub Analytics</h1>
+  <h2 class="section-title">GitHub Analytics</h2>
 
   <div class="github-stats-grid">
     <img
@@ -357,7 +398,7 @@
 
 <div class="theme-wrapper-container">
   <section id="education">
-      <h1 class="section-title">Education</h1>
+      <h2 class="section-title">Education</h2>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
@@ -376,14 +417,14 @@
       </div>
     </section>
     <section id="experience">
-      <h1 class="section-title">Experience</h1>
+      <h2 class="section-title">Experience</h2>
       <div class="exp-card">
           <div style="display:flex; justify-content:space-between; align-items:center;">
               <h3>Intern Supervisor</h3>
               <span class="date-tag">Feb 2026 - Present</span>
           </div>
           <p class="company-name">CODE IT, Dharan</p>
-          <p>Mentored students on Data Science and ML topics.</p>
+          <p>Guided interns through Data Science and ML projects, reviewed code, and conducted weekly sessions on Python, Pandas, and model building.</p>
       </div>
       <div class="exp-card">
           <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -391,7 +432,7 @@
               <span class="date-tag">Feb 2026 - Present</span>
           </div>
           <p class="company-name">ACES ERC, Dharan</p>
-          <p>Creating visual assets for the technical club.</p>
+          <p>Designed posters, banners, and social media assets for technical events including TechFest and hackathons.</p>
       </div>
     </section>
 
@@ -400,36 +441,36 @@
 
         
 <section id="certifications">
-  <h1 class="section-title">Certifications</h1>
+  <h2 class="section-title">Certifications</h2>
   <div class="cert-grid">
     <div class="cert-card">
       <div class="cert-icon"><i class="fas fa-certificate"></i></div>
       <h3>CS50x AI Nepal</h3>
-      <p class="cert-issuer">IOE ERC</p>
+      <p class="cert-issuer">IOE ERC, Dharan</p>
       <p class="cert-date">2024</p>
     </div>
     <div class="cert-card">
       <div class="cert-icon"><i class="fas fa-trophy"></i></div>
-      <h3>ACES TechFest 7.0 & X-Hack 3.0</h3>
-      <p class="cert-issuer">Hackathon Certificate</p>
+      <h3>ACES TechFest 7.0 &amp; X-Hack 3.0</h3>
+      <p class="cert-issuer">ACES, IOE Purwanchal Campus</p>
       <p class="cert-date">2024</p>
     </div>
     <div class="cert-card">
       <div class="cert-icon"><i class="fab fa-node-js"></i></div>
-      <h3>Node.js</h3>
-      <p class="cert-issuer">Certification</p>
+      <h3>Node.js Developer</h3>
+      <p class="cert-issuer">Simplilearn</p>
       <p class="cert-date">2024</p>
     </div>
   </div>
 </section>
 
 <section id="skills" class="reveal">
-  <h1 class="section-title">My Skills</h1>
+  <h2 class="section-title">My Skills</h2>
 
   <div class="skills-container" style="display: flex; flex-direction: column; gap: 20px; max-width: 1000px; margin: 0 auto;">
 
     <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255, 165, 0, 0.1); padding-bottom: 15px;">
-      <h2 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Web Dev</h2>
+      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Web Dev</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fab fa-html5"></i> <p style="display: inline; margin-left: 5px;">HTML</p>
@@ -451,7 +492,7 @@
     </div>
 
     <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255, 165, 0, 0.1); padding-bottom: 15px;">
-      <h2 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">ML & AI</h2>
+      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">ML &amp; AI</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fab fa-python"></i> <p style="display: inline; margin-left: 5px;">Python</p>
@@ -469,7 +510,7 @@
     </div>
 
     <div style="display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 15px;">
-      <h2 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Backend</h2>
+      <h3 style="color: orange; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Backend</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
           <i class="fas fa-database"></i> <p style="display: inline; margin-left: 5px;">SQL</p>
@@ -489,8 +530,7 @@
   </div>
 </section>
 
-    <section class="terminal-map-section">      </div>
-
+    <section class="terminal-map-section">
       <div class="map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28488.157738371727!2d87.2906752!3d26.807500799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1715795825848!5m2!1sen!2snp"
@@ -501,26 +541,26 @@
       </div>
   </section>
 <section id="contact" class="reveal"> 
-  <h1 class="section-title">Get In Touch</h1> 
+  <h2 class="section-title">Get In Touch</h2> 
   <form class="contact-form"> 
     <input type="text" name="name" placeholder="Your Name" required> 
     <input type="email" name="email" placeholder="Your Email" required> 
     <textarea name="message" placeholder="Your Message" required></textarea> 
     <button type="submit">Send Message</button> </form> </section> 
 
-  <!-- <footer style="padding:15px 20px; background:#222; color:#fff;"> <p>Â© 2026 Navneet Mallick</p> <a href="https://github.com/Navneet-Mallick/"><i class="fab fa-github"></i></a> <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a> <a href="https://www.instagram.com/navneet_nm07"><i class="fab fa-instagram"></i></a> </footer> -->
+  <!-- <footer style="padding:15px 20px; background:#222; color:#fff;"> <p>© 2026 Navneet Mallick</p> <a href="https://github.com/Navneet-Mallick/"><i class="fab fa-github"></i></a> <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a> <a href="https://www.instagram.com/navneet_nm07"><i class="fab fa-instagram"></i></a> </footer> -->
 
   <footer>
   <!-- Audio Visualizer -->
   <div id="audio-viz" style="display:flex;justify-content:center;align-items:flex-end;gap:3px;height:40px;margin-bottom:20px;"></div>
 
-  <p>@2026 Navneet Mallick. All Rights Reserved.</p>
+  <p>©2026 Navneet Mallick. All Rights Reserved.</p>
   <div>
-    <a href="https://github.com/Navneet-Mallick/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.instagram.com/navneet_nm07" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
-  <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">Built with passion and code by Navneet ❤️😎</p>
+  <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">Built with passion and code by Navneet &#10084;&#65039;</p>
 </footer>
 
 <!-- Mobile Bottom Nav -->
@@ -569,5 +609,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
 
 

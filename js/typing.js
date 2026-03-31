@@ -9,10 +9,10 @@ const TypingEffect = {
     if (!this.typingText) return;
 
     this.phrases = [
-      "Computer Engineering Student",
-      "Web Developer",
-      "ML Enthusiast",
-      "Graphics Designer"
+      "a Web Developer",
+      "an ML Engineer",
+      "a Computer Engineering Student",
+      "a Graphics Designer"
     ];
     
     this.wordIndex = 0;

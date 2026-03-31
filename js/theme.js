@@ -37,7 +37,5 @@
       applyTheme(isLight);
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
-
-    console.log('Theme toggle ready');
   });
 })();

@@ -6,6 +6,14 @@
 
 const Animations = {
   init() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Still run reveals and skill bars, skip heavy animations
+      this.setupScrollReveal();
+      this.setupProjectCardReveal();
+      this.setupSkillBars();
+      this.setupScrollProgress();
+      return;
+    }
     this.createParticles();
     this.setupScrollReveal();
     this.setupProjectCardReveal();
@@ -119,6 +127,7 @@ const Animations = {
   },
 
   setupCardTilt() {
+    if (window.matchMedia('(hover: none)').matches) return;
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
@@ -236,3 +245,178 @@ const Animations = {
 };
 
 document.addEventListener('DOMContentLoaded', () => Animations.init());
+
+
+// ── EXTRA PASSION ANIMATIONS ──────────────────────────────────────────────────
+
+// 1. Mouse spotlight — subtle radial glow follows cursor across page
+(function setupSpotlight() {
+  if (window.matchMedia('(hover: none)').matches) return;
+  const spotlight = document.createElement('div');
+  spotlight.id = 'spotlight';
+  spotlight.style.cssText = `
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(600px circle at 50% 50%, rgba(0,217,255,0.04), transparent 70%);
+    transition: background 0.1s ease;
+  `;
+  document.body.appendChild(spotlight);
+  document.addEventListener('mousemove', e => {
+    spotlight.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(0,217,255,0.05), transparent 70%)`;
+  });
+})();
+
+// 2. Section title typewriter on scroll into view
+(function setupTitleTypewriter() {
+  const titles = document.querySelectorAll('.section-title');
+  const seen = new Set();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting || seen.has(entry.target)) return;
+      seen.add(entry.target);
+      const el = entry.target;
+      const original = el.textContent.trim();
+      el.textContent = '';
+      el.style.minWidth = '1ch';
+      let i = 0;
+      const iv = setInterval(() => {
+        el.textContent += original[i++];
+        if (i >= original.length) clearInterval(iv);
+      }, 55);
+    });
+  }, { threshold: 0.6 });
+
+  titles.forEach(t => observer.observe(t));
+})();
+
+// 3. Skill bar tooltip — show % on hover
+(function setupSkillTooltips() {
+  document.querySelectorAll('.skill').forEach(skill => {
+    const fill = skill.querySelector('.skill-fill');
+    if (!fill) return;
+    const pct = fill.getAttribute('data-width') || '0%';
+    const tip = document.createElement('span');
+    tip.textContent = pct;
+    tip.style.cssText = `
+      position:absolute; top:-28px; right:0;
+      background: var(--accent); color:#000;
+      font-size:11px; font-weight:700;
+      padding:2px 7px; border-radius:4px;
+      opacity:0; transition:opacity 0.2s ease;
+      pointer-events:none; white-space:nowrap;
+    `;
+    skill.style.position = 'relative';
+    skill.appendChild(tip);
+    skill.addEventListener('mouseenter', () => tip.style.opacity = '1');
+    skill.addEventListener('mouseleave', () => tip.style.opacity = '0');
+  });
+})();
+
+// 4. Timeline items slide in from alternating sides
+(function setupTimelineReveal() {
+  const items = document.querySelectorAll('.timeline-item');
+  items.forEach((item, i) => {
+    item.style.opacity = '0';
+    item.style.transform = i % 2 === 0 ? 'translateX(-40px)' : 'translateX(40px)';
+    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateX(0)';
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  items.forEach(item => observer.observe(item));
+
+  // Trigger timeline line grow
+  const timeline = document.querySelector('.timeline');
+  if (timeline) {
+    const tlObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        timeline.classList.add('visible');
+        tlObserver.disconnect();
+      }
+    }, { threshold: 0.2 });
+    tlObserver.observe(timeline);
+  }
+})();
+
+// 5. Cert cards 3D flip on hover
+(function setupCertFlip() {
+  document.querySelectorAll('.cert-card').forEach(card => {
+    card.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease';
+    card.style.transformStyle = 'preserve-3d';
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-10px) rotateY(6deg) rotateX(-3deg) scale(1.03)';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+})();
+
+// 6. Exp cards slide in from left on scroll
+(function setupExpReveal() {
+  const cards = document.querySelectorAll('.exp-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(-50px)';
+    card.style.transition = `opacity 0.5s ease ${i * 0.15}s, transform 0.5s ease ${i * 0.15}s`;
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateX(0)';
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+})();
+
+// 7. Footer social icons stagger bounce on scroll into view
+(function setupFooterSocials() {
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+  const links = footer.querySelectorAll('a');
+  let triggered = false;
+
+  const observer = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting || triggered) return;
+    triggered = true;
+    links.forEach((a, i) => {
+      setTimeout(() => {
+        a.style.animation = 'socialBounce 0.5s cubic-bezier(0.34,1.56,0.64,1) both';
+      }, i * 120);
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(footer);
+})();
+
+// 8. Stat cards pop in with scale on scroll
+(function setupStatReveal() {
+  const cards = document.querySelectorAll('.stat-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.8) translateY(20px)';
+    card.style.transition = `opacity 0.5s ease ${i * 0.1}s, transform 0.5s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.1}s`;
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'scale(1) translateY(0)';
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+
+  cards.forEach(card => observer.observe(card));
+})();

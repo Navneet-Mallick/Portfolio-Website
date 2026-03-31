@@ -5,11 +5,6 @@
 
 const App = {
   init() {
-    console.log('🚀 Portfolio initialized');
-    
-    // All modules are initialized via their own DOMContentLoaded listeners
-    // This file serves as the main entry point and can handle global tasks
-    
     this.setupSmoothScroll();
     this.logPerformance();
   },

@@ -19,7 +19,7 @@
    
   ];
 
-  let modeIndex = 0;
+  let modeIndex = 3; // Start on Eagles
   let isPlaying = false;
 
   // ── FILE AUDIO ─────────────────────────────────────────
@@ -182,12 +182,18 @@
     });
   }
 
-  // Auto-play on first interaction
+  // Auto-play Eagles after boot screen is dismissed
+  document.addEventListener('bootDismissed', function onBoot() {
+    if (!isPlaying) playCurrentMode();
+  }, { once: true });
+
+  // Fallback: auto-play on first user interaction if boot event missed
   document.addEventListener('click', function autoPlay(e) {
     if (isPlaying || e.target.closest('#music-player')) return;
+    if (!window._bootDismissed) return; // wait for boot
     playCurrentMode();
     document.removeEventListener('click', autoPlay);
-  }, { once: true });
+  });
 
   updateModeUI();
 })();

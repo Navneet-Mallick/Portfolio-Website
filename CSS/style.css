@@ -752,17 +752,16 @@ header {
 .overlay h3 {
   font-size: 1.5rem;
   margin-bottom: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #00d9ff;
+  text-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
 }
 
 .overlay p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin-bottom: 18px;
-  opacity: 0.95;
-  color: var(--text-color);
+  color: #e8f0ff;
+  opacity: 1;
+  line-height: 1.5;
 }
 
 .project-card:hover .overlay {
@@ -1157,80 +1156,329 @@ footer a:hover {
    RESPONSIVE DESIGN
    =============================================== */
 
+/* Tablet */
 @media (max-width: 900px) {
   .nav-links {
     display: none;
   }
-  
+
   .hero {
     text-align: center;
     justify-content: center;
-    padding: 120px 5% 60px;
+    flex-direction: column-reverse;
+    padding: 110px 6% 60px;
+    gap: 30px;
   }
-  
+
+  .hero-left {
+    width: 100%;
+  }
+
   .hero-left h1 {
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
   }
-  
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-right {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pp-img {
+    max-width: 220px;
+  }
+
+  .hero-right::before {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-right::after {
+    font-size: 10px;
+    padding: 4px 10px;
+    right: 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    letter-spacing: 2px;
+    margin: 40px 0 35px;
+  }
+
   .skill-row {
     grid-template-columns: 1fr;
   }
-  
+
   .skill-row-container {
     grid-template-columns: 1fr;
   }
-  
+
   .project-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     padding: 0 5%;
+    gap: 20px;
   }
-  
-  .section-title {
-    font-size: 2rem;
+
+  .project-card {
+    height: 260px;
   }
-  
+
   .map {
     padding: 0 5%;
   }
 
   .cert-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     padding: 0 5%;
+  }
+
+  .stats-section {
+    padding: 40px 5%;
+  }
+
+  .contact-form {
+    padding: 0 5%;
+  }
+
+  .skills-container {
+    padding: 0 5%;
+  }
+
+  #github-stats {
+    padding: 0 5% 40px;
+  }
+
+  .terminal-intro-section {
+    padding: 40px 5%;
+  }
+
+  .theme-wrapper-container {
+    padding: 30px 5%;
+  }
+
+  #certifications {
+    padding: 30px 5%;
   }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
   .navbar {
-    padding: 0 20px;
+    padding: 0 16px;
+    height: 64px;
   }
-  
+
+  #nav-logo-img {
+    height: 32px;
+  }
+
+  #nav-actions-box {
+    padding: 8px 14px;
+    gap: 10px;
+  }
+
+  #theme-text {
+    display: none;
+  }
+
+  .hero {
+    padding: 90px 5% 50px;
+    gap: 20px;
+  }
+
+  .hero-left h1 {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+  }
+
+  .hero-left p {
+    font-size: 1.1rem !important;
+  }
+
   .hero-buttons {
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    margin-top: 16px;
   }
-  
+
   .btn-cv {
     margin-left: 0;
   }
-  
+
   .hero-buttons .btn {
     width: 100%;
-    max-width: 250px;
+    max-width: 240px;
     text-align: center;
+    padding: 12px 24px;
   }
-  
+
   .pp-img {
-    max-width: 280px;
+    max-width: 180px;
   }
-  
+
   .hero-right::before {
-    width: 310px;
-    height: 310px;
+    width: 210px;
+    height: 210px;
   }
-  
+
+  .hero-right::after {
+    font-size: 9px;
+    padding: 3px 8px;
+    bottom: 4px;
+    right: 4px;
+  }
+
+  .section-title {
+    font-size: clamp(1.3rem, 6vw, 1.7rem);
+    letter-spacing: 1px;
+    margin: 30px 0 28px;
+  }
+
+  .project-container {
+    grid-template-columns: 1fr;
+    padding: 0 4%;
+    gap: 16px;
+  }
+
+  .project-card {
+    height: 220px;
+  }
+
+  /* On touch devices, always show overlay since there's no hover */
+  .overlay {
+    opacity: 1;
+    background: linear-gradient(135deg,
+      rgba(10, 14, 39, 0.88) 0%,
+      rgba(0, 217, 255, 0.15) 50%,
+      rgba(124, 58, 237, 0.2) 100%);
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+
+  .overlay h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .overlay p {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+
+  .overlay .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 0;
+  }
+
+  .project-tabs {
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 0 4%;
+  }
+
+  .project-tab {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .stat-card {
+    padding: 20px 12px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+    padding: 0 4%;
+    gap: 16px;
+  }
+
   .skill-item {
-    min-width: 120px;
+    min-width: 110px;
+  }
+
+  .contact-form {
+    padding: 0 4%;
+  }
+
+  .map {
+    padding: 0 4%;
+  }
+
+  .map iframe {
+    height: 280px;
+  }
+
+  .exp-card,
+  .timeline-content {
+    padding: 20px 16px;
+  }
+
+  .timeline {
+    padding-left: 20px;
+    margin-left: 10px;
+  }
+
+  .timeline-item::before {
+    left: -28.5px;
+  }
+
+  .terminal-body {
+    font-size: 12px;
+    min-height: 200px;
+  }
+
+  footer {
+    padding: 30px 20px 90px;
+  }
+
+  #music-player {
+    max-width: calc(100vw - 32px);
+    bottom: 72px;
+    right: 16px;
+    left: 16px;
+    padding: 8px 12px;
+  }
+
+  #music-volume {
+    width: 44px;
+  }
+
+  #back-to-top {
+    bottom: 150px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+  }
+
+  #toast-container {
+    right: 10px;
+    left: 10px;
+  }
+
+  .toast {
+    max-width: 100%;
+  }
+
+  .boot-content {
+    padding: 24px 20px;
+  }
+
+  .boot-logo {
+    font-size: 3.5rem;
   }
 }
 
@@ -1790,56 +2038,135 @@ body.boot-active {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+  /* Subtle grid background */
+  background-image:
+    linear-gradient(rgba(0,217,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,217,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
+
+/* Scanline overlay on boot */
+#boot-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,217,255,0.015) 2px,
+    rgba(0,217,255,0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Corner brackets */
+#boot-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(0,217,255,0.12);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.boot-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+}
+.boot-corner::before,
+.boot-corner::after {
+  content: '';
+  position: absolute;
+  background: #00d9ff;
+  box-shadow: 0 0 6px #00d9ff;
+}
+.boot-corner::before { width: 100%; height: 2px; top: 0; left: 0; }
+.boot-corner::after  { width: 2px; height: 100%; top: 0; left: 0; }
+
+.boot-corner.tl { top: 20px; left: 20px; }
+.boot-corner.tr { top: 20px; right: 20px; transform: scaleX(-1); }
+.boot-corner.bl { bottom: 20px; left: 20px; transform: scaleY(-1); }
+.boot-corner.br { bottom: 20px; right: 20px; transform: scale(-1); }
 
 #boot-overlay.boot-exit {
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.04);
+  filter: blur(8px);
   pointer-events: none;
 }
 
 .boot-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
   font-family: 'Courier New', monospace;
   color: #00d9ff;
-  max-width: 500px;
+  max-width: 520px;
+  width: 90%;
   padding: 40px;
 }
 
 .boot-logo {
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: 900;
   background: linear-gradient(135deg, #00d9ff, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 30px;
+  margin-bottom: 6px;
   animation: bootLogoPulse 1.5s ease-in-out infinite;
-  letter-spacing: 8px;
+  letter-spacing: 10px;
+}
+
+.boot-tagline {
+  font-size: 11px;
+  color: rgba(0,217,255,0.5);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
 }
 
 @keyframes bootLogoPulse {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(0,217,255,0.5)); }
-  50%       { filter: drop-shadow(0 0 30px rgba(0,217,255,1)) drop-shadow(0 0 60px rgba(124,58,237,0.8)); }
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0,217,255,0.4)); }
+  50%       { filter: drop-shadow(0 0 24px rgba(0,217,255,0.9)) drop-shadow(0 0 50px rgba(124,58,237,0.6)); }
 }
 
 .boot-text {
-  font-size: 14px;
+  font-size: 13px;
   color: #00d9ff;
-  min-height: 22px;
-  margin-bottom: 30px;
+  min-height: 110px;
+  margin-bottom: 24px;
   text-align: left;
-  text-shadow: 0 0 8px #00d9ff;
+  text-shadow: 0 0 6px rgba(0,217,255,0.6);
+  line-height: 1.9;
+  background: rgba(0,217,255,0.03);
+  border: 1px solid rgba(0,217,255,0.08);
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+
+.boot-text div {
+  opacity: 0;
+  animation: bootLineIn 0.2s ease forwards;
+}
+
+@keyframes bootLineIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .boot-bar-wrap {
   width: 100%;
-  height: 4px;
-  background: rgba(0,217,255,0.15);
+  height: 3px;
+  background: rgba(0,217,255,0.1);
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .boot-bar {
@@ -1847,15 +2174,30 @@ body.boot-active {
   width: 0%;
   background: linear-gradient(90deg, #00d9ff, #7c3aed, #f59e0b);
   border-radius: 2px;
-  box-shadow: 0 0 10px #00d9ff;
+  box-shadow: 0 0 8px #00d9ff;
   transition: width 0.05s linear;
 }
 
-.boot-hint {
+.boot-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.boot-percent {
   font-size: 12px;
-  color: rgba(0,217,255,0.5);
+  color: rgba(0, 217, 255, 0.7);
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+.boot-hint {
+  font-size: 11px;
+  color: rgba(0,217,255,0.4);
   animation: blink 1s infinite;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 
@@ -2241,18 +2583,6 @@ body.light-mode #music-player {
 }
 
 /* ===============================================
-   BOOT PERCENT
-   =============================================== */
-
-.boot-percent {
-  font-size: 13px;
-  color: rgba(0, 217, 255, 0.7);
-  margin-top: 8px;
-  letter-spacing: 2px;
-  font-family: 'Courier New', monospace;
-}
-
-/* ===============================================
    MOBILE BOTTOM NAV
    =============================================== */
 
@@ -2471,4 +2801,159 @@ body.light-mode .github-snake img {
   .terminal-intro-section {
     padding: 40px 5%;
   }
+}
+
+/* ===============================================
+   ACCESSIBILITY — REDUCED MOTION
+   =============================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .project-card {
+    opacity: 1;
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===============================================
+   PASSION ANIMATIONS — EXTRA POLISH
+   =============================================== */
+
+/* Social bounce keyframe */
+@keyframes socialBounce {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.5); }
+  60%  { transform: translateY(-8px) scale(1.2); }
+  80%  { transform: translateY(4px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Nav link animated underline */
+.nav-links a {
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Project card light-sweep shimmer on hover */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 80%
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+.project-card:hover::after {
+  left: 150%;
+}
+
+/* Glowing active nav link dot */
+.nav-links a.active {
+  color: var(--accent);
+}
+
+/* Section title — keep gradient while typewriter runs */
+.section-title {
+  display: inline-block;
+  width: 100%;
+}
+
+/* Skill tooltip positioning fix */
+.skill {
+  position: relative;
+}
+
+/* Smooth theme transition on body */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Cert card perspective wrapper */
+.cert-grid {
+  perspective: 1000px;
+}
+
+/* Timeline connector pulse */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, var(--accent), var(--secondary));
+  animation: timelineGrow 1.5s ease forwards;
+  animation-play-state: paused;
+}
+.timeline.visible::before {
+  animation-play-state: running;
+}
+@keyframes timelineGrow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+/* Glow pulse on profile image border */
+.pp-img {
+  animation: float 6s ease-in-out infinite, profileGlow 4s ease-in-out infinite;
+}
+@keyframes profileGlow {
+  0%,100% { border-color: var(--accent); box-shadow: 0 0 20px rgba(0,217,255,0.3); }
+  50%      { border-color: var(--secondary); box-shadow: 0 0 30px rgba(124,58,237,0.5); }
+}
+
+/* Stat number gradient text */
+.stat-card i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.stat-card:hover i {
+  transform: scale(1.3) rotate(-5deg);
+  color: var(--secondary);
+}
+
+/* Experience card left accent bar animation */
+.exp-card::before {
+  transition: height 0.4s ease;
+}
+
+/* Scrollbar glow pulse */
+::-webkit-scrollbar-thumb {
+  transition: background 0.3s ease;
 }
