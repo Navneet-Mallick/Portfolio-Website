@@ -9,7 +9,7 @@
 
   const phrases = [
     'a Web Developer',
-    'an ML Engineer',
+    'an ML/DS Enthusiast',
     'a Computer Engineering Student',
     'a Graphics Designer',
   ];
