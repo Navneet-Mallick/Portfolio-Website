@@ -12,11 +12,10 @@
 
   // ── MODES ──────────────────────────────────────────────
   const MODES = [
-    { id: 'lofi',    label: 'Lo-Fi',        type: 'synth', style: 'lofi',                   icon: 'fas fa-headphones' },
-     { id: 'ambient', label: 'Ambient',      type: 'synth', style: 'ambient',                icon: 'fas fa-moon' },
-    { id: 'phonk',   label: 'Demons Phonk', type: 'file', src: 'Assets/demons_phonk.mp3',  icon: 'fas fa-fire' },
-    { id: 'eagles',  label: 'Eagles',       type: 'file', src: 'Assets/eagles.mp3',        icon: 'fas fa-music' },
-   
+    { id: 'lofi',    label: 'Lo-Fi Beats',              type: 'synth', style: 'lofi',    icon: 'fas fa-headphones' },
+    { id: 'ambient', label: 'Ambient Chill',             type: 'synth', style: 'ambient', icon: 'fas fa-moon' },
+    { id: 'phonk',   label: 'Demons — Phonk',            type: 'file',  src: 'Assets/demons_phonk.mp3', icon: 'fas fa-fire' },
+    { id: 'eagles',  label: 'Hotel California — Eagles', type: 'file',  src: 'Assets/eagles.mp3',       icon: 'fas fa-music' },
   ];
 
   let modeIndex = 3; // Start on Eagles

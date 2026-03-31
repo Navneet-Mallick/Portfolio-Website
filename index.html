@@ -100,7 +100,7 @@
 
   <!-- Track info + progress -->
   <div class="music-info">
-    <span id="music-track-name">Eagles</span>
+    <span id="music-track-name">Hotel California — Eagles</span>
     <div class="music-progress">
       <div id="music-progress-bar"></div>
     </div>
@@ -133,15 +133,11 @@
 
         <ul class="nav-links">
             <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
             <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
-            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
             <li><a href="#skills"><i class="fas fa-brain"></i> Skills</a></li>
             <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-             <li><a href="#github-stats"><i class="fab fa-github"></i> GitHub</a></li>
-            <!-- <li><a href="#github-stats"><i class="fab fa-github"></i> GitHub</a></li>
-            <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-            <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
-            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li> -->
+            <li><a href="#github-stats"><i class="fab fa-github"></i> GitHub</a></li>
         </ul>
 
         <div class="nav-wrapper">
@@ -174,11 +170,14 @@
 <section id="home" class="hero">
     <canvas id="hero-canvas" class="hero-canvas"></canvas>
     <div class="hero-left">
+      <div class="availability-badge">
+        <span class="avail-dot"></span> Available for opportunities
+      </div>
       <h1>Hi, I'm <span>Navneet Mallick</span></h1>
-      <!-- <p style="font-size: 1.2rem; margin: 10px 0;">Computer Engineering Student | Web & ML Enthusiast</p> -->
       <p style="font-size: 1.5rem; margin: 10px 0; height: 1.6em;">
         I'm <span id="typing-text" style="color: var(--secondary); font-weight: 600;"></span><span class="cursor">|</span>
       </p>
+      <p class="hero-bio">Computer Engineering student at IOE Purwanchal Campus, building things for the web and training machines to think.</p>
       <div class="hero-buttons">
         <a href="#contact" class="btn">Hire Me</a>
         <a href="./Assets/Navneet _CV.pdf" class="btn btn-cv download-cv-btn" download>
@@ -190,8 +189,53 @@
     <div class="hero-right">
         <img class="pp-img" src="profile.jpg" alt="Navneet Mallick" loading="lazy">
     </div>
+    <a href="#terminal-intro" class="scroll-indicator" aria-label="Scroll down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
 </section>
 
+
+<section id="about" class="about-section reveal">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title" style="text-align:left; width:auto; margin-top:0;">About Me</h2>
+      <p>I'm a 3rd-year Computer Engineering student at IOE Purwanchal Campus, Dharan. I build full-stack web apps and ML-powered tools — things that actually work and look good doing it.</p>
+      <p>Currently mentoring interns at CODE IT on Data Science and ML, and designing for ACES ERC. When I'm not coding, I'm probably listening to Eagles or breaking something in production.</p>
+      <div class="about-tags">
+        <span>Open to Work</span>
+        <span>Freelance</span>
+        <span>Collaboration</span>
+        <span>Internships</span>
+      </div>
+    </div>
+    <div class="about-info">
+      <div class="about-info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Dharan, Nepal</span>
+      </div>
+      <div class="about-info-item">
+        <i class="fas fa-graduation-cap"></i>
+        <span>IOE Purwanchal Campus</span>
+      </div>
+      <div class="about-info-item">
+        <i class="fas fa-briefcase"></i>
+        <span>Intern Supervisor @ CODE IT</span>
+      </div>
+      <div class="about-info-item">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:navneetmallick092@gmail.com">navneetmallick092@gmail.com</a>
+      </div>
+      <div class="about-info-item">
+        <i class="fab fa-github"></i>
+        <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer">github.com/Navneet-Mallick</a>
+      </div>
+      <div class="about-info-item">
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer">linkedin.com/in/navneet-mallick</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="terminal-intro" class="terminal-intro-section reveal">
   <div class="terminal-card-wrapper">
@@ -265,6 +309,7 @@
       
       <div class="project-card">
         <img src="https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg" alt="Movie Recommender System">
+        <span class="project-featured-badge">Featured</span>
         <div class="overlay">
           <h3>Content Based Movie Recommender</h3>
           <p>Python &middot; Scikit-learn &middot; Pandas &middot; Streamlit</p>
@@ -276,6 +321,7 @@
       
          <div class="project-card">
         <img src="music.jpg" alt="GrooveBox">
+        <span class="project-featured-badge">Featured</span>
         <div class="overlay">
           <h3>GrooveBox-Music Player</h3>
           <p>JavaScript &middot; HTML &middot; CSS</p>
@@ -286,6 +332,7 @@
       </div>
       <div class="project-card">
         <img src="https://storage.googleapis.com/kaggle-datasets-images/4210881/7265027/7dd70275b71ef22623be2a72c655675a/dataset-cover.jpg" alt="Car Price Predictor">
+        <span class="project-featured-badge">Featured</span>
         <div class="overlay">
           <h3>Car Price Predictor</h3>
           <p>Python &middot; Linear Regression &middot; Pandas &middot; Streamlit</p>
@@ -324,6 +371,7 @@
 
 <div class="project-card">
         <img src="./images/developer.jpg" alt="voting">
+        <span class="project-featured-badge">Featured</span>
         <div class="overlay">
           <h3>VoteSecure Online</h3>
           <p>MySQL &middot; PHP &middot; HTML &middot; CSS</p>
@@ -372,35 +420,26 @@
 <section id="github-stats" class="reveal">
   <h2 class="section-title">GitHub Analytics</h2>
 
-  <div class="github-stats-grid">
-    <img
-      src="https://github-readme-stats.vercel.app/api?username=Navneet-Mallick&show_icons=true&theme=tokyonight&count_private=true&hide_border=true&bg_color=0d1117"
-      alt="Navneet's GitHub Stats"
-      class="github-stat-card"
-      loading="lazy"
-    >
-    <img
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=Navneet-Mallick&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117"
-      alt="Top Languages"
-      class="github-stat-card"
-      loading="lazy"
-    >
-  </div>
-
   <div class="github-activity-graph">
     <img
-      src="https://github-readme-activity-graph.vercel.app/graph?username=Navneet-Mallick&theme=tokyo-night&hide_border=true&bg_color=0d1117"
+      src="https://github-readme-activity-graph.vercel.app/graph?username=Navneet-Mallick&theme=tokyo-night&hide_border=true&bg_color=0d1117&color=00d9ff&line=7c3aed&point=f59e0b"
       alt="Navneet's GitHub Activity Graph"
       loading="lazy"
     >
   </div>
 
   <div class="github-snake">
-    <img
-      src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake.svg"
-      alt="Contribution Snake"
-      loading="lazy"
-    >
+    <picture>
+      <source
+        media="(prefers-color-scheme: dark)"
+        srcset="https://raw.githubusercontent.com/Navneet-Mallick/Navneet-Mallick/output/github-contribution-grid-snake-dark.svg"
+      >
+      <img
+        src="https://raw.githubusercontent.com/Navneet-Mallick/Navneet-Mallick/output/github-contribution-grid-snake.svg"
+        alt="Contribution Snake"
+        loading="lazy"
+      >
+    </picture>
   </div>
 </section>
 
@@ -477,61 +516,42 @@
 
   <div class="skills-container">
 
-    <div class="skill-row-grid">
-      <h3 class="skill-cat-label">Web Dev</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-html5"></i> <p style="display: inline; margin-left: 5px;">HTML</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="95%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-css3-alt"></i> <p style="display: inline; margin-left: 5px;">CSS</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="90%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-js"></i> <p style="display: inline; margin-left: 5px;">JS</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="90%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-node-js"></i> <p style="display: inline; margin-left: 5px;">Node</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="85%" style="width:0%"></div></div>
-        </div>
+    <div class="skill-level-group">
+      <div class="skill-level-header">
+        <span class="skill-level-dot expert"></span>
+        <span class="skill-level-title">Expert</span>
+      </div>
+      <div class="skill-badges">
+        <div class="skill-badge"><i class="fab fa-html5"></i> HTML</div>
+        <div class="skill-badge"><i class="fab fa-css3-alt"></i> CSS</div>
+        <div class="skill-badge"><i class="fab fa-js"></i> JavaScript</div>
+        <div class="skill-badge"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-badge"><i class="fas fa-code"></i> C++</div>
       </div>
     </div>
 
-    <div class="skill-row-grid">
-      <h3 class="skill-cat-label">ML &amp; AI</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-python"></i> <p style="display: inline; margin-left: 5px;">Python</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="90%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fas fa-brain"></i> <p style="display: inline; margin-left: 5px;">Machine Learning</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="70%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fas fa-chart-line"></i> <p style="display: inline; margin-left: 5px;">Data Science</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="65%" style="width:0%"></div></div>
-        </div>
+    <div class="skill-level-group">
+      <div class="skill-level-header">
+        <span class="skill-level-dot intermediate"></span>
+        <span class="skill-level-title">Intermediate</span>
+      </div>
+      <div class="skill-badges">
+        <div class="skill-badge"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-badge"><i class="fas fa-brain"></i> Machine Learning</div>
+        <div class="skill-badge"><i class="fab fa-node-js"></i> Node.js</div>
+        <div class="skill-badge"><i class="fas fa-chart-line"></i> Data Science</div>
+        <div class="skill-badge"><i class="fab fa-php"></i> PHP</div>
       </div>
     </div>
 
-    <div class="skill-row-grid skill-row-last">
-      <h3 class="skill-cat-label">Backend</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fas fa-database"></i> <p style="display: inline; margin-left: 5px;">SQL</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="85%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fas fa-server"></i> <p style="display: inline; margin-left: 5px;">Django</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="50%" style="width:0%"></div></div>
-        </div>
-        <div class="skill" style="margin: 0; padding: 5px 10px; min-width: 140px;">
-          <i class="fab fa-php"></i> <p style="display: inline; margin-left: 5px;">PHP</p>
-          <div class="skill-bar" style="height: 6px;"><div class="skill-fill" data-width="45%" style="width:0%"></div></div>
-        </div>
+    <div class="skill-level-group">
+      <div class="skill-level-header">
+        <span class="skill-level-dot beginner"></span>
+        <span class="skill-level-title">Beginner</span>
+      </div>
+      <div class="skill-badges">
+        <div class="skill-badge"><i class="fas fa-server"></i> Django</div>
+        <div class="skill-badge"><i class="fab fa-react"></i> React</div>
       </div>
     </div>
 
@@ -548,13 +568,50 @@
         </iframe>
       </div>
   </section>
-<section id="contact" class="reveal"> 
-  <h2 class="section-title">Get In Touch</h2> 
-  <form class="contact-form"> 
-    <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
-    <textarea name="message" placeholder="Your Message" aria-label="Your Message" required></textarea> 
-    <button type="submit">Send Message</button> </form> </section> 
+<section id="contact" class="reveal">
+  <h2 class="section-title">Get In Touch</h2>
+  <p class="contact-subtitle">Have a project in mind or just want to say hi? I'll get back within 24 hours.</p>
+
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="mailto:navneetmallick092@gmail.com" class="contact-link-card">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">navneetmallick092@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+        <i class="fab fa-linkedin"></i>
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">navneet-mallick</span>
+        </div>
+      </a>
+      <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+        <i class="fab fa-github"></i>
+        <div>
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">Navneet-Mallick</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+        <i class="fab fa-instagram"></i>
+        <div>
+          <span class="contact-link-label">Instagram</span>
+          <span class="contact-link-value">@navneet_nm07</span>
+        </div>
+      </a>
+    </div>
+
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
+      <textarea name="message" placeholder="Your Message" aria-label="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section> 
 
   <footer>
   <!-- Audio Visualizer -->

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Terminal Animation Module — Enhanced
  */
 
@@ -21,9 +21,9 @@
 
     { type: 'cmd',    text: 'cat skills/stack.json' },
     { type: 'output', parts: [{ cls: '', text: '{' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "frontend"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["HTML5", "CSS3", "JavaScript"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "backend"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Node.js", "Django", "PHP", "SQL"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "ml"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Python", "Scikit-learn", "Pandas", "Streamlit"]' }] },
+    { type: 'output', parts: [{ cls: 't-key', text: '  "expert"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["HTML", "CSS", "JavaScript", "SQL", "C++"],' }] },
+    { type: 'output', parts: [{ cls: 't-key', text: '  "intermediate"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Python", "ML", "Node.js", "Data Science", "PHP"],' }] },
+    { type: 'output', parts: [{ cls: 't-key', text: '  "beginner"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Django", "React"]' }] },
     { type: 'output', parts: [{ cls: '', text: '}' }] },
 
     { type: 'cmd',    text: 'git log --oneline --graph -4' },
@@ -236,3 +236,5 @@
   });
 
 })();
+
+

@@ -1965,28 +1965,11 @@ footer a:hover {
   100% { letter-spacing: 3px; }
 }
 
-/* Floating badge on profile pic */
+/* Floating badge on profile pic — removed (unprofessional) */
 .hero-right::after {
-  content: '< dev />';
-  position: absolute;
-  bottom: 10px;
-  right: -10px;
-  background: linear-gradient(135deg, var(--accent), var(--secondary));
-  color: #000;
-  font-weight: 700;
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-family: 'Courier New', monospace;
-  box-shadow: 0 0 20px var(--accent-glow);
-  animation: badgePulse 2s ease-in-out infinite;
-  z-index: 2;
+  display: none;
 }
 
-@keyframes badgePulse {
-  0%, 100% { transform: scale(1) rotate(-3deg); }
-  50%       { transform: scale(1.08) rotate(3deg); }
-}
 
 /* Neon border on exp/education cards on hover */
 .exp-card:hover,
@@ -2991,4 +2974,534 @@ body {
 /* Scrollbar glow pulse */
 ::-webkit-scrollbar-thumb {
   transition: background 0.3s ease;
+}
+
+/* ===============================================
+   AVAILABILITY BADGE
+   =============================================== */
+
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(40, 200, 64, 0.1);
+  border: 1px solid rgba(40, 200, 64, 0.3);
+  color: #28c840;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.avail-dot {
+  width: 8px;
+  height: 8px;
+  background: #28c840;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #28c840;
+  animation: availPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes availPulse {
+  0%, 100% { box-shadow: 0 0 4px #28c840; }
+  50%       { box-shadow: 0 0 12px #28c840, 0 0 20px rgba(40,200,64,0.4); }
+}
+
+.hero-bio {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.75;
+  margin: 12px 0 20px;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-size: 18px;
+  opacity: 0.6;
+  animation: scrollBounce 2s ease-in-out infinite;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover { opacity: 1; }
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ===============================================
+   ABOUT SECTION
+   =============================================== */
+
+.about-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.about-tags span {
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-info-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.9rem;
+}
+
+.about-info-item i {
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid rgba(0, 217, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.about-info-item a {
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.about-info-item a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .about-section {
+    padding: 40px 5%;
+  }
+}
+
+/* ===============================================
+   CONTACT GRID
+   =============================================== */
+
+.contact-subtitle {
+  text-align: center;
+  opacity: 0.65;
+  font-size: 0.95rem;
+  margin: -20px 0 40px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-link-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+  color: var(--text-color);
+}
+
+.contact-link-card:hover {
+  border-color: var(--accent);
+  transform: translateX(6px);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.contact-link-card i {
+  font-size: 20px;
+  color: var(--accent);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.contact-link-label {
+  display: block;
+  font-size: 11px;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.contact-link-value {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ===============================================
+   LIGHT MODE FIXES
+   =============================================== */
+
+body.light-mode .availability-badge {
+  background: rgba(40, 200, 64, 0.08);
+}
+
+body.light-mode .about-tags span {
+  background: rgba(0, 102, 255, 0.06);
+  border-color: rgba(0, 102, 255, 0.2);
+}
+
+body.light-mode .about-info-item i {
+  background: rgba(0, 102, 255, 0.06);
+  border-color: rgba(0, 102, 255, 0.15);
+}
+
+body.light-mode .contact-link-card {
+  background: #fff;
+  border-color: rgba(0, 102, 255, 0.15);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+body.light-mode .contact-link-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0,102,255,0.15);
+}
+
+/* Fix light mode card borders being invisible */
+body.light-mode .exp-card,
+body.light-mode .timeline-content,
+body.light-mode .cert-card,
+body.light-mode .stat-card,
+body.light-mode .skill {
+  border-color: rgba(0, 102, 255, 0.2);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+/* Fix light mode overlay text */
+body.light-mode .overlay h3 {
+  color: #0066ff;
+  text-shadow: none;
+}
+
+body.light-mode .overlay p {
+  color: #fff;
+}
+
+/* Fix light mode hero badge */
+body.light-mode .hero-right::after {
+  background: linear-gradient(135deg, #0066ff, #7c3aed);
+}
+
+/* Fix light mode section title gradient */
+body.light-mode .section-title {
+  background: linear-gradient(135deg, #0066ff 0%, #7c3aed 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fix light mode nav links */
+body.light-mode .nav-links a {
+  color: #4a5568;
+}
+
+body.light-mode .nav-links a:hover,
+body.light-mode .nav-links a.active {
+  color: var(--accent);
+}
+
+/* Fix light mode skill bars */
+body.light-mode .skill-bar {
+  background: rgba(0, 102, 255, 0.1);
+}
+
+/* Fix light mode hero bio */
+body.light-mode .hero-bio {
+  color: #4a5568;
+  opacity: 1;
+}
+
+/* ===============================================
+   SKILLS — PROFICIENCY LEVEL DESIGN
+   =============================================== */
+
+.skill-level-group {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-level-group:last-child {
+  border-bottom: none;
+}
+
+.skill-level-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-level-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skill-level-dot.expert       { background: #00d9ff; box-shadow: 0 0 8px rgba(0,217,255,0.6); }
+.skill-level-dot.intermediate { background: #7c3aed; box-shadow: 0 0 8px rgba(124,58,237,0.6); }
+.skill-level-dot.beginner     { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.6); }
+
+.skill-level-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.5;
+}
+
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.skill-badge:hover::before {
+  transform: translateX(100%);
+}
+
+.skill-badge i {
+  font-size: 15px;
+}
+
+/* Expert badges — cyan tint on hover */
+.skill-level-group:nth-child(1) .skill-badge:hover {
+  border-color: #00d9ff;
+  box-shadow: 0 4px 16px rgba(0,217,255,0.2);
+  transform: translateY(-3px);
+}
+
+.skill-level-group:nth-child(1) .skill-badge i { color: #00d9ff; }
+
+/* Intermediate badges — purple tint on hover */
+.skill-level-group:nth-child(2) .skill-badge:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.2);
+  transform: translateY(-3px);
+}
+
+.skill-level-group:nth-child(2) .skill-badge i { color: #7c3aed; }
+
+/* Beginner badges — amber tint on hover */
+.skill-level-group:nth-child(3) .skill-badge:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 16px rgba(245,158,11,0.2);
+  transform: translateY(-3px);
+}
+
+.skill-level-group:nth-child(3) .skill-badge i { color: #f59e0b; }
+
+/* Light mode */
+body.light-mode .skill-badge {
+  background: #fff;
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+/* ===============================================
+   PROJECT FEATURED BADGE
+   =============================================== */
+
+.project-featured-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  z-index: 4;
+  box-shadow: 0 2px 10px rgba(0,217,255,0.3);
+}
+
+/* ===============================================
+   PROJECT CARD — ENHANCED ANIMATIONS
+   =============================================== */
+
+/* Staggered entrance per card position */
+.project-card:nth-child(1) { transition-delay: 0s; }
+.project-card:nth-child(2) { transition-delay: 0.08s; }
+.project-card:nth-child(3) { transition-delay: 0.16s; }
+.project-card:nth-child(4) { transition-delay: 0.24s; }
+.project-card:nth-child(5) { transition-delay: 0.32s; }
+.project-card:nth-child(6) { transition-delay: 0.40s; }
+
+/* Glow border trace on hover using pseudo-element */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 2px;
+  background: linear-gradient(135deg, var(--accent), var(--secondary), var(--tertiary), var(--accent));
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderTrace 3s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderTrace {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Image zoom is smoother */
+.project-card img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Overlay slides up from bottom instead of just fading */
+.overlay {
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button inside overlay pops in */
+.overlay .btn {
+  transform: translateY(6px);
+  opacity: 0;
+  transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s, box-shadow 0.3s ease;
+  margin-top: 0;
+}
+
+.project-card:hover .overlay .btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile — overlay always visible, no transform needed */
+@media (max-width: 600px) {
+  .overlay {
+    transform: none;
+  }
+  .overlay .btn {
+    transform: none;
+    opacity: 1;
+  }
 }
