@@ -173,9 +173,10 @@
     hint.innerHTML = '<span style="color:#00d9ff;opacity:0.7">⌨  type something... try \'help\'</span>';
     body.appendChild(hint);
     body.scrollTop = body.scrollHeight;
-    // Remove hint on first keypress
     document.addEventListener('keydown', () => hint.remove(), { once: true });
   }
+
+  function spawnInput(body) {
     const wrap = document.createElement('div');
     wrap.className = 't-line';
     wrap.innerHTML = PROMPT + ' ';
