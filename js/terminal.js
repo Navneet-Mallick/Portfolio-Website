@@ -5,7 +5,7 @@
 
   const INTRO = [
     { type: 'cmd', text: 'whoami' },
-    { type: 'out', parts: [{ cls: 't-accent', text: 'Navneet Mallick' }, { cls: '', text: ' -- CE Student | Web Dev | ML Engineer' }] },
+    { type: 'out', parts: [{ cls: 't-accent', text: 'Navneet Mallick' }, { cls: '', text: ' -- CE Student | Web Dev | ML/DS Learner' }] },
 
     { type: 'cmd', text: 'cat about.txt' },
     { type: 'out', parts: [{ cls: 't-green', text: 'Location: ' }, { cls: '', text: 'Dharan, Nepal' }] },
