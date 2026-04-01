@@ -9,38 +9,7 @@
  * 7. Section skew warp reveal
  */
 
-// ── 1. GLITCH EFFECT ON HERO NAME ────────────────────────────────────────────
-(function setupGlitch() {
-  const h1 = document.querySelector('.hero-left h1 span');
-  if (!h1) return;
-
-  const original = h1.textContent;
-  const glitchChars = 'X#@!%&*<>[]{}|/\\^~`';
-
-  function glitch() {
-    let iterations = 0;
-    const max = 10;
-    const iv = setInterval(() => {
-      h1.textContent = original.split('').map((char, i) => {
-        if (char === ' ') return ' ';
-        if (i < iterations) return original[i];
-        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
-      }).join('');
-      iterations += 0.6;
-      if (iterations >= original.length) {
-        h1.textContent = original;
-        clearInterval(iv);
-      }
-    }, 40);
-  }
-
-  // Glitch on load after boot
-  setTimeout(glitch, 2800);
-
-  // Glitch on hover
-  h1.style.cursor = 'default';
-  h1.addEventListener('mouseenter', glitch);
-})();
+// ── 1. GLITCH EFFECT ON HERO NAME — disabled ─────────────────────────────────
 
 
 // ── 2. 3D TILT ON PROFILE PICTURE ────────────────────────────────────────────
