@@ -299,8 +299,8 @@ header, section, footer {
 
 /* Staggered reveal for project cards */
 .project-card {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.6s ease-out;
 }
 
@@ -3478,33 +3478,9 @@ body.light-mode .skill-badge {
 .project-card:nth-child(5) { transition-delay: 0.32s; }
 .project-card:nth-child(6) { transition-delay: 0.40s; }
 
-/* Glow border trace on hover using pseudo-element */
+/* Clean border glow on hover */
 .project-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  padding: 2px;
-  background: linear-gradient(135deg, var(--accent), var(--secondary), var(--tertiary), var(--accent));
-  background-size: 300% 300%;
-  /* -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); */
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: borderTrace 3s linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
-@keyframes borderTrace {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  content: none;
 }
 
 /* Image zoom is smoother */
@@ -3526,7 +3502,7 @@ body.light-mode .skill-badge {
 /* Button inside overlay pops in */
 .overlay .btn {
   transform: translateY(6px);
-  opacity: 0;
+  opacity: 1;
   transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s, box-shadow 0.3s ease;
   margin-top: 0;
 }
