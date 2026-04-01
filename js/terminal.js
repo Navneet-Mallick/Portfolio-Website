@@ -1,240 +1,320 @@
-﻿/**
- * Terminal Animation Module — Enhanced
- */
-
 (function () {
-  const LINES = [
-    { type: 'cmd',    text: 'whoami' },
-    { type: 'output', parts: [{ cls: 't-accent', text: 'Navneet Mallick' }, { cls: '', text: ' — Computer Engineering Student' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: 'Passionate About' }, { cls: '', text: ' Software Development and Programming' }] },
-
-    { type: 'cmd',    text: 'cat about.txt' },
-    { type: 'output', parts: [{ cls: 't-green', text: '📍 Location:' }, { cls: '', text: ' Dharan, Nepal' }] },
-    { type: 'output', parts: [{ cls: 't-green', text: '🎓 Education:' }, { cls: '', text: ' IOE Purwanchal Campus' }] },
-    { type: 'output', parts: [{ cls: 't-green', text: '💼 Role:' }, { cls: '', text: ' Intern Supervisor @ CODE IT' }] },
-    { type: 'output', parts: [{ cls: 't-green', text: '🎨 Role:' }, { cls: '', text: ' Graphics Designer @ ACES ERC' }] },
-
-    { type: 'cmd',    text: 'ls -la skills/' },
-    { type: 'output', parts: [{ cls: 't-val', text: 'drwxr-xr-x' }, { cls: '', text: '  web-development/' }] },
-    { type: 'output', parts: [{ cls: 't-val', text: 'drwxr-xr-x' }, { cls: '', text: '  machine-learning/' }] },
-    { type: 'output', parts: [{ cls: 't-val', text: 'drwxr-xr-x' }, { cls: '', text: '  backend-development/' }] },
-
-    { type: 'cmd',    text: 'cat skills/stack.json' },
-    { type: 'output', parts: [{ cls: '', text: '{' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "expert"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["HTML", "CSS", "JavaScript", "SQL", "C++"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "intermediate"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Python", "ML", "Node.js", "Data Science", "PHP"],' }] },
-    { type: 'output', parts: [{ cls: 't-key', text: '  "beginner"' }, { cls: '', text: ': ' }, { cls: 't-val', text: '["Django", "React"]' }] },
-    { type: 'output', parts: [{ cls: '', text: '}' }] },
-
-    { type: 'cmd',    text: 'git log --oneline --graph -4' },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* a1b2c3d' }, { cls: '', text: ' 🚀 Deployed portfolio website' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* e4f5g6h' }, { cls: '', text: ' 🤖 Built ML movie recommender' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* i7j8k9l' }, { cls: '', text: ' 🏆 Participated in ACES TechFest 7.0 & X-Hack 3.0' }] },
-    { type: 'output', parts: [{ cls: 't-accent', text: '* m1n2o3p' }, { cls: '', text: ' 📜 Completed CS50x AI @ IOE Dharan' }] },
-
-    { type: 'cmd',    text: 'echo $STATUS' },
-    { type: 'output', parts: [{ cls: 't-green', text: '✔ Available for opportunities' }] },
-    { type: 'output', parts: [{ cls: 't-green', text: '✔ Open to collaboration' }] },
-  ];
 
   const PROMPT = '<span class="t-prompt">navneet@portfolio</span><span style="color:#fff">:</span><span style="color:#79c0ff">~</span><span style="color:#fff">$</span>';
-  const NOISE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
-  const CMD_SPEED  = 38;
-  const LINE_DELAY = 280;
-  const RESTART_DELAY = 3500; // ms before replay
+  const NOISE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
 
-  // ── Noise-type effect: scrambles chars before settling ──────────────────────
-  function typeCommand(body, text, done) {
+  const INTRO = [
+    { type: 'cmd', text: 'whoami' },
+    { type: 'out', parts: [{ cls: 't-accent', text: 'Navneet Mallick' }, { cls: '', text: ' -- CE Student | Web Dev | ML Engineer' }] },
+
+    { type: 'cmd', text: 'cat about.txt' },
+    { type: 'out', parts: [{ cls: 't-green', text: 'Location: ' }, { cls: '', text: 'Dharan, Nepal' }] },
+    { type: 'out', parts: [{ cls: 't-green', text: 'Education: ' }, { cls: '', text: 'IOE Purwanchal Campus' }] },
+    { type: 'out', parts: [{ cls: 't-green', text: 'Role: ' }, { cls: '', text: 'Intern Supervisor @ CODE IT | Designer @ ACES ERC' }] },
+
+    { type: 'cmd', text: 'cat skills.json' },
+    { type: 'out', parts: [{ cls: 't-key', text: '"expert":       ' }, { cls: 't-val', text: '["HTML","CSS","JS","SQL","C++"]' }] },
+    { type: 'out', parts: [{ cls: 't-key', text: '"intermediate": ' }, { cls: 't-val', text: '["Python","ML","Node.js","PHP"]' }] },
+    { type: 'out', parts: [{ cls: 't-key', text: '"beginner":     ' }, { cls: 't-val', text: '["Django","React"]' }] },
+
+    { type: 'cmd', text: 'git log --oneline -3' },
+    { type: 'out', parts: [{ cls: 't-accent', text: 'a1b2c3d ' }, { cls: '', text: 'Deployed portfolio v2' }] },
+    { type: 'out', parts: [{ cls: 't-accent', text: 'e4f5g6h ' }, { cls: '', text: 'Built ML movie recommender' }] },
+    { type: 'out', parts: [{ cls: 't-accent', text: 'i7j8k9l ' }, { cls: '', text: 'ACES TechFest 7.0 & X-Hack 3.0' }] },
+
+    { type: 'cmd', text: 'echo $STATUS' },
+    { type: 'out', parts: [{ cls: 't-green', text: 'Available for opportunities & collaboration' }] },
+  ];
+
+  const JOKES = [
+    "Why do programmers prefer dark mode? Because light attracts bugs. 🐛",
+    "A SQL query walks into a bar, walks up to two tables and asks... 'Can I join you?'",
+    "Why did the developer go broke? Because he used up all his cache. 💸",
+    "I told my computer I needed a break. Now it won't stop sending me Kit-Kat ads.",
+    "There are 10 types of people: those who understand binary and those who don't.",
+  ];
+
+  const CMDS = {
+    help: [
+      { cls: 't-accent', text: '┌─ Available Commands ──────────────────────┐' },
+      { cls: 't-green',  text: '  about      — who am I?' },
+      { cls: 't-green',  text: '  skills     — tech stack' },
+      { cls: 't-green',  text: '  projects   — what I built' },
+      { cls: 't-green',  text: '  contact    — reach me' },
+      { cls: 't-green',  text: '  ls         — list everything' },
+      { cls: 't-green',  text: '  neofetch   — system info' },
+      { cls: 't-green',  text: '  date       — current date & time' },
+      { cls: 't-green',  text: '  joke       — random dev joke 😄' },
+      { cls: 't-green',  text: '  music      — now playing' },
+      { cls: 't-green',  text: '  sudo rm -rf /  — hehe try it 😈' },
+      { cls: 't-green',  text: '  clear      — clear terminal' },
+      { cls: 't-accent', text: '└───────────────────────────────────────────┘' },
+    ],
+    about: [
+      { cls: 't-accent', text: '  ╔══════════════════════════════════════╗' },
+      { cls: 't-accent', text: '  ║        NAVNEET MALLICK               ║' },
+      { cls: 't-accent', text: '  ╚══════════════════════════════════════╝' },
+      { cls: 't-green',  text: '  📍 Dharan, Nepal' },
+      { cls: 't-green',  text: '  🎓 IOE Purwanchal Campus — CE Student' },
+      { cls: 't-green',  text: '  💼 Intern Supervisor @ CODE IT' },
+      { cls: 't-green',  text: '  🎨 Graphics Designer @ ACES ERC' },
+      { cls: '',         text: '  🎸 Probably listening to Eagles rn' },
+    ],
+    skills: [
+      { cls: 't-accent', text: '  ⚡ Expert:       HTML · CSS · JS · SQL · C++' },
+      { cls: 't-val',    text: '  🔥 Intermediate: Python · ML · Node.js · PHP' },
+      { cls: 't-key',    text: '  🌱 Learning:     Django · React · Docker' },
+    ],
+    projects: [
+      { cls: 't-accent', text: '  🎬 Movie Recommender  → movie-recommender-navneet.streamlit.app' },
+      { cls: 't-val',    text: '  🎵 GrooveBox          → navneet-mallick.github.io/GrooveBox-Music' },
+      { cls: 't-green',  text: '  🚗 Car Price Predictor→ carpredictor-navneet.streamlit.app' },
+      { cls: '',         text: '  🗳️  VoteSecure Online  → github.com/Navneet-Mallick' },
+      { cls: '',         text: '  🌦️  Weather App        → navneet-mallick.github.io/Weather-App-' },
+    ],
+    contact: [
+      { cls: 't-green',  text: '  📧 navneetmallick092@gmail.com' },
+      { cls: 't-accent', text: '  💼 linkedin.com/in/navneet-mallick-313829279' },
+      { cls: 't-val',    text: '  🐙 github.com/Navneet-Mallick' },
+      { cls: '',         text: '  📸 instagram.com/navneet_nm07' },
+    ],
+    ls: [
+      { cls: 't-accent', text: '  📁 about.txt    skills.json   projects/   contact.txt' },
+      { cls: 't-val',    text: '  📁 resume.pdf   github/       music/      easter-egg.sh' },
+    ],
+    neofetch: [
+      { cls: 't-accent', text: '        .\'-.        navneet@portfolio' },
+      { cls: 't-accent', text: '       /|6 6|\\       ─────────────────' },
+      { cls: 't-green',  text: '      ( | ⌣ | )      OS: Portfolio v2.0' },
+      { cls: 't-green',  text: '       \\ \`-\' /       Shell: zsh + vibes' },
+      { cls: 't-val',    text: '     .-\`   \`-.       CPU: Brain @ 3AM' },
+      { cls: 't-val',    text: '    /  NM  \\       RAM: Coffee-powered' },
+      { cls: '',         text: '   \'──────────\'      Music: Eagles 🎸' },
+      { cls: '',         text: '                     Status: Available ✅' },
+    ],
+  };
+
+  function typeCmd(body, text, done) {
     const line = document.createElement('div');
     line.className = 't-line';
     line.innerHTML = PROMPT + ' ';
-    const cmdSpan = document.createElement('span');
-    cmdSpan.className = 't-cmd';
-    line.appendChild(cmdSpan);
-    const cursor = document.createElement('span');
-    cursor.className = 't-cursor';
-    line.appendChild(cursor);
+    const cmd = document.createElement('span'); cmd.className = 't-cmd';
+    const cur = document.createElement('span'); cur.className = 't-cursor';
+    line.appendChild(cmd); line.appendChild(cur);
     body.appendChild(line);
     body.scrollTop = body.scrollHeight;
-
-    let i = 0;
-    let noiseFrame = 0;
-
-    const interval = setInterval(() => {
+    let i = 0, f = 0;
+    const iv = setInterval(() => {
       if (i < text.length) {
-        // Show settled chars + 1 noise char ahead
-        const settled = text.slice(0, i);
-        const noise = NOISE_CHARS[Math.floor(Math.random() * NOISE_CHARS.length)];
-        cmdSpan.textContent = settled + (noiseFrame % 2 === 0 ? noise : text[i]);
-        noiseFrame++;
-
-        // Commit the real char every other tick
-        if (noiseFrame % 2 === 0) i++;
+        cmd.textContent = text.slice(0, i) + (f % 2 === 0 ? NOISE[Math.floor(Math.random() * NOISE.length)] : text[i]);
+        if (f++ % 2 === 0) i++;
         body.scrollTop = body.scrollHeight;
       } else {
-        cmdSpan.textContent = text;
-        clearInterval(interval);
-        cursor.remove();
-        // Brief glitch flash on the completed command
-        glitchElement(cmdSpan);
-        setTimeout(done, 180);
+        cmd.textContent = text; clearInterval(iv); cur.remove();
+        glitch(cmd); setTimeout(done, 160);
       }
-    }, CMD_SPEED);
+    }, 36);
   }
 
-  // ── Glitch: rapid color flicker on an element ───────────────────────────────
-  function glitchElement(el) {
-    const colors = ['#ff00c1', '#00fff9', '#fff', '#f59e0b', '#00d9ff'];
-    let t = 0;
-    const orig = el.style.color;
+  function glitch(el) {
+    const c = ['#ff00c1','#00fff9','#fff','#00d9ff']; let t = 0;
     const iv = setInterval(() => {
-      el.style.color = colors[t % colors.length];
-      el.style.textShadow = `0 0 8px ${colors[t % colors.length]}`;
-      t++;
-      if (t > 6) {
-        clearInterval(iv);
-        el.style.color = orig;
-        el.style.textShadow = '';
-      }
-    }, 40);
+      el.style.color = c[t % c.length];
+      el.style.textShadow = '0 0 8px ' + c[t % c.length];
+      if (++t > 5) { clearInterval(iv); el.style.color = ''; el.style.textShadow = ''; }
+    }, 38);
   }
 
-  // ── Slide-in output line ─────────────────────────────────────────────────────
-  function makeOutputLine(parts) {
-    const div = document.createElement('div');
-    div.className = 't-line t-output';
-    div.style.opacity = '0';
-    div.style.transform = 'translateX(-12px)';
+  function outLine(parts) {
+    const d = document.createElement('div');
+    d.className = 't-line t-output';
+    d.style.cssText = 'opacity:0;transform:translateX(-10px)';
     parts.forEach(p => {
-      const span = document.createElement('span');
-      span.className = p.cls || '';
-      span.textContent = p.text;
-      div.appendChild(span);
+      const s = document.createElement('span');
+      s.className = p.cls || ''; s.textContent = p.text; d.appendChild(s);
     });
-    return div;
+    return d;
   }
 
-  function animateOutput(el) {
-    el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-    requestAnimationFrame(() => {
-      el.style.opacity = '1';
-      el.style.transform = 'translateX(0)';
-    });
+  function show(el) {
+    el.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+    requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'translateX(0)'; });
   }
 
-  // ── Scanline sweep on terminal open ─────────────────────────────────────────
-  function addScanSweep(terminalEl) {
-    const sweep = document.createElement('div');
-    sweep.style.cssText = `
-      position:absolute; top:0; left:0; width:100%; height:3px;
-      background: linear-gradient(90deg, transparent, rgba(0,217,255,0.6), transparent);
-      pointer-events:none; z-index:10;
-      animation: termSweep 1.2s ease forwards;
-    `;
-    terminalEl.style.position = 'relative';
-    terminalEl.appendChild(sweep);
-    setTimeout(() => sweep.remove(), 1300);
-  }
-
-  // ── Run all lines recursively ────────────────────────────────────────────────
-  function runLines(body, lines, index, onDone) {
-    if (index >= lines.length) {
-      const last = document.createElement('div');
-      last.className = 't-line';
-      last.innerHTML = PROMPT + ' <span class="t-cursor"></span>';
-      body.appendChild(last);
-      body.scrollTop = body.scrollHeight;
-
-      setTimeout(() => {
-        const hint = document.createElement('div');
-        hint.className = 't-line t-output';
-        hint.style.opacity = '0';
-        hint.innerHTML = '<span style="color:#58a6ff;font-style:italic;">// Session complete — replaying in 3.5s...</span>';
-        body.appendChild(hint);
-        animateOutput(hint);
-        body.scrollTop = body.scrollHeight;
-        if (onDone) setTimeout(onDone, RESTART_DELAY);
-      }, 800);
-      return;
-    }
-
-    const line = lines[index];
+  function runIntro(body, idx, done) {
+    if (idx >= INTRO.length) { done(); return; }
+    const line = INTRO[idx];
     if (line.type === 'cmd') {
-      typeCommand(body, line.text, () => runLines(body, lines, index + 1, onDone));
+      typeCmd(body, line.text, () => runIntro(body, idx + 1, done));
     } else {
       setTimeout(() => {
-        const el = makeOutputLine(line.parts);
-        body.appendChild(el);
-        animateOutput(el);
+        const el = outLine(line.parts); body.appendChild(el); show(el);
         body.scrollTop = body.scrollHeight;
-        runLines(body, lines, index + 1, onDone);
-      }, LINE_DELAY);
+        runIntro(body, idx + 1, done);
+      }, 220);
     }
   }
 
-  // ── Boot + restart loop ──────────────────────────────────────────────────────
-  function startTerminal(body, terminalEl) {
+  let history = [], histIdx = -1;
+
+  function printLines(body, lines, done) {
+    let d = 80;
+    lines.forEach(r => {
+      setTimeout(() => { const el = outLine([r]); body.appendChild(el); show(el); body.scrollTop = body.scrollHeight; }, d);
+      d += 65;
+    });
+    setTimeout(done, d + 60);
+  }
+
+  function spawnHint(body) {
+    const hint = document.createElement('div');
+    hint.id = 't-hint-pulse';
+    hint.style.cssText = 'text-align:center;padding:10px 0 4px;font-size:12px;letter-spacing:2px;animation:hintPulse 1.8s ease-in-out infinite;';
+    hint.innerHTML = '<span style="color:#00d9ff;opacity:0.7">⌨  type something... try \'help\'</span>';
+    body.appendChild(hint);
+    body.scrollTop = body.scrollHeight;
+    // Remove hint on first keypress
+    document.addEventListener('keydown', () => hint.remove(), { once: true });
+  }
+    const wrap = document.createElement('div');
+    wrap.className = 't-line';
+    wrap.innerHTML = PROMPT + ' ';
+    const inp = document.createElement('input');
+    inp.type = 'text'; inp.className = 't-input';
+    inp.setAttribute('autocomplete', 'off');
+    inp.setAttribute('spellcheck', 'false');
+    inp.setAttribute('aria-label', 'Terminal input');
+    wrap.appendChild(inp); body.appendChild(wrap);
+    body.scrollTop = body.scrollHeight;
+    setTimeout(() => inp.focus(), 80);
+
+    inp.addEventListener('keydown', e => {
+      // Arrow key history
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (histIdx < history.length - 1) { histIdx++; inp.value = history[histIdx]; }
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (histIdx > 0) { histIdx--; inp.value = history[histIdx]; }
+        else { histIdx = -1; inp.value = ''; }
+        return;
+      }
+      if (e.key !== 'Enter') return;
+
+      const val = inp.value.trim();
+      const cmd = val.toLowerCase();
+      if (val) { history.unshift(val); histIdx = -1; }
+      inp.disabled = true;
+      const s = document.createElement('span');
+      s.className = 't-cmd'; s.textContent = val;
+      wrap.replaceChild(s, inp);
+
+      // Dynamic commands
+      if (cmd === 'clear') { setTimeout(() => { body.innerHTML = ''; spawnInput(body); }, 150); return; }
+
+      if (cmd === 'date') {
+        const now = new Date();
+        const res = [{ cls: 't-green', text: '  📅 ' + now.toDateString() + '  ⏰ ' + now.toLocaleTimeString() }];
+        printLines(body, res, () => spawnInput(body)); return;
+      }
+
+      if (cmd === 'joke') {
+        const j = JOKES[Math.floor(Math.random() * JOKES.length)];
+        printLines(body, [{ cls: 't-val', text: '  😂 ' + j }], () => spawnInput(body)); return;
+      }
+
+      if (cmd === 'music') {
+        const track = document.getElementById('music-track-name');
+        const t = track ? track.textContent : 'Hotel California — Eagles';
+        printLines(body, [{ cls: 't-accent', text: '  🎵 Now playing: ' + t }], () => spawnInput(body)); return;
+      }
+
+      if (cmd === 'sudo rm -rf /' || cmd === 'sudo rm -rf') {
+        const lines = [
+          { cls: '', text: '  [sudo] password for navneet: ' },
+          { cls: 't-val', text: '  Deleting everything...' },
+          { cls: '', text: '  ████████████████░░░░  80%' },
+          { cls: 't-green', text: '  Just kidding 😈 Nice try tho.' },
+        ];
+        printLines(body, lines, () => spawnInput(body)); return;
+      }
+
+      if (cmd === 'sudo') {
+        printLines(body, [{ cls: '', text: '  Nice try. You are not in the sudoers file. This incident will be reported. 👀' }], () => spawnInput(body)); return;
+      }
+
+      const res = CMDS[cmd];
+      if (res) {
+        printLines(body, res, () => spawnInput(body));
+      } else if (cmd === '') {
+        spawnInput(body);
+      } else {
+        setTimeout(() => {
+          const el = outLine([{ cls: '', text: '  zsh: command not found: ' + val + "  (try 'help')" }]);
+          el.querySelector('span').style.color = '#ff5f57';
+          body.appendChild(el); show(el); body.scrollTop = body.scrollHeight;
+          spawnInput(body);
+        }, 100);
+      }
+    });
+  }
+
+  function boot(body, termEl) {
     body.innerHTML = '';
+    const sw = document.createElement('div');
+    sw.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,rgba(0,217,255,0.6),transparent);pointer-events:none;z-index:10;animation:termSweep 1.2s ease forwards';
+    termEl.appendChild(sw); setTimeout(() => sw.remove(), 1300);
 
-    // Scanline sweep
-    addScanSweep(terminalEl);
-
-    const loading = document.createElement('div');
-    loading.className = 't-line';
-    loading.innerHTML = '<span style="color:#58a6ff;">Initializing terminal</span><span class="t-dots"></span>';
-    body.appendChild(loading);
-
-    // Animate the dots
-    let dots = 0;
-    const dotsEl = loading.querySelector('.t-dots');
-    const dotsIv = setInterval(() => {
-      dotsEl.textContent = '.'.repeat((dots++ % 3) + 1);
-    }, 300);
+    const init = document.createElement('div');
+    init.className = 't-line';
+    init.innerHTML = '<span style="color:#58a6ff">Initializing</span><span id="t-dots"></span>';
+    body.appendChild(init);
+    let d = 0;
+    const dIv = setInterval(() => { const el = document.getElementById('t-dots'); if (el) el.textContent = '.'.repeat((d++ % 3) + 1); }, 280);
 
     setTimeout(() => {
-      clearInterval(dotsIv);
-      loading.remove();
-      runLines(body, LINES, 0, () => startTerminal(body, terminalEl));
-    }, 1000);
+      clearInterval(dIv); init.remove();
+      runIntro(body, 0, () => {
+        const hint = outLine([{ cls: '', text: "// interactive mode -- type 'help'" }]);
+        hint.querySelector('span').style.cssText = 'color:#58a6ff;font-style:italic;opacity:0.7';
+        body.appendChild(hint); show(hint); body.scrollTop = body.scrollHeight;
+        setTimeout(() => { spawnInput(body); spawnHint(body); }, 400);
+      });
+    }, 900);
   }
 
-  // ── Inject keyframe for scan sweep ──────────────────────────────────────────
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes termSweep {
-      0%   { top: 0%;   opacity: 1; }
-      100% { top: 100%; opacity: 0; }
+  const st = document.createElement('style');
+  st.textContent = `
+    @keyframes termSweep { 0%{top:0%;opacity:1} 100%{top:100%;opacity:0} }
+    @keyframes hintPulse {
+      0%,100% { opacity:0.4; transform:translateY(0); }
+      50%     { opacity:1;   transform:translateY(-3px); }
     }
-    /* Cursor color pulse: cyan → purple */
-    .t-cursor {
-      animation: blink 0.7s infinite, cursorPulse 3s ease-in-out infinite !important;
+    .t-cursor { animation: blink 0.7s infinite, tCP 3s ease-in-out infinite !important; }
+    @keyframes tCP {
+      0%,100%{ background:#00d9ff; box-shadow:0 0 8px rgba(0,217,255,0.8); }
+      50%    { background:#7c3aed; box-shadow:0 0 8px rgba(124,58,237,0.8); }
     }
-    @keyframes cursorPulse {
-      0%,100% { background: #00d9ff; box-shadow: 0 0 8px rgba(0,217,255,0.8); }
-      50%      { background: #7c3aed; box-shadow: 0 0 8px rgba(124,58,237,0.8); }
+    .t-input {
+      background:transparent; border:none; outline:none;
+      color:#79c0ff; font-family:'Courier New',monospace;
+      font-size:14px; caret-color:#00d9ff; width:65%;
     }
   `;
-  document.head.appendChild(style);
+  document.head.appendChild(st);
 
-  // ── Init ─────────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     const body = document.getElementById('terminal-body');
-    const terminalEl = document.querySelector('.terminal');
-    if (!body || !terminalEl) return;
-
-    startTerminal(body, terminalEl);
-
-    // Hover lift
-    terminalEl.addEventListener('mouseenter', () => {
-      terminalEl.style.transform = 'translateY(-5px)';
-      terminalEl.style.boxShadow = '0 0 50px rgba(0,217,255,0.25), 0 25px 70px rgba(0,0,0,0.6)';
+    const termEl = document.querySelector('.terminal');
+    if (!body || !termEl) return;
+    boot(body, termEl);
+    termEl.addEventListener('mouseenter', () => {
+      termEl.style.transform = 'translateY(-5px)';
+      termEl.style.boxShadow = '0 0 50px rgba(0,217,255,0.25),0 25px 70px rgba(0,0,0,0.6)';
     });
-    terminalEl.addEventListener('mouseleave', () => {
-      terminalEl.style.transform = '';
-      terminalEl.style.boxShadow = '';
-    });
+    termEl.addEventListener('mouseleave', () => { termEl.style.transform = ''; termEl.style.boxShadow = ''; });
   });
 
 })();
-
-

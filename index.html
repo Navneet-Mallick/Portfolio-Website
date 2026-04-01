@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary SEO -->
-  <title>Navneet Mallick | Web Developer & ML Engineer Portfolio</title>
+  <title>Navneet Mallick | Portfolio</title>
   <meta name="description" content="Navneet Mallick is a Computer Engineering student at IOE Purwanchal Campus specializing in Web Development, Machine Learning, and Data Science. Explore projects, skills, and experience.">
   <meta name="keywords" content="Navneet Mallick, Web Developer, Machine Learning Engineer, Data Science, Portfolio, Computer Engineering, Nepal, IOE, Python, JavaScript, Streamlit">
   <meta name="author" content="Navneet Mallick">
@@ -31,6 +31,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
+  <meta name="theme-color" content="#0a0e27">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -172,7 +173,7 @@
     <div class="hero-left">
       <div class="availability-badge">
         <span class="avail-dot"></span> Available for opportunities
-      </div>
+      <h1>Hi, I'm <span data-text="Navneet Mallick">Navneet Mallick</span></h1>
       <h1>Hi, I'm <span>Navneet Mallick</span></h1>
       <p style="font-size: 1.5rem; margin: 10px 0; height: 1.6em;">
         I'm <span id="typing-text" style="color: var(--secondary); font-weight: 600;"></span><span class="cursor">|</span>
@@ -200,12 +201,18 @@
     <div class="about-text">
       <h2 class="section-title" style="text-align:left; width:auto; margin-top:0;">About Me</h2>
       <p>I'm a 3rd-year Computer Engineering student at IOE Purwanchal Campus, Dharan. I build full-stack web apps and ML-powered tools — things that actually work and look good doing it.</p>
-      <p>Currently mentoring interns at CODE IT on Data Science and ML, and designing for ACES ERC. When I'm not coding, I'm probably listening to Eagles or breaking something in production.</p>
       <div class="about-tags">
         <span>Open to Work</span>
         <span>Freelance</span>
         <span>Collaboration</span>
         <span>Internships</span>
+      </div>
+      <div class="currently-learning">
+        <span class="learning-label"><i class="fas fa-bolt"></i> Currently learning:</span>
+        <span class="learning-item">React</span>
+        <span class="learning-item">Django</span>
+        <span class="learning-item">Docker</span>
+      </div>n>Internships</span>
       </div>
     </div>
     <div class="about-info">
@@ -557,8 +564,10 @@
 
   </div>
 </section>
-
-    <section class="terminal-map-section">
+    <section id="location" class="terminal-map-section">
+      <h2 class="section-title" style="margin-bottom: 30px;">Find Me Here</h2>
+      <div class="map">minal-map-section">
+      <h2 class="section-title" style="margin-bottom: 30px;">Find Me Here</h2>
       <div class="map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28488.157738371727!2d87.2906752!3d26.807500799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1715795825848!5m2!1sen!2snp"
@@ -571,13 +580,17 @@
 <section id="contact" class="reveal">
   <h2 class="section-title">Get In Touch</h2>
   <p class="contact-subtitle">Have a project in mind or just want to say hi? I'll get back within 24 hours.</p>
-
-  <form class="contact-form">
+  <div class="contact-card">
+    <form class="contact-form">
       <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
       <textarea name="message" placeholder="Your Message" aria-label="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+  </div>on type="submit">Send Message</button>
+    </form>
+  </div>
+  <p>©<span id="footer-year"></span> Navneet Mallick. All Rights Reserved.</p>
 </section> 
 
   <footer>
@@ -606,8 +619,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <!-- Application Scripts (Load in order) -->
-<script src="js/config.js"></script>
-<script src="js/audio.js"></script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // Project tab switching
+  document.querySelectorAll('.project-tab').forEach(tab => {
 <script src="js/main.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/navigation.js"></script>
@@ -623,7 +638,8 @@
   document.querySelectorAll('.project-tab').forEach(tab => {
     tab.addEventListener('click', function () {
       document.querySelectorAll('.project-tab').forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
+<script src="js/crazy.js"></script>
+</body>his.classList.add('active');
       const target = this.dataset.tab;
       document.getElementById('tab-live').style.display = target === 'live' ? 'grid' : 'none';
       document.getElementById('tab-repo').style.display = target === 'repo' ? 'grid' : 'none';
@@ -640,11 +656,6 @@
 
 </body>
 </html>
-
-
-
-
-
 
 
 

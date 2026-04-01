@@ -1,4 +1,4 @@
-/* ===============================================
+ï»¿/* ===============================================
    NAVNEET MALLICK - PORTFOLIO STYLESHEET
    Modern, Responsive Design with Animations
    =============================================== */
@@ -470,36 +470,106 @@ header {
   color: var(--secondary);
 }
 
+.nav-wrapper {
+  position: relative;
+}
+
 /* Dropdown Menu */
 #nav-dropdown {
-  display: none;
   position: absolute;
-  top: 70px;
-  right: 40px;
-  background-color: var(--bg-gradient-1);
-  background-image: var(--card-bg);
+  top: calc(100% + 12px);
+  right: 0;
+  background: var(--nav-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 15px;
-  min-width: 220px;
+  border-radius: 16px;
+  padding: 12px;
+  min-width: 230px;
   flex-direction: column;
-  z-index: 9999;
-  box-shadow: var(--shadow);
+  gap: 2px;
+  z-index: 10001;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px var(--accent-glow);
+  backdrop-filter: blur(20px) saturate(180%);
+
+  /* Hidden state */
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px) scale(0.97);
+  transform-origin: top right;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 #nav-dropdown.active {
-  display: flex;
-  z-index: 10001;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0) scale(1);
 }
 
+/* Staggered item entrance */
 #nav-dropdown a {
-  padding: 10px;
-  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, padding-left 0.2s ease;
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+#nav-dropdown.active a {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delays */
+#nav-dropdown.active a:nth-child(1) { transition-delay: 0.04s; }
+#nav-dropdown.active a:nth-child(2) { transition-delay: 0.08s; }
+#nav-dropdown.active a:nth-child(3) { transition-delay: 0.12s; }
+#nav-dropdown.active a:nth-child(4) { transition-delay: 0.16s; }
+#nav-dropdown.active a:nth-child(5) { transition-delay: 0.20s; }
+#nav-dropdown.active a:nth-child(6) { transition-delay: 0.24s; }
+#nav-dropdown.active a:nth-child(7) { transition-delay: 0.28s; }
+
+#nav-dropdown a i {
+  width: 18px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 13px;
 }
 
 #nav-dropdown a:hover {
   background: var(--card-hover);
   color: var(--accent);
+  padding-left: 20px;
+}
+
+.dropdown-header {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.45;
+  padding: 6px 14px 4px;
+  color: var(--accent);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 6px 8px;
+}
+
+/* Hamburger icon animation */
+#hamburger-wrap i {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#hamburger-wrap.open i {
+  transform: rotate(90deg);
 }
 
 /* ===============================================
@@ -953,7 +1023,7 @@ header {
   gap: 20px;
 }
 
-/* Skill row grid — replaces inline styles */
+/* Skill row grid â€” replaces inline styles */
 .skill-row-grid {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -1011,19 +1081,10 @@ header {
   min-width: 130px;
   border: 2px solid var(--border-color);
   transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-  transition: left 0.5s;
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border-radius: 8px;5s;
 }
 
 .skill:hover::before {
@@ -1080,6 +1141,15 @@ header {
 /* ===============================================
    CONTACT & FOOTER
    =============================================== */
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10%;
+}
 
 .contact-form input,
 .contact-form textarea {
@@ -1368,7 +1438,7 @@ footer a:hover {
     height: 220px;
   }
 
-  /* On touch devices — show label at bottom, image stays visible */
+  /* On touch devices â€” show label at bottom, image stays visible */
   .overlay {
     opacity: 1;
     background: linear-gradient(
@@ -1956,7 +2026,7 @@ footer a:hover {
   100% { letter-spacing: 3px; }
 }
 
-/* Floating badge on profile pic — removed (unprofessional) */
+/* Floating badge on profile pic â€” removed (unprofessional) */
 .hero-right::after {
   display: none;
 }
@@ -2249,7 +2319,7 @@ body.boot-active {
 }
 
 /* ===============================================
-   MUSIC PLAYER — refined
+   MUSIC PLAYER â€” refined
    =============================================== */
 
 #music-player {
@@ -2813,7 +2883,7 @@ body.light-mode .github-snake img {
 }
 
 /* ===============================================
-   ACCESSIBILITY — REDUCED MOTION
+   ACCESSIBILITY â€” REDUCED MOTION
    =============================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2837,11 +2907,16 @@ body.light-mode .github-snake img {
     scroll-behavior: auto;
   }
 }
+/* Section title â€” keep gradient while typewriter runs */
+.section-title {
+  display: inline-block;
+  width: 100%;
+}
 
-/* ===============================================
-   PASSION ANIMATIONS — EXTRA POLISH
-   =============================================== */
-
+/* Typewriter span inherits gradient from parent */
+.title-typewriter {
+  display: inline;
+}
 /* Social bounce keyframe */
 @keyframes socialBounce {
   0%   { opacity: 0; transform: translateY(20px) scale(0.5); }
@@ -2898,7 +2973,7 @@ body.light-mode .github-snake img {
   color: var(--accent);
 }
 
-/* Section title — keep gradient while typewriter runs */
+/* Section title â€” keep gradient while typewriter runs */
 .section-title {
   display: inline-block;
   width: 100%;
@@ -3055,76 +3130,6 @@ body {
   margin-bottom: 16px;
 }
 
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.about-tags span {
-  background: rgba(0, 217, 255, 0.08);
-  border: 1px solid rgba(0, 217, 255, 0.25);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 14px;
-  border-radius: 50px;
-  letter-spacing: 0.5px;
-}
-
-.about-info {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.about-info-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 0.9rem;
-}
-
-.about-info-item i {
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 217, 255, 0.08);
-  border: 1px solid rgba(0, 217, 255, 0.2);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.about-info-item a {
-  color: var(--text-color);
-  opacity: 0.8;
-  transition: color 0.2s ease, opacity 0.2s ease;
-}
-
-.about-info-item a:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .about-section {
-    padding: 40px 5%;
-  }
-}
-
-/* ===============================================
-   CONTACT SECTION
-   =============================================== */
-
 .contact-subtitle {
   text-align: center;
   opacity: 0.65;
@@ -3152,6 +3157,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+} margin: -20px 0 40px;
+
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* ===============================================
@@ -3170,6 +3185,17 @@ body.light-mode .about-tags span {
 body.light-mode .about-info-item i {
   background: rgba(0, 102, 255, 0.06);
   border-color: rgba(0, 102, 255, 0.15);
+}
+
+body.light-mode .contact-link-card {
+  background: #fff;
+  border-color: rgba(0, 102, 255, 0.15);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+body.light-mode .contact-link-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0,102,255,0.15);
 }
 
 /* Fix light mode card borders being invisible */
@@ -3221,19 +3247,8 @@ body.light-mode .skill-bar {
 }
 
 /* Fix light mode hero bio */
-body.light-mode .hero-bio {
-  color: #4a5568;
-  opacity: 1;
-}
+/* Fix light mode card borders being invisible */
 
-/* ===============================================
-   SKILLS — PROFICIENCY LEVEL DESIGN
-   =============================================== */
-
-.skill-level-group {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border-color);
-}
 
 .skill-level-group:last-child {
   border-bottom: none;
@@ -3257,9 +3272,9 @@ body.light-mode .hero-bio {
 .skill-level-dot.intermediate { background: #7c3aed; box-shadow: 0 0 8px rgba(124,58,237,0.6); }
 .skill-level-dot.beginner     { background: #f59e0b; box-shadow: 0 0 8px rgba(245,158,11,0.6); }
 
-.skill-level-title {
-  font-size: 0.75rem;
-  font-weight: 700;
+/* Fix light mode nav links */
+body.light-mode .nav-links a {
+  color: #4a5568;0;
   text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0.5;
@@ -3304,7 +3319,7 @@ body.light-mode .hero-bio {
   font-size: 15px;
 }
 
-/* Expert badges — cyan tint on hover */
+/* Expert badges â€” cyan tint on hover */
 .skill-level-group:nth-child(1) .skill-badge:hover {
   border-color: #00d9ff;
   box-shadow: 0 4px 16px rgba(0,217,255,0.2);
@@ -3313,7 +3328,7 @@ body.light-mode .hero-bio {
 
 .skill-level-group:nth-child(1) .skill-badge i { color: #00d9ff; }
 
-/* Intermediate badges — purple tint on hover */
+/* Intermediate badges â€” purple tint on hover */
 .skill-level-group:nth-child(2) .skill-badge:hover {
   border-color: #7c3aed;
   box-shadow: 0 4px 16px rgba(124,58,237,0.2);
@@ -3322,7 +3337,7 @@ body.light-mode .hero-bio {
 
 .skill-level-group:nth-child(2) .skill-badge i { color: #7c3aed; }
 
-/* Beginner badges — amber tint on hover */
+/* Beginner badges â€” amber tint on hover */
 .skill-level-group:nth-child(3) .skill-badge:hover {
   border-color: #f59e0b;
   box-shadow: 0 4px 16px rgba(245,158,11,0.2);
@@ -3359,7 +3374,7 @@ body.light-mode .skill-badge {
 }
 
 /* ===============================================
-   PROJECT CARD — ENHANCED ANIMATIONS
+   PROJECT CARD â€” ENHANCED ANIMATIONS
    =============================================== */
 
 /* Staggered entrance per card position */
@@ -3379,7 +3394,7 @@ body.light-mode .skill-badge {
   padding: 2px;
   background: linear-gradient(135deg, var(--accent), var(--secondary), var(--tertiary), var(--accent));
   background-size: 300% 300%;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  /* -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); */
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -3428,7 +3443,7 @@ body.light-mode .skill-badge {
   opacity: 1;
 }
 
-/* Mobile — overlay always visible, no transform needed */
+/* Mobile â€” overlay always visible, no transform needed */
 @media (max-width: 600px) {
   .overlay {
     transform: none;
@@ -3437,4 +3452,129 @@ body.light-mode .skill-badge {
     transform: none;
     opacity: 1;
   }
+}
+
+/* Contact card light mode */
+body.light-mode .contact-card {
+  background: #fff;
+  border-color: rgba(0, 102, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+}
+
+body.light-mode .contact-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1), 0 0 30px var(--accent-glow);
+}
+
+/* Contact card responsive */
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 24px 20px;
+    margin: 0 16px;
+  }
+}
+
+/* Currently Learning */
+.currently-learning {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.learning-label {
+  font-size: 12px;
+  opacity: 0.6;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.learning-label i {
+  color: var(--tertiary);
+  margin-right: 4px;
+}
+
+.learning-item {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--tertiary);
+  color: var(--tertiary);
+  background: rgba(245, 158, 11, 0.08);
+  animation: learningPulse 2s ease-in-out infinite;
+}
+
+.learning-item:nth-child(3) { animation-delay: 0.3s; }
+.learning-item:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes learningPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+  50% { box-shadow: 0 0 8px 2px rgba(245,158,11,0.25); }
+}
+
+/* ===============================================
+   CRAZY.JS ANIMATIONS
+   =============================================== */
+
+/* Ripple burst on buttons */
+@keyframes rippleBurst {
+  to { transform: scale(1); opacity: 0; }
+}
+
+/* Confetti fly for logo egg */
+@keyframes confettiFly {
+  0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--rot)) scale(0); opacity: 0; }
+}
+
+/* Skill badge spark */
+@keyframes sparkFly {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
+}
+
+/* Cursor trail fade */
+@keyframes trailFade {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+}
+
+/* Glitch text flicker */
+.hero-left h1 span {
+  display: inline-block;
+  position: relative;
+}
+
+.hero-left h1 span::before,
+.hero-left h1 span::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-left h1 span.glitching::before {
+  color: #ff00c1;
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  transform: translateX(-3px);
+  opacity: 0.7;
+  animation: glitchSlice 0.15s steps(2) infinite;
+}
+
+.hero-left h1 span.glitching::after {
+  color: #00d9ff;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translateX(3px);
+  opacity: 0.7;
+  animation: glitchSlice 0.15s steps(2) infinite reverse;
+}
+
+@keyframes glitchSlice {
+  0%   { transform: translateX(-4px) skewX(-2deg); }
+  50%  { transform: translateX(4px)  skewX(2deg); }
+  100% { transform: translateX(-2px) skewX(0deg); }
 }
