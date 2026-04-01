@@ -173,8 +173,8 @@
     <div class="hero-left">
       <div class="availability-badge">
         <span class="avail-dot"></span> Available for opportunities
+      </div>
       <h1>Hi, I'm <span data-text="Navneet Mallick">Navneet Mallick</span></h1>
-      <h1>Hi, I'm <span>Navneet Mallick</span></h1>
       <p style="font-size: 1.5rem; margin: 10px 0; height: 1.6em;">
         I'm <span id="typing-text" style="color: var(--secondary); font-weight: 600;"></span><span class="cursor">|</span>
       </p>
@@ -212,7 +212,6 @@
         <span class="learning-item">React</span>
         <span class="learning-item">Django</span>
         <span class="learning-item">Docker</span>
-      </div>n>Internships</span>
       </div>
     </div>
     <div class="about-info">
@@ -566,8 +565,6 @@
 </section>
     <section id="location" class="terminal-map-section">
       <h2 class="section-title" style="margin-bottom: 30px;">Find Me Here</h2>
-      <div class="map">minal-map-section">
-      <h2 class="section-title" style="margin-bottom: 30px;">Find Me Here</h2>
       <div class="map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28488.157738371727!2d87.2906752!3d26.807500799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1715795825848!5m2!1sen!2snp"
@@ -586,8 +583,6 @@
       <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
       <textarea name="message" placeholder="Your Message" aria-label="Your Message" required></textarea>
       <button type="submit">Send Message</button>
-    </form>
-  </div>on type="submit">Send Message</button>
     </form>
   </div>
   <p>©<span id="footer-year"></span> Navneet Mallick. All Rights Reserved.</p>
@@ -619,10 +614,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <!-- Application Scripts (Load in order) -->
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-  // Project tab switching
-  document.querySelectorAll('.project-tab').forEach(tab => {
 <script src="js/main.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/navigation.js"></script>
@@ -633,13 +624,15 @@
 <script src="js/contact.js"></script>
 <script src="js/music.js"></script>
 <script src="js/extras.js"></script>
+<script src="js/crazy.js"></script>
 <script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
   // Project tab switching
   document.querySelectorAll('.project-tab').forEach(tab => {
     tab.addEventListener('click', function () {
       document.querySelectorAll('.project-tab').forEach(t => t.classList.remove('active'));
-<script src="js/crazy.js"></script>
-</body>his.classList.add('active');
+      this.classList.add('active');
       const target = this.dataset.tab;
       document.getElementById('tab-live').style.display = target === 'live' ? 'grid' : 'none';
       document.getElementById('tab-repo').style.display = target === 'repo' ? 'grid' : 'none';
