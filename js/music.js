@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const player     = document.getElementById('music-player');
   const toggleBtn  = document.getElementById('music-toggle');
   const icon       = document.getElementById('music-icon');
@@ -12,15 +12,14 @@
 
   // ── MODES ──────────────────────────────────────────────
   const MODES = [
-    { id: 'lofi',    label: 'Interstellar — Hans Zimmer',  type: 'file',  src: 'Assets/interstellar.mp3', icon: 'fas fa-headphones' },
-    { id: 'ambient', label: 'Ambient Chill',             type: 'synth', style: 'ambient', icon: 'fas fa-moon' },
-    { id: 'phonk',   label: 'Demons — Phonk',            type: 'file',  src: 'Assets/demons_phonk.mp3', icon: 'fas fa-fire' },
-    { id: 'eagles',  label: 'Hotel California — Eagles', type: 'file',  src: 'Assets/eagles.mp3',       icon: 'fas fa-music' },
-     { id: 'interstellar',  label: 'Hotel California — Eagles', type: 'file',  src: 'interstellar_chase_2.mp3',       icon: 'fas fa-music' },
- 
+    { id: 'interstellar', label: 'Interstellar — Hans Zimmer', type: 'file',  src: 'Assets/interstellar.mp3', icon: 'fas fa-space-shuttle' },
+    { id: 'lofi',         label: 'Lo-Fi Beats',                type: 'synth', style: 'lofi',    icon: 'fas fa-headphones' },
+    { id: 'ambient',      label: 'Ambient Chill',              type: 'synth', style: 'ambient', icon: 'fas fa-moon' },
+    { id: 'phonk',        label: 'Demons — Phonk',             type: 'file',  src: 'Assets/demons_phonk.mp3', icon: 'fas fa-fire' },
+    { id: 'eagles',       label: 'Hotel California — Eagles',  type: 'file',  src: 'Assets/eagles.mp3',       icon: 'fas fa-music' },
   ];
 
-  let modeIndex = 4; // Start on Lo-Fi
+  let modeIndex = 0; // Start on Interstellar
   let isPlaying = false;
 
   // ── FILE AUDIO ─────────────────────────────────────────
@@ -198,3 +197,5 @@
 
   updateModeUI();
 })();
+
+
