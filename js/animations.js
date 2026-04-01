@@ -270,9 +270,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const seen = new Set();
 
   titles.forEach(el => {
-    // Store original text as data attribute so gradient CSS still applies
-    el.setAttribute('data-text', el.textContent.trim());
-    el.textContent = '';
+    const text = el.textContent.trim();
+    el.setAttribute('data-text', text);
+    // Wrap in a span so gradient CSS on .section-title still applies
+    el.innerHTML = '<span class="title-typewriter"></span>';
   });
 
   const observer = new IntersectionObserver(entries => {
@@ -280,10 +281,11 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!entry.isIntersecting || seen.has(entry.target)) return;
       seen.add(entry.target);
       const el = entry.target;
+      const span = el.querySelector('.title-typewriter');
       const original = el.getAttribute('data-text') || '';
       let i = 0;
       const iv = setInterval(() => {
-        el.textContent += original[i++];
+        span.textContent += original[i++];
         if (i >= original.length) clearInterval(iv);
       }, 50);
     });

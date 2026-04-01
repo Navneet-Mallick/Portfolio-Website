@@ -22,13 +22,15 @@ const Navigation = {
     // Toggle dropdown
     this.hamburger.addEventListener('click', (e) => {
       e.stopPropagation();
-      this.dropdown.classList.toggle('active');
+      const isOpen = this.dropdown.classList.toggle('active');
+      this.hamburger.classList.toggle('open', isOpen);
     });
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!this.dropdown.contains(e.target) && !this.hamburger.contains(e.target)) {
         this.dropdown.classList.remove('active');
+        this.hamburger.classList.remove('open');
       }
     });
 
@@ -36,6 +38,7 @@ const Navigation = {
     this.dropdown.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         this.dropdown.classList.remove('active');
+        this.hamburger.classList.remove('open');
       });
     });
   },

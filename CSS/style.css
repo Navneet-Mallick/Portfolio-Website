@@ -1,4 +1,4 @@
-ï»¿/* ===============================================
+/* ===============================================
    NAVNEET MALLICK - PORTFOLIO STYLESHEET
    Modern, Responsive Design with Animations
    =============================================== */
@@ -953,7 +953,7 @@ header {
   gap: 20px;
 }
 
-/* Skill row grid â€” replaces inline styles */
+/* Skill row grid — replaces inline styles */
 .skill-row-grid {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -1080,15 +1080,6 @@ header {
 /* ===============================================
    CONTACT & FOOTER
    =============================================== */
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 0 10%;
-}
 
 .contact-form input,
 .contact-form textarea {
@@ -1377,7 +1368,7 @@ footer a:hover {
     height: 220px;
   }
 
-  /* On touch devices â€” show label at bottom, image stays visible */
+  /* On touch devices — show label at bottom, image stays visible */
   .overlay {
     opacity: 1;
     background: linear-gradient(
@@ -1965,7 +1956,7 @@ footer a:hover {
   100% { letter-spacing: 3px; }
 }
 
-/* Floating badge on profile pic â€” removed (unprofessional) */
+/* Floating badge on profile pic — removed (unprofessional) */
 .hero-right::after {
   display: none;
 }
@@ -2258,7 +2249,7 @@ body.boot-active {
 }
 
 /* ===============================================
-   MUSIC PLAYER â€” refined
+   MUSIC PLAYER — refined
    =============================================== */
 
 #music-player {
@@ -2822,7 +2813,7 @@ body.light-mode .github-snake img {
 }
 
 /* ===============================================
-   ACCESSIBILITY â€” REDUCED MOTION
+   ACCESSIBILITY — REDUCED MOTION
    =============================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2848,7 +2839,7 @@ body.light-mode .github-snake img {
 }
 
 /* ===============================================
-   PASSION ANIMATIONS â€” EXTRA POLISH
+   PASSION ANIMATIONS — EXTRA POLISH
    =============================================== */
 
 /* Social bounce keyframe */
@@ -2907,7 +2898,7 @@ body.light-mode .github-snake img {
   color: var(--accent);
 }
 
-/* Section title â€” keep gradient while typewriter runs */
+/* Section title — keep gradient while typewriter runs */
 .section-title {
   display: inline-block;
   width: 100%;
@@ -3131,7 +3122,7 @@ body {
 }
 
 /* ===============================================
-   CONTACT GRID
+   CONTACT SECTION
    =============================================== */
 
 .contact-subtitle {
@@ -3141,73 +3132,26 @@ body {
   margin: -20px 0 40px;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: 900px;
+.contact-card {
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.contact-link-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 16px 20px;
-  transition: all 0.3s ease;
-  color: var(--text-color);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-link-card:hover {
+.contact-card:hover {
   border-color: var(--accent);
-  transform: translateX(6px);
-  box-shadow: 0 4px 20px var(--accent-glow);
-}
-
-.contact-link-card i {
-  font-size: 20px;
-  color: var(--accent);
-  width: 24px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.contact-link-label {
-  display: block;
-  font-size: 11px;
-  opacity: 0.5;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 2px;
-}
-
-.contact-link-value {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 500;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 30px var(--accent-glow);
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
-
-@media (max-width: 768px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
 }
 
 /* ===============================================
@@ -3226,17 +3170,6 @@ body.light-mode .about-tags span {
 body.light-mode .about-info-item i {
   background: rgba(0, 102, 255, 0.06);
   border-color: rgba(0, 102, 255, 0.15);
-}
-
-body.light-mode .contact-link-card {
-  background: #fff;
-  border-color: rgba(0, 102, 255, 0.15);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-
-body.light-mode .contact-link-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(0,102,255,0.15);
 }
 
 /* Fix light mode card borders being invisible */
@@ -3294,7 +3227,7 @@ body.light-mode .hero-bio {
 }
 
 /* ===============================================
-   SKILLS â€” PROFICIENCY LEVEL DESIGN
+   SKILLS — PROFICIENCY LEVEL DESIGN
    =============================================== */
 
 .skill-level-group {
@@ -3371,7 +3304,7 @@ body.light-mode .hero-bio {
   font-size: 15px;
 }
 
-/* Expert badges â€” cyan tint on hover */
+/* Expert badges — cyan tint on hover */
 .skill-level-group:nth-child(1) .skill-badge:hover {
   border-color: #00d9ff;
   box-shadow: 0 4px 16px rgba(0,217,255,0.2);
@@ -3380,7 +3313,7 @@ body.light-mode .hero-bio {
 
 .skill-level-group:nth-child(1) .skill-badge i { color: #00d9ff; }
 
-/* Intermediate badges â€” purple tint on hover */
+/* Intermediate badges — purple tint on hover */
 .skill-level-group:nth-child(2) .skill-badge:hover {
   border-color: #7c3aed;
   box-shadow: 0 4px 16px rgba(124,58,237,0.2);
@@ -3389,7 +3322,7 @@ body.light-mode .hero-bio {
 
 .skill-level-group:nth-child(2) .skill-badge i { color: #7c3aed; }
 
-/* Beginner badges â€” amber tint on hover */
+/* Beginner badges — amber tint on hover */
 .skill-level-group:nth-child(3) .skill-badge:hover {
   border-color: #f59e0b;
   box-shadow: 0 4px 16px rgba(245,158,11,0.2);
@@ -3426,7 +3359,7 @@ body.light-mode .skill-badge {
 }
 
 /* ===============================================
-   PROJECT CARD â€” ENHANCED ANIMATIONS
+   PROJECT CARD — ENHANCED ANIMATIONS
    =============================================== */
 
 /* Staggered entrance per card position */
@@ -3495,7 +3428,7 @@ body.light-mode .skill-badge {
   opacity: 1;
 }
 
-/* Mobile â€” overlay always visible, no transform needed */
+/* Mobile — overlay always visible, no transform needed */
 @media (max-width: 600px) {
   .overlay {
     transform: none;

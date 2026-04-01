@@ -1,0 +1,255 @@
+/**
+ * crazy.js — Extra wild effects
+ * 1. Glitch effect on hero name
+ * 2. 3D tilt on profile picture
+ * 3. Hire Me button neon ripple
+ * 4. Logo secret easter egg (click 5x)
+ * 5. Skill badge spark burst on hover
+ * 6. Cursor trail particles
+ * 7. Section skew warp reveal
+ */
+
+// ── 1. GLITCH EFFECT ON HERO NAME ────────────────────────────────────────────
+(function setupGlitch() {
+  const h1 = document.querySelector('.hero-left h1 span');
+  if (!h1) return;
+
+  const original = h1.textContent;
+  const glitchChars = 'X#@!%&*<>[]{}|/\\^~`';
+
+  function glitch() {
+    let iterations = 0;
+    const max = 10;
+    const iv = setInterval(() => {
+      h1.textContent = original.split('').map((char, i) => {
+        if (char === ' ') return ' ';
+        if (i < iterations) return original[i];
+        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+      }).join('');
+      iterations += 0.6;
+      if (iterations >= original.length) {
+        h1.textContent = original;
+        clearInterval(iv);
+      }
+    }, 40);
+  }
+
+  // Glitch on load after boot
+  setTimeout(glitch, 2800);
+
+  // Glitch on hover
+  h1.style.cursor = 'default';
+  h1.addEventListener('mouseenter', glitch);
+})();
+
+
+// ── 2. 3D TILT ON PROFILE PICTURE ────────────────────────────────────────────
+(function setupProfileTilt() {
+  const img = document.querySelector('.pp-img');
+  if (!img || window.matchMedia('(hover: none)').matches) return;
+
+  img.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease';
+  img.style.willChange = 'transform';
+
+  img.addEventListener('mousemove', e => {
+    const r = img.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    img.style.transform = `perspective(600px) rotateY(${x * 30}deg) rotateX(${-y * 30}deg) scale(1.08)`;
+    img.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(0,217,255,0.5), 0 0 60px rgba(124,58,237,0.3)`;
+  });
+
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.style.boxShadow = '';
+  });
+})();
+
+
+// ── 3. HIRE ME BUTTON NEON RIPPLE ────────────────────────────────────────────
+(function setupRipple() {
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.style.position = 'relative';
+    btn.style.overflow = 'hidden';
+
+    btn.addEventListener('click', function(e) {
+      const r = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(r.width, r.height) * 2;
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px; height: ${size}px;
+        left: ${e.clientX - r.left - size/2}px;
+        top:  ${e.clientY - r.top  - size/2}px;
+        background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: rippleBurst 0.6s ease-out forwards;
+        pointer-events: none;
+        z-index: 10;
+      `;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    });
+  });
+})();
+
+
+// ── 4. LOGO SECRET EASTER EGG (click 5x) ─────────────────────────────────────
+(function setupLogoEgg() {
+  const logo = document.getElementById('nav-logo-img');
+  if (!logo) return;
+
+  let clicks = 0;
+  let timer;
+
+  logo.addEventListener('click', () => {
+    clicks++;
+    clearTimeout(timer);
+    timer = setTimeout(() => { clicks = 0; }, 2000);
+
+    if (clicks >= 5) {
+      clicks = 0;
+      triggerLogoEgg();
+    }
+  });
+
+  function triggerLogoEgg() {
+    // Confetti burst
+    const colors = ['#00d9ff','#7c3aed','#f59e0b','#ff00c1','#00fff9','#fff','#ff4500'];
+    for (let i = 0; i < 120; i++) {
+      const c = document.createElement('div');
+      const size = 6 + Math.random() * 8;
+      const angle = Math.random() * 360;
+      const dist  = 100 + Math.random() * 300;
+      const tx = Math.cos(angle * Math.PI/180) * dist;
+      const ty = Math.sin(angle * Math.PI/180) * dist - 200;
+      c.style.cssText = `
+        position: fixed;
+        left: 50%; top: 10%;
+        width: ${size}px; height: ${size}px;
+        background: ${colors[i % colors.length]};
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        pointer-events: none;
+        z-index: 99999;
+        transform: translate(-50%, -50%);
+        animation: confettiFly 1.4s cubic-bezier(0.25,0.46,0.45,0.94) ${Math.random()*0.3}s forwards;
+        --tx: ${tx}px; --ty: ${ty}px;
+        --rot: ${Math.random()*720}deg;
+      `;
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 1800);
+    }
+
+    // Secret message toast
+    if (window.showToast) {
+      showToast('🔓 Secret unlocked! You found the logo egg 🥚 — You\'re curious, I like that.', 'info', 5000);
+    }
+
+    // Logo spin
+    logo.style.transition = 'transform 0.8s cubic-bezier(0.34,1.56,0.64,1)';
+    logo.style.transform = 'rotate(720deg) scale(1.5)';
+    setTimeout(() => {
+      logo.style.transform = '';
+    }, 900);
+  }
+})();
+
+
+// ── 5. SKILL BADGE SPARK ON HOVER ────────────────────────────────────────────
+(function setupSkillSparks() {
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  document.querySelectorAll('.skill-badge').forEach(badge => {
+    badge.addEventListener('mouseenter', function() {
+      const r = this.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+
+      for (let i = 0; i < 8; i++) {
+        const spark = document.createElement('div');
+        const angle = (i / 8) * 360;
+        const dist  = 20 + Math.random() * 25;
+        const tx = Math.cos(angle * Math.PI/180) * dist;
+        const ty = Math.sin(angle * Math.PI/180) * dist;
+        spark.style.cssText = `
+          position: fixed;
+          left: ${cx}px; top: ${cy}px;
+          width: 4px; height: 4px;
+          border-radius: 50%;
+          background: var(--accent);
+          box-shadow: 0 0 6px var(--accent);
+          pointer-events: none;
+          z-index: 99999;
+          transform: translate(-50%, -50%);
+          animation: sparkFly 0.5s ease-out forwards;
+          --tx: ${tx}px; --ty: ${ty}px;
+        `;
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 550);
+      }
+    });
+  });
+})();
+
+
+// ── 6. CURSOR TRAIL PARTICLES ─────────────────────────────────────────────────
+(function setupCursorTrail() {
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  let lastX = 0, lastY = 0, ticking = false;
+
+  document.addEventListener('mousemove', e => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      const speed = Math.sqrt(dx*dx + dy*dy);
+
+      if (speed > 8) {
+        const trail = document.createElement('div');
+        const size = Math.min(speed * 0.4, 10);
+        trail.style.cssText = `
+          position: fixed;
+          left: ${e.clientX}px; top: ${e.clientY}px;
+          width: ${size}px; height: ${size}px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(0,217,255,0.8), rgba(124,58,237,0.4));
+          box-shadow: 0 0 ${size*2}px rgba(0,217,255,0.6);
+          pointer-events: none;
+          z-index: 99998;
+          transform: translate(-50%, -50%);
+          animation: trailFade 0.6s ease-out forwards;
+        `;
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 650);
+      }
+
+      lastX = e.clientX;
+      lastY = e.clientY;
+      ticking = false;
+    });
+  });
+})();
+
+
+// ── 7. SECTION SKEW WARP REVEAL ──────────────────────────────────────────────
+(function setupWarpReveal() {
+  const sections = document.querySelectorAll('section.reveal');
+  sections.forEach(s => {
+    s.style.clipPath = 'polygon(0 4%, 100% 0%, 100% 96%, 0 100%)';
+    s.style.transition = 'clip-path 0.8s cubic-bezier(0.4,0,0.2,1)';
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.clipPath = 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach(s => observer.observe(s));
+})();
