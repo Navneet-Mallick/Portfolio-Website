@@ -2650,20 +2650,39 @@ body {
 }
 .contact-subtitle {
   text-align: center;
-  opacity: .65;
-  font-size: .95rem;
-  margin: -20px 0 40px
+  color: rgba(232, 240, 255, 0.7);
+  margin-bottom: 40px;
+  font-size: 1.1rem;
 }
+
+.overlay-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.overlay-btns .btn, .overlay-btns .btn-cv {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  margin-top: 0;
+  width: auto;
+}
+
 .contact-card {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
-  background: var(--card-bg);
+  background: rgba(15, 23, 41, 0.85);
+  backdrop-filter: blur(16px);
+  padding: 50px;
+  border-radius: var(--radius);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: var(--shadow);
-  transition: border-color .3s,box-shadow .3s
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, box-shadow 0.4s;
 }
+
 .contact-card:hover {
   border-color: var(--accent);
   box-shadow: 0 20px 60px rgba(0,0,0,.3),0 0 30px var(--accent-glow)
