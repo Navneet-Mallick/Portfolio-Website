@@ -45,12 +45,11 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 217, 255, ${this.opacity})`;
-      ctx.fill();
-      
-      // Add glow effect
+      const colors = ['rgba(0,217,255,', 'rgba(124,58,237,', 'rgba(245,158,11,'];
+      const col = colors[Math.floor(this.opacity * 3) % 3];
+      ctx.fillStyle = `${col}${this.opacity})`;
       ctx.shadowBlur = 10;
-      ctx.shadowColor = 'rgba(0, 217, 255, 0.5)';
+      ctx.shadowColor = `${col}0.5)`;
       ctx.fill();
       ctx.shadowBlur = 0;
     }
@@ -86,19 +85,35 @@
     }
   }
 
+  // Mouse repel
+  let mouse = { x: null, y: null };
+  canvas.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
   // Animation loop
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw particles
     particles.forEach(particle => {
+      // Repel from mouse
+      if (mouse.x !== null) {
+        const dx = particle.x - mouse.x;
+        const dy = particle.y - mouse.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 80) {
+          particle.x += (dx / dist) * 2;
+          particle.y += (dy / dist) * 2;
+        }
+      }
       particle.update();
       particle.draw();
     });
 
-    // Draw connections
     drawConnections();
-
     animationId = requestAnimationFrame(animate);
   }
 

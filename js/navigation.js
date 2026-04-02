@@ -34,6 +34,15 @@ const Navigation = {
       }
     });
 
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.dropdown.classList.contains('active')) {
+        this.dropdown.classList.remove('active');
+        this.hamburger.classList.remove('open');
+        this.hamburger.focus();
+      }
+    });
+
     // Close when clicking a link
     this.dropdown.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {

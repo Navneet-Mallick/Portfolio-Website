@@ -32,11 +32,12 @@ const App = {
   logPerformance() {
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const [entry] = performance.getEntriesByType('navigation');
-        if (entry && entry.duration > 3000) {
-          // Only warn if page load is unusually slow
-        }
-      }, 0);
+        console.log('%c👋 Hey there, curious dev!', 'color:#00d9ff;font-size:18px;font-weight:bold;');
+        console.log('%cYou found the console easter egg 🥚', 'color:#7c3aed;font-size:13px;');
+        console.log('%cNavneet Mallick — Portfolio v2.0', 'color:#f59e0b;font-size:12px;');
+        console.log('%cBuilt with: HTML · CSS · Vanilla JS · Passion ❤️', 'color:#e8f0ff;font-size:11px;');
+        console.log('%c→ github.com/Navneet-Mallick', 'color:#00d9ff;font-size:11px;');
+      }, 1000);
     });
   }
 };
