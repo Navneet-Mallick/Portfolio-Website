@@ -528,69 +528,56 @@
 
 <section id="skills" class="reveal">
   <h2 class="section-title">My Skills</h2>
-  <div class="skills-table-wrap">
-    <table class="skills-table">
-      <thead>
-        <tr>
-          <th class="cat-col">Category</th>
-          <th class="level-col pro-col"><span class="level-dot pro-dot"></span> Pro</th>
-          <th class="level-col inter-col"><span class="level-dot inter-dot"></span> Intermediate</th>
-          <th class="level-col beg-col"><span class="level-dot beg-dot"></span> Beginner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="cat-label"><i class="fas fa-laptop-code"></i> Frontend</td>
-          <td><div class="skill-chips">
-            <span class="chip pro"><i class="fab fa-html5"></i> HTML</span>
-            <span class="chip pro"><i class="fab fa-css3-alt"></i> CSS</span>
-            <span class="chip pro"><i class="fab fa-js"></i> JavaScript</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip inter"><i class="fab fa-react"></i> React</span>
-          </div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="cat-label"><i class="fas fa-server"></i> Backend</td>
-          <td></td>
-          <td><div class="skill-chips">
-            <span class="chip inter"><i class="fab fa-node-js"></i> Node.js</span>
-            <span class="chip inter"><i class="fab fa-php"></i> PHP</span>
-            <span class="chip inter"><i class="fas fa-database"></i> SQL</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip beg"><i class="fas fa-fire"></i> Django</span>
-          </div></td>
-        </tr>
-        <tr>
-          <td class="cat-label"><i class="fas fa-brain"></i> ML / Data Science</td>
-          <td><div class="skill-chips">
-            <span class="chip pro"><i class="fab fa-python"></i> Python</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip inter"><i class="fas fa-chart-line"></i> Data Science</span>
-            <span class="chip inter"><i class="fas fa-robot"></i> Machine Learning</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip beg"><i class="fas fa-network-wired"></i> Deep Learning</span>
-          </div></td>
-        </tr>
-        <tr>
-          <td class="cat-label"><i class="fas fa-tools"></i> Languages &amp; Tools</td>
-          <td><div class="skill-chips">
-            <span class="chip pro"><i class="fas fa-code"></i> C++</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip inter"><i class="fas fa-code-branch"></i> Git</span>
-            <span class="chip inter"><i class="fab fa-linux"></i> Linux</span>
-          </div></td>
-          <td><div class="skill-chips">
-            <span class="chip beg"><i class="fab fa-docker"></i> Docker</span>
-          </div></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="skills-grid-wrap">
+    
+    <div class="skill-category-card">
+      <div class="skill-category-header">
+        <i class="fas fa-laptop-code"></i> Frontend & UI
+      </div>
+      <div class="skill-chips">
+        <span class="chip pro" title="Pro"><i class="fab fa-html5"></i> HTML</span>
+        <span class="chip pro" title="Pro"><i class="fab fa-css3-alt"></i> CSS</span>
+        <span class="chip pro" title="Pro"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="chip inter" title="Intermediate"><i class="fab fa-react"></i> React</span>
+      </div>
+    </div>
+
+    <div class="skill-category-card">
+      <div class="skill-category-header">
+        <i class="fas fa-server"></i> Backend & DB
+      </div>
+      <div class="skill-chips">
+        <span class="chip inter" title="Intermediate"><i class="fab fa-node-js"></i> Node.js</span>
+        <span class="chip inter" title="Intermediate"><i class="fab fa-php"></i> PHP</span>
+        <span class="chip inter" title="Intermediate"><i class="fas fa-database"></i> SQL</span>
+        <span class="chip beg" title="Beginner"><i class="fas fa-fire"></i> Django</span>
+      </div>
+    </div>
+
+    <div class="skill-category-card">
+      <div class="skill-category-header">
+        <i class="fas fa-brain"></i> ML & Data Science
+      </div>
+      <div class="skill-chips">
+        <span class="chip pro" title="Pro"><i class="fab fa-python"></i> Python</span>
+        <span class="chip inter" title="Intermediate"><i class="fas fa-chart-line"></i> Data Science</span>
+        <span class="chip inter" title="Intermediate"><i class="fas fa-robot"></i> Machine Learning</span>
+        <span class="chip beg" title="Beginner"><i class="fas fa-network-wired"></i> Deep Learning</span>
+      </div>
+    </div>
+
+    <div class="skill-category-card">
+      <div class="skill-category-header">
+        <i class="fas fa-tools"></i> Languages & Tools
+      </div>
+      <div class="skill-chips">
+        <span class="chip pro" title="Pro"><i class="fas fa-code"></i> C++</span>
+        <span class="chip inter" title="Intermediate"><i class="fas fa-code-branch"></i> Git</span>
+        <span class="chip inter" title="Intermediate"><i class="fab fa-linux"></i> Linux</span>
+        <span class="chip beg" title="Beginner"><i class="fab fa-docker"></i> Docker</span>
+      </div>
+    </div>
+
   </div>
 </section>
     <section id="location" class="terminal-map-section">
@@ -685,14 +672,20 @@
 <div id="game-modal" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:999998;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
   <div id="game-box" style="position:relative;background:#0a0e27;border:2px solid var(--accent);border-radius:16px;padding:20px;box-shadow:0 0 40px rgba(0,217,255,0.3);max-width:640px;width:95%;">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <span style="color:var(--accent);font-family:monospace;font-size:14px;letter-spacing:2px;">&#x1F3AE; RUNNER</span>
-      <div style="display:flex;gap:16px;align-items:center;">
-        <span id="game-score-display" style="color:var(--accent);font-family:monospace;font-size:14px;">SCORE: 0</span>
-        <button onclick="closeRunnerGame()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;">&times;</button>
+      <span style="color:var(--accent);font-family:monospace;font-size:14px;letter-spacing:2px;font-weight:bold;">&#x1F3AE; RUNNER.EXE</span>
+      <div style="display:flex;gap:20px;align-items:center;">
+        <div id="game-scores-wrap" style="display:flex;gap:15px;font-family:monospace;font-size:13px;">
+          <span id="game-score-display" style="color:#fff;opacity:0.9;">SCORE: 0</span>
+          <span id="game-hi-display" style="color:var(--accent);opacity:0.7;">HI: 0</span>
+        </div>
+        <button onclick="closeRunnerGame()" style="background:rgba(255,255,255,0.1);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">&times;</button>
       </div>
     </div>
-    <canvas id="game-canvas" width="600" height="160" style="width:100%;border-radius:8px;display:block;"></canvas>
-    <p style="text-align:center;font-size:12px;opacity:0.45;margin-top:10px;font-family:monospace;">SPACE / TAP to jump.....Double jump supported</p>
+    <canvas id="game-canvas" width="600" height="160" style="width:100%;border-radius:8px;display:block;background:#05081a;border:1px solid rgba(255,255,255,0.05);"></canvas>
+    <div id="game-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+      <p style="font-size:11px;opacity:0.45;font-family:monospace;margin:0;">SPACE / TAP to jump &middot; Double jump [ON]</p>
+      <span id="game-personality-msg" style="font-size:11px;color:var(--secondary);font-family:monospace;font-weight:600;text-transform:uppercase;letter-spacing:1px;"></span>
+    </div>
   </div>
 </div>
 
