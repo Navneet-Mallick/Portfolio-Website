@@ -5060,61 +5060,42 @@ footer a:hover {
     font-size: 0.8rem;
     line-height: 1.4;
   }
-    width: 60px;
-    height: 60px;
-    margin-bottom: 15px;
+}
+
+@media (max-width: 400px) {
+  .hero-left h1 { font-size: 1.4rem; }
+  .pp-img { max-width: 190px; }
+  .hero-right::before { width: 220px; height: 220px; }
+
+  .section-title { font-size: 1.15rem; letter-spacing: 0.5px; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px 8px; }
+  .stat-number { font-size: 1.5rem; }
+
+  footer a { font-size: 16px; }
+
+  /* Testimonials on small mobile */
+  .testimonial-card {
+    width: 240px;
+    height: 240px;
   }
 
-  .avatar-letter {
-    font-size: 26px;
+  .testimonial-avatar {
+    width: 60px !important;
+    height: 60px !important;
   }
 
-  .quote-icon {
-    font-size: 20px;
-    margin-bottom: 10px;
+  .testimonial-content h3 {
+    font-size: 0.85rem;
   }
 
-  .testimonial-text {
-    font-size: 0.8rem;
-    max-height: 80px;
-    line-height: 1.5;
+  .testimonial-content p {
+    font-size: 0.7rem;
   }
 
-  .testimonial-info h3 {
-    font-size: 1rem;
-  }
-
-  .testimonial-role {
+  .testimonial-quote {
     font-size: 0.75rem;
-  }
-
-  .testimonial-rating i {
-    font-size: 12px;
-  }
-
-  .testimonial-nav-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
-  }
-
-  .testimonials-scroll {
-    gap: 20px;
-    padding: 20px 5px;
-  }
-
-  .testimonial-dots {
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .testimonial-dot {
-    width: 10px;
-    height: 10px;
-  }
-
-  .testimonial-dot.active {
-    width: 24px;
   }
 }
 
