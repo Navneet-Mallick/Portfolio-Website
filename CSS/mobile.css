@@ -50,11 +50,6 @@ input, textarea, select {
     transition: none !important;
   }
 
-  /* Show hacker button on all mobile/tablet sizes */
-  #mobile-hacker-btn-wrap {
-    display: flex !important;
-  }
-
   /* ── Bottom nav visible on all mobile/tablet sizes ── */
   #mobile-bottom-nav { 
     display: flex;
@@ -512,11 +507,40 @@ input, textarea, select {
   .timeline-item::before { left: -27px; }
 
   /* Terminal */
-  .terminal { max-width: 100%; width: 100%; }
-  .terminal-body { font-size: 12px; min-height: 200px; padding: 15px; }
-  .terminal-card { transform: none !important; animation: none !important; box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important; }
-  .t-input { font-size: 12px !important; width: 60% !important; }
-  .terminal-intro-section { padding: 30px 4% !important; }
+  .terminal-intro-section { 
+    padding: 30px 0 !important; 
+    margin: 0 !important;
+  }
+  .terminal-card-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .terminal-card { 
+    transform: none !important; 
+    animation: none !important; 
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .terminal { 
+    max-width: 100% !important; 
+    width: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .terminal-body { 
+    font-size: 12px; 
+    min-height: 200px; 
+    padding: 15px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .t-input { 
+    font-size: 12px !important; 
+    width: 60% !important; 
+  }
 
   /* Always show terminal section — no reveal fade on mobile */
   #terminal-intro.reveal,
@@ -526,18 +550,9 @@ input, textarea, select {
     transition: none !important;
   }
   
-  /* Lenient reveal for other sections on mobile */
-  .reveal {
-    transition-duration: 0.4s !important; /* Faster transition */
-    transform: translateY(15px); /* Less distance to travel */
-  }
-  .reveal.active {
-    transform: translateY(0);
-  }
-
-  /* Show hacker button on mobile */
+  /* Remove hacker button */
   #mobile-hacker-btn-wrap {
-    display: flex !important;
+    display: none !important;
   }
 
   /* About */

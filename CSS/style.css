@@ -1359,6 +1359,20 @@ footer p {
   transform: translateY(-3px);
   z-index: 2;
 }
+
+/* Footer social icons - simple style without circles */
+.footer-social-icons a {
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.footer-social-icons a:hover {
+  color: var(--accent) !important;
+  transform: scale(1.2) !important;
+}
 @media (max-width:900px) {
   .nav-links {
     display: none
@@ -2005,37 +2019,6 @@ footer p {
   z-index: 99999;
   transition: width .1s linear;
   box-shadow: 0 0 10px var(--accent),0 0 20px var(--accent-glow)
-}
-.cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%,-50%);
-  box-shadow: 0 0 10px var(--accent),0 0 20px var(--accent-glow);
-  transition: opacity .3s
-}
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99997;
-  transform: translate(-50%,-50%);
-  opacity: .5;
-  transition: width .2s,height .2s,opacity .3s,border-color .2s
-}
-.cursor-ring.hovered {
-  width: 56px;
-  height: 56px;
-  opacity: .9;
-  border-color: var(--secondary);
-  box-shadow: 0 0 15px var(--secondary-glow)
 }
 body.boot-active {
   overflow: hidden;
