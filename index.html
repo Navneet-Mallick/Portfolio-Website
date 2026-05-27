@@ -985,7 +985,80 @@
     </form>
   </div>
 </section> 
-<!-- Social Icons -->
+<footer style="
+  width:100%;
+  padding:45px 20px 25px;
+  text-align:center;
+  background:var(--footer-bg, rgba(255,255,255,0.05));
+  color:var(--text-color, #e5e7eb);
+  border-top:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  overflow:hidden;
+  position:relative;
+">
+
+  <!-- Audio Visualizer -->
+  <div id="audio-viz" style="
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:4px;
+    height:40px;
+  "></div>
+
+  <!-- Name + Role -->
+  <div style="
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  ">
+    <h3 style="
+      margin:0;
+      font-size:1.3rem;
+      font-weight:700;
+      color:var(--accent-color, #4f7cff);
+      letter-spacing:0.5px;
+    ">
+      Navneet Mallick
+    </h3>
+
+    <p style="
+      margin:0;
+      opacity:0.8;
+      font-size:0.95rem;
+    ">
+      Computer Engineering Student • Full Stack Developer • Tech Enthusiast
+    </p>
+  </div>
+
+  <!-- Tech Marquee -->
+  <div style="
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    padding:8px 0;
+    border-top:1px solid rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  ">
+
+    <marquee behavior="scroll" direction="left" scrollamount="5" style="
+      font-size:0.92rem;
+      color:var(--text-color,#ffffff);
+      opacity:0.85;
+      letter-spacing:0.4px;
+    ">
+      💻 Web Development • ⚡ JavaScript • 🚀 React • 🧠 Problem Solving • ☁️ Cloud Computing • 🔐 Cyber Security • 🤖 AI & ML • 📱 Responsive Design • 🛠️ Backend Development • 🧩 Open Source • 🎯 Competitive Programming • 🌐 Modern UI/UX
+    </marquee>
+
+  </div>
+
+ <!-- Social Icons -->
 <div style="
   display:flex !important;
   justify-content:center !important;
@@ -1119,6 +1192,33 @@
   </a>
 
 </div>
+
+  <!-- Copyright -->
+  <p style="
+    margin:0;
+    font-size:0.92rem;
+    opacity:0.85;
+    letter-spacing:0.3px;
+  ">
+    © 2026 
+    <span style="
+      color:var(--accent-color, #4f7cff);
+      font-weight:600;
+    ">
+      Navneet Mallick
+    </span>. All Rights Reserved.
+  </p>
+
+  <!-- Footer Note -->
+  <p style="
+    font-size:0.85rem;
+    opacity:0.7;
+    margin:0;
+  ">
+    Built with passion, logic & clean code ❤️
+  </p>
+
+</footer>
 <!-- Mobile Bottom Nav -->
 <nav id="mobile-bottom-nav" aria-label="Mobile navigation">
   <a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a>
