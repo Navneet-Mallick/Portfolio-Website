@@ -53,6 +53,14 @@ const Animations = {
 
   setupScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
+    
+    // On mobile, skip reveal animations entirely for better performance
+    const isMobile = window.innerWidth < 900 || window.matchMedia('(hover: none)').matches;
+    if (isMobile) {
+      reveals.forEach(el => el.classList.add('active'));
+      return;
+    }
+    
     const onScroll = () => {
       reveals.forEach(el => {
         if (el.getBoundingClientRect().top < window.innerHeight - 100)
@@ -64,6 +72,15 @@ const Animations = {
   },
 
   setupProjectCardReveal() {
+    // On mobile, show all cards immediately
+    const isMobile = window.innerWidth < 900 || window.matchMedia('(hover: none)').matches;
+    if (isMobile) {
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.classList.add('reveal-card');
+      });
+      return;
+    }
+    
     const onScroll = () => {
       document.querySelectorAll('.project-card').forEach((card, i) => {
         if (card.getBoundingClientRect().top < window.innerHeight - 100 && !card.classList.contains('reveal-card'))

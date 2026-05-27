@@ -1359,20 +1359,6 @@ footer p {
   transform: translateY(-3px);
   z-index: 2;
 }
-
-/* Footer social icons - simple style without circles */
-.footer-social-icons a {
-  width: auto !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.footer-social-icons a:hover {
-  color: var(--accent) !important;
-  transform: scale(1.2) !important;
-}
 @media (max-width:900px) {
   .nav-links {
     display: none

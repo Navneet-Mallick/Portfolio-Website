@@ -121,18 +121,89 @@ const Performance = {
     // 1. Disable hover effects on mobile (they cause lag)
     document.body.classList.add('mobile-device');
 
-    // 2. Performance Overrides for Mobile
+    // 2. Performance Overrides for Mobile - More aggressive
     const style = document.createElement('style');
     style.textContent = `
       @media (max-width: 900px) {
-        .project-card:hover, .cert-card:hover, .stat-card:hover { transform: none !important; }
-        .hero-canvas, #particles, .scanlines { display: none !important; }
+        /* Disable all hover effects */
+        *:hover { transform: none !important; }
+        
+        /* Hide expensive visual effects */
+        .hero-canvas, #particles, .scanlines, #matrix-canvas, 
+        .cursor-dot, .cursor-ring, #spotlight { 
+          display: none !important; 
+          pointer-events: none !important;
+        }
+        
+        /* Disable complex animations */
+        .reveal { 
+          opacity: 1 !important; 
+          transform: none !important; 
+          transition: none !important; 
+        }
+        
+        /* Optimize terminal */
+        .terminal-intro-section { 
+          padding: 0 !important; 
+          margin: 0 !important; 
+        }
+        
+        /* Remove backdrop filters */
+        * { 
+          backdrop-filter: none !important; 
+          -webkit-backdrop-filter: none !important; 
+        }
+        
+        /* Simplify shadows */
+        * { box-shadow: none !important; }
+        .project-card, .cert-card, .stat-card, .exp-card {
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        }
       }
     `;
     document.head.appendChild(style);
 
     // 3. Optimize scroll performance
     this.enableMomentumScrolling();
+    
+    // 4. Disable passive event listeners for better performance
+    this.optimizeTouchEvents();
+    
+    // 5. Reduce animation frame rate on mobile
+    this.throttleAnimations();
+  },
+
+  optimizeTouchEvents() {
+    // Prevent default touch behaviors that cause lag
+    document.addEventListener('touchstart', (e) => {
+      // Allow scrolling but prevent zoom
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+    
+    // Optimize touch move
+    let touchMoveThrottle = false;
+    document.addEventListener('touchmove', () => {
+      if (!touchMoveThrottle) {
+        touchMoveThrottle = true;
+        requestAnimationFrame(() => {
+          touchMoveThrottle = false;
+        });
+      }
+    }, { passive: true });
+  },
+
+  throttleAnimations() {
+    // Reduce animation complexity on mobile
+    if (this.isMobile) {
+      const animations = document.getAnimations?.() || [];
+      animations.forEach(anim => {
+        if (anim.playbackRate) {
+          anim.playbackRate = 0.8; // Slow down animations slightly
+        }
+      });
+    }
   },
 
   enableMomentumScrolling() {
