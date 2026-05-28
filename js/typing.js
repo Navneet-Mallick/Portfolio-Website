@@ -7,10 +7,11 @@
   if (!el) return;
 
   const phrases = [
+    'a Tech Geek',
     'a Web Developer',
-    'an ML/DS Enthusiast',
-    'a Computer Engineering Student',
+    'an AI/ML Enthusiast',
     'a Graphics Designer',
+    'a guitarist'
   ];
 
   let phraseIndex = 0;
@@ -26,7 +27,7 @@
 
       if (charIndex === current.length) {
         // Pause at end before deleting
-        setTimeout(() => { deleting = true; tick(); }, 2000);
+        setTimeout(() => { deleting = true; tick(); }, 1000);
         return;
       }
       // Typing: smooth base speed with tiny natural variance
