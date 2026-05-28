@@ -1,7 +1,6 @@
 /**
- * Animations Module - CRAZY EDITION
- * Matrix rain, cursor trail, 3D tilt, click explosions,
- * magnetic buttons, audio visualizer, scroll progress
+ * Animations Module - Optimized
+ * Scroll reveal, card animations, scroll progress
  */
 
 const Animations = {
@@ -11,7 +10,6 @@ const Animations = {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       this.setupScrollReveal();
       this.setupProjectCardReveal();
-      this.setupSkillTableAnimation();
       this.setupScrollProgress();
       return;
     }
@@ -24,24 +22,21 @@ const Animations = {
       return;
     }
 
-    // Desktop only: all effects
+    // Desktop: essential animations only
     this.createParticles();
     this.setupScrollReveal();
     this.setupProjectCardReveal();
     this.setupSkillTableAnimation();
     this.setupScrollProgress();
     this.setupMagneticButtons();
-    this.setupAudioVisualizer();
-    this.setupParallax();
-    this.setupCursorTrail();
-    this.setupCardTilt();
-    this.setupClickExplosions();
   },
 
   createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
-    for (let i = 0; i < 35; i++) {
+    // Reduce particles on mobile for better performance
+    const particleCount = window.innerWidth < 900 ? 8 : 35;
+    for (let i = 0; i < particleCount; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + '%';

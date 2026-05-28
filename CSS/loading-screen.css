@@ -369,40 +369,41 @@
 
   .boot-content {
     max-width: 90%;
-    padding: 50px 30px;
+    padding: clamp(40px, 8vw, 50px) clamp(20px, 5vw, 30px);
+    border-radius: 16px;
   }
 
   .boot-title h1 {
-    font-size: 28px;
-    letter-spacing: 1px;
+    font-size: clamp(24px, 6vw, 28px);
+    letter-spacing: 0.5px;
   }
 
   .boot-subtitle {
-    font-size: 15px;
-    letter-spacing: 2px;
+    font-size: clamp(13px, 3vw, 15px);
+    letter-spacing: 1.5px;
   }
 
   .boot-text {
-    font-size: 13px;
+    font-size: clamp(12px, 2.5vw, 13px);
   }
 
   .boot-logo {
-    width: 100px;
-    height: 100px;
+    width: clamp(80px, 20vw, 100px);
+    height: clamp(80px, 20vw, 100px);
   }
 
   .boot-logo-text {
-    font-size: 44px;
+    font-size: clamp(36px, 10vw, 44px);
   }
 
   .boot-gradient-1,
   .boot-gradient-2 {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
   }
 
   .boot-logo-container {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .boot-progress-bar {

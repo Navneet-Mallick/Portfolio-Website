@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
 
   <!-- Primary SEO -->
   <title>Navneet Mallick | Portfolio</title>
@@ -13,20 +13,20 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://navneetmallick.com.np/">
 
-  <!-- <!-- Open Graph (Facebook, LinkedIn) -->
-  <!-- <meta property="og:type" content="website">
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://navneetmallick.com.np/">
   <meta property="og:title" content="Navneet Mallick | Web Developer & ML Engineer">
   <meta property="og:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science. Check out my projects and get in touch.">
   <meta property="og:image" content="https://navneetmallick.com.np/Assets/images/profile.jpg">
   <meta property="og:site_name" content="Navneet Mallick Portfolio">
-  <meta property="og:locale" content="en_US"> -->
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
-  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Navneet Mallick | Web Developer & ML Engineer">
   <meta name="twitter:description" content="Computer Engineering student specializing in Web Development, Machine Learning, and Data Science.">
-  <meta name="twitter:image" content="https://navneetmallick.com.np/Assets/images/profile.jpg"> --> -->
+  <meta name="twitter:image" content="https://navneetmallick.com.np/Assets/images/profile.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="Assets/images/logo.png">
@@ -165,6 +165,9 @@
 
 <body>
 
+<!-- Skip to Main Content Link (Accessibility) -->
+<a href="#home" class="skip-link">Skip to main content</a>
+
 <noscript>
   <div style="position:fixed;inset:0;background:#070b1f;color:#eaf2ff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;text-align:center;padding:20px;z-index:999999;">
     <h1 style="color:#00e5ff;font-size:2rem;margin-bottom:16px;">Navneet Mallick — Portfolio</h1>
@@ -175,12 +178,6 @@
 
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress"></div>
-
-<!-- Matrix Rain Canvas -->
-<canvas id="matrix-canvas"></canvas>
-
-<!-- Scanlines overlay -->
-<div class="scanlines"></div>
 
 <!-- Boot Overlay - Professional Loading Screen -->
 <div id="boot-overlay">
@@ -237,42 +234,11 @@
 <!-- Floating Particles -->
 <div class="particles" id="particles"></div>
 
-<!-- Music Player -->
-<div id="music-player" data-mode="eagles" data-playing="false">
-  <!-- Play / Pause -->
-  <button id="music-toggle" aria-label="Toggle music">
-    <i class="fas fa-play" id="music-icon"></i>
+<!-- Optimized Music Player -->
+<div id="music-player" class="music-player" data-mode="eagles" aria-label="Music player">
+  <button id="music-toggle" class="music-btn" aria-label="Toggle music" title="Play/Pause">
+    <i class="fas fa-play"></i>
   </button>
-
-  <!-- Animated bars (visible when playing) -->
-  <div class="music-bars" aria-hidden="true">
-    <div class="music-bar"></div>
-    <div class="music-bar"></div>
-    <div class="music-bar"></div>
-    <div class="music-bar"></div>
-  </div>
-
-  <!-- Track info + progress -->
-  <div class="music-info">
-    <span id="music-track-name">Lo-Fi Beats</span>
-    <div class="music-progress">
-      <div id="music-progress-bar"></div>
-    </div>
-  </div>
-
-  <!-- Volume -->
-  <input id="music-volume" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume">
-
-  <!-- Mode switch -->
-  <button id="music-mode-btn" aria-label="Switch music mode" title="Switch mode">
-    <i class="fas fa-moon" id="music-mode-icon"></i>
-  </button>
-
-  <!-- External Music Link -->
-  <a href="https://groove-box-three.vercel.app/" target="_blank" rel="noopener noreferrer" id="music-external-link" aria-label="Open full music player" title="Open GrooveBox Music Player">
-    <i class="fas fa-external-link-alt"></i>
-    <span class="music-notification-badge">NEW</span>
-  </a>
 </div>
 
 <!-- Toast Notifications -->
@@ -288,8 +254,8 @@
   <i class="fas fa-keyboard"></i>
 </button>
 
-<!-- Mobile Game Button (visible only on mobile) -->
-<button id="mobile-game-btn" onclick="window.openRunnerGame && window.openRunnerGame()" aria-label="Play a game" title="Play a Game">
+<!-- Mobile Game Button (visible only on desktop) -->
+<button id="mobile-game-btn" onclick="window.openRunnerGame && window.openRunnerGame()" aria-label="Play a game" title="Play a Game" class="game-btn">
   <i class="fas fa-gamepad"></i>
 </button>
 
@@ -320,7 +286,7 @@
                 <div id="hamburger-wrap">
                     <i class="fas fa-bars"></i>
                 </div>
-                <button id="shortcuts-hint" onclick="window.showShortcuts && window.showShortcuts()" title="Keyboard shortcuts" aria-label="Keyboard shortcuts" style="background:none;border:1px solid var(--border-color);color:var(--text-color);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;opacity:0.7;"><i class="fas fa-keyboard"></i></button>
+                <button id="shortcuts-hint" title="Keyboard shortcuts" aria-label="Keyboard shortcuts" class="shortcuts-btn"><i class="fas fa-keyboard"></i></button>
             </div>
 
             <div id="nav-dropdown">
@@ -965,21 +931,21 @@
         <input type="text" name="_honey" tabindex="-1" autocomplete="off">
       </div>
       <div class="input-group">
-        <i class="fas fa-user"></i>
-        <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" maxlength="100" required>
+        <label for="name-input"><i class="fas fa-user"></i> Name</label>
+        <input id="name-input" type="text" name="name" placeholder="Your Name" aria-label="Your Name" maxlength="100" required>
         <span class="error-message" id="name-error"></span>
       </div>
       <div class="input-group">
-        <i class="fas fa-envelope"></i>
-        <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" maxlength="150" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+        <label for="email-input"><i class="fas fa-envelope"></i> Email</label>
+        <input id="email-input" type="email" name="email" placeholder="Your Email" aria-label="Your Email" maxlength="150" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
         <span class="error-message" id="email-error"></span>
       </div>
       <div class="input-group">
-        <i class="fas fa-comment-alt"></i>
-        <textarea name="message" placeholder="Your Message" aria-label="Your Message" maxlength="500" required minlength="10"></textarea>
+        <label for="message-input"><i class="fas fa-comment-alt"></i> Message</label>
+        <textarea id="message-input" name="message" placeholder="Your Message" aria-label="Your Message" maxlength="500" required minlength="10"></textarea>
         <span class="error-message" id="message-error"></span>
       </div>
-      <button type="submit" class="magnetic btn-submit">
+      <button type="submit" class="magnetic btn-submit" aria-label="Send message">
         Send Message <i class="fas fa-paper-plane"></i>
       </button>    
     </form>
@@ -1099,77 +1065,23 @@
   </div>
 
   <!-- Social Icons -->
-  <div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
-  ">
+  <div class="social-icons-container">
     <!-- GitHub -->
-    <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-      style="
-        width:56px;
-        height:56px;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:50%;
-        text-decoration:none;
-        color:#ffffff;
-        background:linear-gradient(135deg, var(--accent, #00e5ff), var(--secondary, #8b5cf6));
-        box-shadow:0 4px 15px rgba(0,229,255,0.25);
-        transition:transform .3s ease, box-shadow .3s ease;
-        flex-shrink:0;
-      "
-      onmouseover="this.style.transform='translateY(-5px) scale(1.08)';this.style.boxShadow='0 8px 25px rgba(0,229,255,0.45)'"
-      onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,229,255,0.25)'">
+    <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
         <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
       </svg>
     </a>
 
     <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-      style="
-        width:56px;
-        height:56px;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:50%;
-        text-decoration:none;
-        color:#ffffff;
-        background:linear-gradient(135deg, var(--accent, #00e5ff), var(--secondary, #8b5cf6));
-        box-shadow:0 4px 15px rgba(0,229,255,0.25);
-        transition:transform .3s ease, box-shadow .3s ease;
-        flex-shrink:0;
-      "
-      onmouseover="this.style.transform='translateY(-5px) scale(1.08)';this.style.boxShadow='0 8px 25px rgba(0,229,255,0.45)'"
-      onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,229,255,0.25)'">
+    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
     </a>
 
     <!-- Instagram -->
-    <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-      style="
-        width:56px;
-        height:56px;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        border-radius:50%;
-        text-decoration:none;
-        color:#ffffff;
-        background:linear-gradient(135deg, #ff4fd8, #ff7c7c);
-        box-shadow:0 4px 15px rgba(255,79,216,0.25);
-        transition:transform .3s ease, box-shadow .3s ease;
-        flex-shrink:0;
-      "
-      onmouseover="this.style.transform='translateY(-5px) scale(1.08)';this.style.boxShadow='0 8px 25px rgba(255,79,216,0.45)'"
-      onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(255,79,216,0.25)'">
+    <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon social-icon-instagram">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
       </svg>
@@ -1228,7 +1140,6 @@
 <script src="js/config.js"></script>
 <script src="js/performance.js"></script>
 <script src="js/analytics.js"></script>
-<script src="js/audio.js"></script>
 <script src="js/main.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/navigation.js"></script>
@@ -1241,7 +1152,6 @@
 <script src="js/testimonials.js"></script>
 <script src="js/welcome.js"></script>
 <script src="js/extras.js"></script>
-<script src="js/crazy.js"></script>
 <script src="js/cherry.js"></script>
 <script src="js/game.js"></script>
 <script src="js/interactions.js"></script>

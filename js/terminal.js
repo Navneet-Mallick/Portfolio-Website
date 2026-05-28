@@ -164,9 +164,12 @@
   }
 
   function spawnHint(body) {
-    // Show hint as toast notification instead of in terminal
-    if (window.showToast) {
-      window.showToast('💡 Psst... try typing "hacker" in the terminal for a surprise! ✨', 'info', 5000);
+    // Show hint as optional toast notification (non-blocking)
+    if (window.showToast && Math.random() > 0.5) {
+      // Only show hint 50% of the time to avoid being annoying
+      setTimeout(() => {
+        window.showToast('💡 Psst... try typing "hacker" in the terminal for a surprise! ✨', 'info', 4000);
+      }, 2000);
     }
   }
 
@@ -358,14 +361,13 @@
     const termEl = document.querySelector('.terminal');
     if (!body || !termEl) return;
     boot(body, termEl);
-    // Click/Touch anywhere in terminal to refocus input
+    // Click/Touch on input area to focus (not entire terminal)
     const handleFocus = (e) => {
-      const inp = termEl.querySelector('.t-input:not(:disabled)');
-      if (inp) {
-        inp.focus();
-        // Prevent scroll-jump on mobile
-        if (e.type === 'touchstart') {
-          setTimeout(() => inp.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+      // Only focus if clicking on the input or text area
+      if (e.target.classList.contains('t-input') || e.target.closest('.t-line')) {
+        const inp = termEl.querySelector('.t-input:not(:disabled)');
+        if (inp) {
+          inp.focus();
         }
       }
     };
