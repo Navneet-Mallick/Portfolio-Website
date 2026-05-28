@@ -1,0 +1,248 @@
+/**
+ * Boot Intro + Audio Module
+ * Shows a boot screen on load, plays synth sound on click (Web Audio API - no file needed)
+ */
+
+(function () {
+  const overlay   = document.getElementById('boot-overlay');
+  const bootText  = document.getElementById('boot-text');
+  const bootBar   = document.getElementById('boot-bar');
+  if (!overlay) return;
+
+  // Boot messages — each tied to a % progress step
+  const messages = [
+    { text: '> Booting portfolio v2.0...',   pct: 20  },
+    { text: '> Loading assets... OK',         pct: 45  },
+    { text: '> Mounting modules... OK',       pct: 70  },
+    { text: '> Starting music player... OK',  pct: 90  },
+    { text: '> Welcome, Navneet Mallick ✔',   pct: 100 },
+  ];
+
+  let ctx = null;
+
+  // --- Web Audio synth sounds ---
+  function getCtx() {
+    if (!ctx) ctx = new (window.AudioContext || window['webkitAudioContext'])();
+    return ctx;
+  }
+
+  function playBootSound() {
+    try {
+      const ac = getCtx();
+      if (ac.state === 'suspended') {
+        ac.resume();
+      }
+
+      // Sweep synth: rising tone
+      const osc  = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain);
+      gain.connect(ac.destination);
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(80, ac.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, ac.currentTime + 0.6);
+      gain.gain.setValueAtTime(0.15, ac.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.8);
+
+      osc.start(ac.currentTime);
+      osc.stop(ac.currentTime + 0.8);
+
+      // Second layer: short blip
+      setTimeout(() => {
+        try {
+          const o2 = ac.createOscillator();
+          const g2 = ac.createGain();
+          o2.connect(g2); g2.connect(ac.destination);
+          o2.type = 'square';
+          o2.frequency.setValueAtTime(440, ac.currentTime);
+          o2.frequency.setValueAtTime(880, ac.currentTime + 0.05);
+          g2.gain.setValueAtTime(0.08, ac.currentTime);
+          g2.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.2);
+          o2.start(ac.currentTime);
+          o2.stop(ac.currentTime + 0.2);
+        } catch (err) {
+          console.warn('Boot sound layer 2 blocked or failed:', err);
+        }
+      }, 500);
+    } catch (err) {
+      console.warn('Boot sound blocked or failed:', err);
+    }
+  }
+
+  function playClickSound() {
+    try {
+      const ac = getCtx();
+      if (ac.state === 'suspended') {
+        ac.resume();
+      }
+      const osc  = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain); gain.connect(ac.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, ac.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, ac.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.1, ac.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.15);
+      osc.start(ac.currentTime);
+      osc.stop(ac.currentTime + 0.15);
+    } catch (err) {
+      console.warn('Click sound blocked or failed:', err);
+    }
+  }
+
+  function playHoverSound() {
+    try {
+      const ac = getCtx();
+      if (ac.state === 'suspended') {
+        ac.resume();
+      }
+      const osc  = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain); gain.connect(ac.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, ac.currentTime);
+      gain.gain.setValueAtTime(0.04, ac.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.08);
+      osc.start(ac.currentTime);
+      osc.stop(ac.currentTime + 0.08);
+    } catch (err) {
+      // Quietly ignore hover sound failures as they can be frequent before gesture
+    }
+  }
+
+  // --- Boot sequence ---
+  const pctEl = document.getElementById('boot-percent');
+
+  function animateBarTo(target) {
+    const current = parseFloat(bootBar?.style.width) || 0;
+    if (!bootBar || current >= target) return;
+    let w = current;
+    const step = (target - current) / 20;
+    const iv = setInterval(() => {
+      w = Math.min(w + step, target);
+      bootBar.style.width = w + '%';
+      if (pctEl) pctEl.textContent = Math.floor(w) + '%';
+      if (w >= target) clearInterval(iv);
+    }, 18);
+  }
+
+  function animateBar(done) { done(); } // kept for compat
+
+  function typeMessages(index, done) {
+    if (index >= messages.length) { done(); return; }
+    const { text, pct } = messages[index];
+    let i = 0;
+    const line = document.createElement('div');
+    bootText.appendChild(line);
+    animateBarTo(pct);
+    const interval = setInterval(() => {
+      line.textContent += text[i++];
+      if (i >= text.length) {
+        clearInterval(interval);
+        const delay = index === messages.length - 1 ? 600 : 220;
+        setTimeout(() => typeMessages(index + 1, done), delay);
+      }
+    }, 26);
+  }
+
+  function dismissOverlay() {
+    if (!overlay || overlay.classList.contains('boot-exit')) return;
+    if (typeof globalSafetyTimer !== 'undefined') clearTimeout(globalSafetyTimer);
+    if (typeof autoDismissTimer !== 'undefined') clearTimeout(autoDismissTimer);
+    playBootSound();
+    // Add boot-exit FIRST so CSS :not(.boot-exit) rule stops applying
+    overlay.classList.add('boot-exit');
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) {
+      // Mobile: fade out via inline transition, then hide
+      overlay.style.transition = 'opacity 0.5s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.pointerEvents = 'none';
+        document.body.classList.remove('boot-active');
+        document.documentElement.classList.remove('boot-active');
+        window._bootDismissed = true;
+        document.dispatchEvent(new CustomEvent('bootDismissed'));
+      }, 520);
+    } else {
+      // Desktop: CSS fadeOutUp animation handles it
+      overlay.style.display = '';
+      overlay.style.opacity = '';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.visibility = 'hidden';
+        overlay.style.pointerEvents = 'none';
+        document.body.classList.remove('boot-active');
+        document.documentElement.classList.remove('boot-active');
+        window._bootDismissed = true;
+        document.dispatchEvent(new CustomEvent('bootDismissed'));
+      }, 850);
+    }
+  }
+
+  // --- Init ---
+  document.body.classList.add('boot-active');
+  document.documentElement.classList.add('boot-active');
+  // Show overlay via inline style so it's guaranteed visible before CSS loads
+  overlay.style.display = 'flex';
+
+  // Start typing after short delay
+  setTimeout(() => {
+    typeMessages(0, () => {
+      // All messages done — auto dismiss after brief pause
+      setTimeout(dismissOverlay, 800);
+    });
+  }, 400);
+
+  // Auto-dismiss after 5s even if user doesn't interact
+  const autoDismissTimer = setTimeout(dismissOverlay, 5000);
+
+  // Dismiss on click anywhere OR any keypress — immediately
+  const handleDismiss = () => {
+    clearTimeout(autoDismissTimer);
+    dismissOverlay();
+  };
+
+  document.addEventListener('click', handleDismiss, { once: true });
+
+  // Add touch event for mobile devices — only after 1.5s so user can see the screen
+  let touchDismissEnabled = false;
+  setTimeout(() => { touchDismissEnabled = true; }, 1500);
+  const handleTouchDismiss = () => {
+    if (!touchDismissEnabled) return;
+    clearTimeout(autoDismissTimer);
+    document.removeEventListener('touchstart', handleTouchDismiss);
+    dismissOverlay();
+  };
+  document.addEventListener('touchstart', handleTouchDismiss, { passive: true });
+
+  document.addEventListener('keydown', handleDismiss, { once: true });
+
+  // Fallback: Force dismiss after 6 seconds if nothing worked
+  const globalSafetyTimer = setTimeout(() => {
+    if (overlay && !overlay.classList.contains('boot-exit')) {
+      console.warn("Safety fallback: forcing overlay dismissal.");
+      dismissOverlay();
+    }
+  }, 6000);
+
+  // Expose dismissOverlay for manual use if needed
+  window._dismissBoot = dismissOverlay;
+
+  // --- Global click sound ---
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#boot-overlay')) return;
+    playClickSound();
+  });
+
+  // --- Hover sound on interactive elements ---
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.matches('a, button, .btn, .project-card, #theme-btn, #hamburger-wrap')) {
+      playHoverSound();
+    }
+  });
+
+})();

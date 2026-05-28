@@ -84,6 +84,399 @@
       overflow: hidden !important;
       height: 100vh !important;
     }
+    
+    /* ═══════════════════════════════════════════════════════════════════
+       FOOTER STYLING - COMPREHENSIVE & MODERN
+       ═══════════════════════════════════════════════════════════════════ */
+    
+    #site-footer {
+      position: relative;
+      background: linear-gradient(135deg, rgba(20, 26, 51, 0.8), rgba(11, 18, 40, 0.9));
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-color);
+      padding: 80px 5% 40px;
+      overflow: hidden;
+      color: var(--text-color);
+    }
+    
+    /* Footer Background Orbs */
+    .footer-orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    
+    .footer-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--accent);
+      top: -100px;
+      left: -150px;
+      animation: floatOrb 15s ease-in-out infinite;
+    }
+    
+    .footer-orb-2 {
+      width: 300px;
+      height: 300px;
+      background: var(--secondary);
+      bottom: -50px;
+      right: -100px;
+      animation: floatOrb 20s ease-in-out infinite reverse;
+    }
+    
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, -30px); }
+    }
+    
+    /* Footer Top Section */
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Brand Block */
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .footer-logo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 24px;
+      color: #000;
+      box-shadow: 0 8px 20px var(--accent-glow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .footer-logo:hover {
+      transform: translateY(-5px) rotate(5deg);
+      box-shadow: 0 12px 30px var(--accent-glow);
+    }
+    
+    .footer-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer-tagline {
+      font-size: 0.95rem;
+      color: rgba(234, 242, 255, 0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .footer-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: rgba(0, 229, 255, 0.05);
+      border-radius: 50px;
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      width: fit-content;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .footer-status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    /* Footer Navigation */
+    .footer-nav {
+      display: none;
+    }
+    
+    .footer-connect {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .footer-nav-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 10px 0;
+    }
+    
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .footer-nav li a, .footer-connect a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(234, 242, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    
+    .footer-nav li a:hover, .footer-connect a:hover {
+      color: var(--accent);
+      background: rgba(0, 229, 255, 0.1);
+      padding-left: 16px;
+    }
+    
+    .footer-nav li a i, .footer-connect a i {
+      width: 20px;
+      text-align: center;
+    }
+    
+    .footer-social-btn i {
+      width: auto;
+      text-align: inherit;
+    }
+    
+    /* Footer Social */
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      align-items: center;
+    }
+    
+    .footer-social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .footer-social-btn i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    
+    .footer-social-btn span {
+      display: none;
+    }
+    
+    .footer-social-btn:hover {
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      border-color: var(--accent);
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--accent-glow);
+    }
+    
+    .footer-github:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+    .footer-linkedin:hover { box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
+    .footer-instagram:hover { box-shadow: 0 8px 20px rgba(255, 79, 216, 0.3); }
+    .footer-email:hover { box-shadow: 0 8px 20px var(--accent-glow); }
+    
+    /* CV Download Button */
+    .footer-cv-btn {
+      display: none;
+    }
+    
+    /* Marquee Section */
+    .footer-marquee-wrap {
+      position: relative;
+      margin: 40px 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .footer-marquee-fade {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    
+    .footer-marquee-fade-left {
+      left: 0;
+      background: linear-gradient(90deg, rgba(7, 11, 31, 0.9), transparent);
+    }
+    
+    .footer-marquee-fade-right {
+      right: 0;
+      background: linear-gradient(90deg, transparent, rgba(7, 11, 31, 0.9));
+    }
+    
+    .footer-marquee-track {
+      display: flex;
+      gap: 40px;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+      padding: 20px 0;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .footer-marquee-word {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(0, 229, 255, 0.8);
+      letter-spacing: 0.5px;
+    }
+    
+    .footer-marquee-dot {
+      color: var(--accent);
+      opacity: 0.6;
+    }
+    
+    /* Footer Bottom */
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(0, 229, 255, 0.1);
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .footer-copy {
+      margin: 0;
+      color: rgba(234, 242, 255, 0.7);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    
+    .footer-accent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .footer-made {
+      margin: 0;
+      color: rgba(234, 242, 255, 0.6);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    .footer-heart {
+      color: var(--tertiary);
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+      #site-footer {
+        padding: 60px 3% 30px;
+      }
+      
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .footer-marquee-track {
+        gap: 30px;
+      }
+      
+      .footer-marquee-word {
+        font-size: 0.95rem;
+      }
+      
+      .footer-name {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      #site-footer {
+        padding: 40px 2% 20px;
+      }
+      
+      .footer-logo {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+      
+      .footer-name {
+        font-size: 1.1rem;
+      }
+      
+      .footer-tagline {
+        font-size: 0.85rem;
+      }
+      
+      .footer-marquee-fade {
+        width: 60px;
+      }
+      
+      .footer-marquee-word {
+        font-size: 0.85rem;
+      }
+      
+      .footer-social-btn {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+      }
+      
+      .footer-bottom {
+        gap: 12px;
+      }
+    }
   </style>
 
   <!-- Immediate boot overlay initialization -->
@@ -235,10 +628,23 @@
 <div class="particles" id="particles"></div>
 
 <!-- Optimized Music Player -->
-<div id="music-player" class="music-player" data-mode="eagles" aria-label="Music player">
+<div id="music-player" class="music-player" data-mode="eagles" data-playing="false" aria-label="Music player">
+  <div id="music-track-name" class="music-track-name">Eagles — Hotel California</div>
+  <button id="music-prev" class="music-control-btn" aria-label="Previous track" title="Previous Track">
+    <i class="fas fa-backward"></i>
+  </button>
   <button id="music-toggle" class="music-btn" aria-label="Toggle music" title="Play/Pause">
     <i class="fas fa-play"></i>
   </button>
+  <button id="music-next" class="music-control-btn" aria-label="Next track" title="Next Track">
+    <i class="fas fa-forward"></i>
+  </button>
+  <div class="music-volume-container">
+    <button id="music-volume-btn" class="music-control-btn" aria-label="Mute/Unmute" title="Volume">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <input id="music-volume" class="music-volume-slider" type="range" min="0" max="1" step="0.05" value="0.6" aria-label="Volume">
+  </div>
 </div>
 
 <!-- Toast Notifications -->
@@ -951,169 +1357,102 @@
     </form>
   </div>
 </section> 
-<footer style="
-  width:100%;
-  padding:40px 20px 20px;
-  text-align:center;
-  background:var(--bg-color, #070b1f);
-  color:var(--text-color, #e5e7eb);
-  border-top:1px solid rgba(0,229,255,0.15);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:30px;
-  overflow:hidden;
-  position:relative;
-">
+<footer id="site-footer">
 
-  <!-- Audio Visualizer -->
-  <div id="audio-viz" style="
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    gap:4px;
-    height:40px;
-  "></div>
+  <!-- Glow orbs background -->
+  <div class="footer-orb footer-orb-1"></div>
+  <div class="footer-orb footer-orb-2"></div>
 
-  <!-- Name + Role -->
-  <div style="
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-  ">
-    <h3 style="
-      margin:0;
-      font-size:1.4rem;
-      font-weight:700;
-      color:var(--accent, #00e5ff);
-      letter-spacing:0.5px;
-    ">
-      Navneet Mallick
-    </h3>
+  <!-- Top: brand + nav + social -->
+  <div class="footer-top">
 
-    <p style="
-      margin:0;
-      opacity:0.75;
-      font-size:0.95rem;
-      color:var(--text-color);
-    ">
-      Computer Engineering Student • Web Developer • Tech Enthusiast
-    </p>
+    <!-- Brand block -->
+    <div class="footer-brand">
+      <div class="footer-logo">NM</div>
+      <h3 class="footer-name">Navneet Mallick</h3>
+      <p class="footer-tagline">Computer Engineering Student<br>Web Developer &amp; ML Engineer</p>
+      <div class="footer-status">
+        <span class="footer-status-dot"></span>
+        Open to opportunities
+      </div>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <h4 class="footer-nav-title">Navigate</h4>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+        <li><a href="#skills"><i class="fas fa-brain"></i> Skills</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Connect block -->
+    <div class="footer-connect">
+      <h4 class="footer-nav-title">Connect</h4>
+      <div class="footer-social">
+        <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-btn footer-github">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-btn footer-linkedin">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-btn footer-instagram">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="mailto:navneetmallick092@gmail.com" aria-label="Email" class="footer-social-btn footer-email">
+          <i class="fas fa-envelope"></i>
+          <span>Email Me</span>
+        </a>
+      </div>
+      <a href="./Assets/Navneet _CV.pdf" download class="footer-cv-btn">
+        <i class="fas fa-download"></i> Download CV
+      </a>
+    </div>
+
   </div>
 
-  <!-- PREMIUM MARQUEE -->
-  <div style="
-    width:100%;
-    overflow:hidden;
-    position:relative;
-    border-top:1px solid rgba(0,229,255,0.08);
-    border-bottom:1px solid rgba(0,229,255,0.08);
-    padding:1.4rem 0;
-    background:rgba(0,0,0,0.2);
-  ">
-    <!-- fade left -->
-    <div style="
-      position:absolute;
-      left:0;
-      top:0;
-      width:120px;
-      height:100%;
-      background:linear-gradient(to right, var(--bg-color, #070b1f), transparent);
-      z-index:2;
-      pointer-events:none;
-    "></div>
-    
-    <!-- fade right -->
-    <div style="
-      position:absolute;
-      right:0;
-      top:0;
-      width:120px;
-      height:100%;
-      background:linear-gradient(to left, var(--bg-color, #070b1f), transparent);
-      z-index:2;
-      pointer-events:none;
-    "></div>
-    
-    <div style="
-      display:flex;
-      width:max-content;
-      animation:footerMarquee 30s linear infinite;
-      gap:3rem;
-      align-items:center;
-      white-space:nowrap;
-    ">
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Creative Developer</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Building Digital Experiences</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Student • Learner • Explorer</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Minimal • Intentional • Modern</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <!-- Duplicate for seamless loop -->
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Creative Developer</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Building Digital Experiences</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Student • Learner • Explorer</span>
-      <span style="color:var(--accent, #00e5ff);font-size:1.1rem;">✦</span>
-      <span style="color:rgba(255,255,255,0.16);font-size:2.5rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.04em;">Minimal • Intentional • Modern</span>
+  <!-- Marquee strip -->
+  <div class="footer-marquee-wrap">
+    <div class="footer-marquee-fade footer-marquee-fade-left"></div>
+    <div class="footer-marquee-fade footer-marquee-fade-right"></div>
+    <div class="footer-marquee-track">
+      <span class="footer-marquee-word">Creative Developer</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Building Digital Experiences</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Student · Learner · Explorer</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Minimal · Intentional · Modern</span>
+      <span class="footer-marquee-dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span class="footer-marquee-word">Creative Developer</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Building Digital Experiences</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Student · Learner · Explorer</span>
+      <span class="footer-marquee-dot">✦</span>
+      <span class="footer-marquee-word">Minimal · Intentional · Modern</span>
+      <span class="footer-marquee-dot">✦</span>
     </div>
   </div>
 
-  <!-- Social Icons -->
-  <div class="social-icons-container">
-    <!-- GitHub -->
-    <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-      </svg>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-    </a>
-
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon social-icon-instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Copyright & Credits -->
-  <div style="
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-  ">
-    <p style="
-      margin:0;
-      font-size:0.9rem;
-      opacity:0.8;
-      letter-spacing:0.3px;
-    ">
-      © 2026 
-      <span style="
-        color:var(--accent, #00e5ff);
-        font-weight:600;
-      ">Navneet Mallick</span>. All Rights Reserved.
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p class="footer-copy">
+      &copy; <span id="footer-year">2026</span>
+      <span class="footer-accent">Navneet Mallick</span>. All Rights Reserved.
     </p>
+    <p class="footer-made">
+      Built with <span class="footer-heart">♥</span> ❤️ by Navneet 
 
-    <p style="
-      font-size:0.85rem;
-      opacity:0.65;
-      margin:0;
-    ">
-      Built with passion, logic & clean code ❤️
     </p>
   </div>
 
@@ -1140,6 +1479,7 @@
 <script src="js/config.js"></script>
 <script src="js/performance.js"></script>
 <script src="js/analytics.js"></script>
+<script src="js/audio.js"></script>
 <script src="js/main.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/navigation.js"></script>
