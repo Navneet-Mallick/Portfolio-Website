@@ -11,11 +11,11 @@
 
   // Boot messages — each tied to a % progress step
   const messages = [
-    { text: '> Booting portfolio v2.0...',   pct: 20  },
+    { text: '> Booting Portfolio',   pct: 20  },
     { text: '> Loading assets... OK',         pct: 45  },
     { text: '> Mounting modules... OK',       pct: 70  },
     { text: '> Starting music player... OK',  pct: 90  },
-    { text: '> Welcome, Navneet Mallick ✔',   pct: 100 },
+    { text: '> Welcome 🕉️🙏',   pct: 100 },
   ];
 
   let ctx = null;
