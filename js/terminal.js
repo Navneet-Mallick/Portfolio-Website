@@ -285,8 +285,8 @@
         if (window.triggerEasterEgg) {
           printLines(body, [{ cls: 't-accent', text: '  🔓 Executing secret script...' }], () => {
              window.triggerEasterEgg();
-             // Show hacker achievement notification
-             if (window.showToast) window.showToast('🔓 Hacker Mode Unlocked! You found the easter egg!', 'success', 4000);
+             // Show easter egg notification
+             if (window.showToast) window.showToast('🔓 Easter Egg Found! You discovered the secret!', 'success', 4000);
              setTimeout(() => spawnInput(body), 500);
           });
           return;

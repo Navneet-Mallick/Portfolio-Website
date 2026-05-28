@@ -18,6 +18,10 @@ function openRunnerGame() {
     document.body.style.width = '100%';
   }
   switchGame('runner');
+  
+  // Add resize handler for orientation changes
+  window.addEventListener('resize', handleGameResize);
+  window.addEventListener('orientationchange', handleGameResize);
 }
 
 function closeRunnerGame() {
@@ -33,6 +37,27 @@ function closeRunnerGame() {
     document.body.style.position = '';
     document.body.style.width = '';
   }
+  
+  // Remove resize handlers
+  window.removeEventListener('resize', handleGameResize);
+  window.removeEventListener('orientationchange', handleGameResize);
+}
+
+// Handle window resize and orientation changes
+let resizeTimeout;
+function handleGameResize() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // Restart current game to adjust canvas size
+    const runnerPanel = document.getElementById('game-panel-runner');
+    const flappyPanel = document.getElementById('game-panel-snake');
+    
+    if (runnerPanel && runnerPanel.style.display !== 'none' && gameRunning) {
+      startRunnerGame();
+    } else if (flappyPanel && flappyPanel.style.display !== 'none' && flappyRunning) {
+      startFlappyGame();
+    }
+  }, 300);
 }
 
 // Aliases used by switchGame in index.html
@@ -54,15 +79,30 @@ function startRunnerGame() {
   const canvas = document.getElementById('game-canvas');
   if (!canvas) return;
   
-  // ── MOBILE CANVAS OPTIMIZATION ──
-  const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap DPR for performance
-  const rect = canvas.getBoundingClientRect();
-  let displayWidth = Math.floor(rect.width);
-  let displayHeight = Math.floor(rect.height);
+  // ── RESPONSIVE CANVAS SIZING ──
+  const container = canvas.parentElement;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
   
-  // Fallback if rect is 0 (e.g. modal not fully open)
-  if (displayWidth <= 0) displayWidth = 620;
-  if (displayHeight <= 0) displayHeight = 160;
+  // Get container dimensions
+  const containerRect = container.getBoundingClientRect();
+  let displayWidth = Math.floor(containerRect.width - 40); // Account for padding
+  let displayHeight = 160;
+  
+  // Mobile adjustments
+  if (window.innerWidth <= 600) {
+    displayWidth = Math.min(displayWidth, window.innerWidth - 40);
+    displayHeight = 140;
+  } else if (window.innerWidth <= 900) {
+    displayHeight = 150;
+  }
+  
+  // Ensure minimum dimensions
+  displayWidth = Math.max(280, displayWidth);
+  displayHeight = Math.max(120, displayHeight);
+  
+  // Set canvas display size
+  canvas.style.width = displayWidth + 'px';
+  canvas.style.height = displayHeight + 'px';
   
   // Set canvas internal resolution for sharp rendering
   canvas.width = displayWidth * dpr;
@@ -395,14 +435,30 @@ function startFlappyGame() {
   const canvas = document.getElementById('snake-canvas');
   if (!canvas) return;
   
-  // ── MOBILE CANVAS OPTIMIZATION ──
+  // ── RESPONSIVE CANVAS SIZING ──
+  const container = canvas.parentElement;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const rect = canvas.getBoundingClientRect();
-  let displayWidth = Math.floor(rect.width);
-  let displayHeight = Math.floor(rect.height);
   
-  if (displayWidth <= 0) displayWidth = 620;
-  if (displayHeight <= 0) displayHeight = 320;
+  // Get container dimensions
+  const containerRect = container.getBoundingClientRect();
+  let displayWidth = Math.floor(containerRect.width - 40); // Account for padding
+  let displayHeight = 320;
+  
+  // Mobile adjustments
+  if (window.innerWidth <= 600) {
+    displayWidth = Math.min(displayWidth, window.innerWidth - 40);
+    displayHeight = Math.min(280, window.innerHeight * 0.4);
+  } else if (window.innerWidth <= 900) {
+    displayHeight = 300;
+  }
+  
+  // Ensure minimum dimensions
+  displayWidth = Math.max(280, displayWidth);
+  displayHeight = Math.max(240, displayHeight);
+  
+  // Set canvas display size
+  canvas.style.width = displayWidth + 'px';
+  canvas.style.height = displayHeight + 'px';
   
   // Set canvas internal resolution for sharp rendering
   canvas.width = displayWidth * dpr;
