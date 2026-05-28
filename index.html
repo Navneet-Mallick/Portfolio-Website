@@ -91,21 +91,43 @@
     
     #site-footer {
       position: relative;
-      background: linear-gradient(135deg, rgba(20, 26, 51, 0.8), rgba(11, 18, 40, 0.9));
+      background: var(--footer-bg);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border-color);
       padding: 80px 5% 40px;
       overflow: hidden;
       color: var(--text-color);
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      
+      /* Default (Dark Mode) variables */
+      --footer-bg: linear-gradient(135deg, rgba(20, 26, 51, 0.85), rgba(11, 18, 40, 0.95));
+      --footer-fade-left: linear-gradient(90deg, rgba(11, 18, 40, 0.95), transparent);
+      --footer-fade-right: linear-gradient(90deg, transparent, rgba(11, 18, 40, 0.95));
+    }
+    
+    /* Theme overrides for Footer Variables */
+    body.light-mode #site-footer {
+      --footer-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(232, 240, 255, 0.95));
+      --footer-fade-left: linear-gradient(90deg, rgba(232, 240, 255, 0.95), transparent);
+      --footer-fade-right: linear-gradient(90deg, transparent, rgba(232, 240, 255, 0.95));
+    }
+    
+    body.neon-mode #site-footer {
+      --footer-bg: linear-gradient(135deg, rgba(15, 0, 30, 0.85), rgba(5, 0, 13, 0.95));
+      --footer-fade-left: linear-gradient(90deg, rgba(5, 0, 13, 0.95), transparent);
+      --footer-fade-right: linear-gradient(90deg, transparent, rgba(5, 0, 13, 0.95));
     }
     
     /* Footer Background Orbs */
     .footer-orb {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.15;
+      opacity: 0.12;
       filter: blur(80px);
+      -webkit-filter: blur(80px);
       pointer-events: none;
+      z-index: 0;
     }
     
     .footer-orb-1 {
@@ -134,9 +156,9 @@
     /* Footer Top Section */
     .footer-top {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1.2fr 0.8fr 1fr;
       gap: 50px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       position: relative;
       z-index: 1;
     }
@@ -145,22 +167,24 @@
     .footer-brand {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      align-items: flex-start;
+      gap: 20px;
+      text-align: left;
     }
     
     .footer-logo {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       background: linear-gradient(135deg, var(--accent), var(--secondary));
-      border-radius: 12px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 24px;
-      color: #000;
-      box-shadow: 0 8px 20px var(--accent-glow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 900;
+      font-size: 22px;
+      color: #ffffff !important;
+      box-shadow: 0 8px 25px var(--accent-glow);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
     }
     
     .footer-logo:hover {
@@ -168,67 +192,71 @@
       box-shadow: 0 12px 30px var(--accent-glow);
     }
     
-    .footer-name {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin: 0;
-      background: linear-gradient(135deg, var(--accent), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .footer-tagline {
-      font-size: 0.95rem;
-      color: rgba(234, 242, 255, 0.7);
-      line-height: 1.6;
-      margin: 0;
-    }
-    
     .footer-status {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 8px 16px;
-      background: rgba(0, 229, 255, 0.05);
+      background: rgba(0, 229, 255, 0.04);
       border-radius: 50px;
-      border: 1px solid rgba(0, 229, 255, 0.2);
+      border: 1px solid var(--border-color);
       width: fit-content;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--text-color);
+      opacity: 0.85;
+      transition: all 0.3s ease;
+    }
+    
+    body.light-mode .footer-status {
+      background: rgba(37, 99, 235, 0.05);
+      border-color: rgba(37, 99, 235, 0.18);
+      color: #1e293b;
+    }
+    
+    body.neon-mode .footer-status {
+      background: rgba(255, 0, 255, 0.05);
+      border-color: rgba(255, 0, 255, 0.22);
+      color: #f5e6ff;
     }
     
     .footer-status-dot {
       width: 8px;
       height: 8px;
-      background: var(--accent);
+      background: #10b981;
       border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
       animation: pulse 2s ease-in-out infinite;
     }
     
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
     }
     
     /* Footer Navigation */
     .footer-nav {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
     }
     
     .footer-connect {
       display: flex;
       flex-direction: column;
       gap: 15px;
+      align-items: flex-start;
     }
     
     .footer-nav-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--accent);
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
+      transition: color 0.3s ease;
     }
     
     .footer-nav ul {
@@ -240,87 +268,86 @@
       gap: 10px;
     }
     
-    .footer-nav li a, .footer-connect a {
+    .footer-nav li a {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: rgba(234, 242, 255, 0.8);
+      color: var(--text-color);
+      opacity: 0.75;
       text-decoration: none;
       font-size: 0.95rem;
       transition: all 0.3s ease;
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 4px 0;
     }
     
-    .footer-nav li a:hover, .footer-connect a:hover {
+    .footer-nav li a:hover {
       color: var(--accent);
-      background: rgba(0, 229, 255, 0.1);
-      padding-left: 16px;
+      opacity: 1;
+      padding-left: 6px;
     }
     
-    .footer-nav li a i, .footer-connect a i {
-      width: 20px;
+    .footer-nav li a i {
+      width: 16px;
       text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent);
+      opacity: 0.8;
+      transition: transform 0.3s ease;
     }
     
-    .footer-social-btn i {
-      width: auto;
-      text-align: inherit;
+    .footer-nav li a:hover i {
+      transform: scale(1.15);
     }
     
-    /* Footer Social */
+    /* Footer Social Links */
     .footer-social {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin: 10px 0;
-      align-items: center;
+      margin: 5px 0 10px;
     }
     
-    .footer-social-btn {
+    .footer-social-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
-      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(139, 92, 246, 0.1));
-      border: 1px solid rgba(0, 229, 255, 0.2);
-      border-radius: 10px;
-      color: var(--accent);
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: rgba(0, 229, 255, 0.03);
+      color: var(--text-color);
+      opacity: 0.85;
       text-decoration: none;
-      font-size: 1.4rem;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
-      width: 50px;
-      height: 50px;
     }
     
-    .footer-social-btn i {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
+    body.light-mode .footer-social-link {
+      background: rgba(37, 99, 235, 0.04);
+      border-color: rgba(37, 99, 235, 0.15);
     }
     
-    .footer-social-btn span {
-      display: none;
+    body.neon-mode .footer-social-link {
+      background: rgba(255, 0, 255, 0.04);
+      border-color: rgba(255, 0, 255, 0.2);
     }
     
-    .footer-social-btn:hover {
+    .footer-social-link svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-social-link:hover {
       background: linear-gradient(135deg, var(--accent), var(--secondary));
       border-color: var(--accent);
-      color: #000;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px var(--accent-glow);
+      color: #ffffff !important;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 22px var(--accent-glow);
+      opacity: 1;
     }
     
-    .footer-github:hover { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
-    .footer-linkedin:hover { box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
-    .footer-instagram:hover { box-shadow: 0 8px 20px rgba(255, 79, 216, 0.3); }
-    .footer-email:hover { box-shadow: 0 8px 20px var(--accent-glow); }
-    
-    /* CV Download Button */
-    .footer-cv-btn {
-      display: none;
+    .footer-social-link:hover svg {
+      transform: scale(1.1);
     }
     
     /* Marquee Section */
@@ -329,33 +356,47 @@
       margin: 40px 0;
       overflow: hidden;
       z-index: 1;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 5px 0;
+      background: rgba(0, 0, 0, 0.08);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    
+    body.light-mode .footer-marquee-wrap {
+      background: rgba(37, 99, 235, 0.02);
+    }
+    
+    body.neon-mode .footer-marquee-wrap {
+      background: rgba(255, 0, 255, 0.02);
     }
     
     .footer-marquee-fade {
       position: absolute;
       top: 0;
       height: 100%;
-      width: 100px;
+      width: 120px;
       z-index: 10;
       pointer-events: none;
+      transition: background 0.3s ease;
     }
     
     .footer-marquee-fade-left {
       left: 0;
-      background: linear-gradient(90deg, rgba(7, 11, 31, 0.9), transparent);
+      background: var(--footer-fade-left);
     }
     
     .footer-marquee-fade-right {
       right: 0;
-      background: linear-gradient(90deg, transparent, rgba(7, 11, 31, 0.9));
+      background: var(--footer-fade-right);
     }
     
     .footer-marquee-track {
       display: flex;
       gap: 40px;
-      animation: marquee 20s linear infinite;
+      animation: marquee 25s linear infinite;
       white-space: nowrap;
-      padding: 20px 0;
+      padding: 16px 0;
     }
     
     @keyframes marquee {
@@ -364,50 +405,64 @@
     }
     
     .footer-marquee-word {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
-      color: rgba(0, 229, 255, 0.8);
+      color: var(--text-color);
+      opacity: 0.8;
       letter-spacing: 0.5px;
+      transition: color 0.3s ease;
     }
     
     .footer-marquee-dot {
       color: var(--accent);
-      opacity: 0.6;
+      opacity: 0.75;
+      text-shadow: 0 0 8px var(--accent-glow);
+      transition: color 0.3s ease;
     }
     
     /* Footer Bottom */
     .footer-bottom {
       position: relative;
       z-index: 1;
-      border-top: 1px solid rgba(0, 229, 255, 0.1);
+      border-top: 1px solid var(--border-color);
       padding-top: 30px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       gap: 15px;
+      transition: border-color 0.3s ease;
     }
     
     .footer-copy {
       margin: 0;
-      color: rgba(234, 242, 255, 0.7);
+      color: var(--text-color);
+      opacity: 0.75;
       font-size: 0.95rem;
-      text-align: center;
+      text-align: left;
+      transition: color 0.3s ease;
     }
     
     .footer-accent {
       color: var(--accent);
       font-weight: 600;
+      transition: color 0.3s ease;
     }
     
     .footer-made {
       margin: 0;
-      color: rgba(234, 242, 255, 0.6);
-      font-size: 0.9rem;
-      text-align: center;
+      color: var(--text-color);
+      opacity: 0.7;
+      font-size: 0.95rem;
+      text-align: right;
+      transition: color 0.3s ease;
     }
     
     .footer-heart {
       color: var(--tertiary);
       animation: heartbeat 1.5s ease-in-out infinite;
+      display: inline-block;
+      margin: 0 2px;
     }
     
     @keyframes heartbeat {
@@ -416,14 +471,50 @@
     }
     
     /* Responsive Footer */
+    @media (max-width: 992px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .footer-brand {
+        grid-column: span 2;
+        align-items: center;
+        text-align: center;
+      }
+    }
+    
     @media (max-width: 768px) {
       #site-footer {
-        padding: 60px 3% 30px;
+        padding: 60px 4% 30px;
       }
       
       .footer-top {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
+      }
+      
+      .footer-brand, .footer-nav, .footer-connect {
+        grid-column: span 1;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .footer-nav li a {
+        justify-content: center;
+      }
+      
+      .footer-social {
+        justify-content: center;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      
+      .footer-copy, .footer-made {
+        text-align: center;
       }
       
       .footer-marquee-track {
@@ -433,29 +524,17 @@
       .footer-marquee-word {
         font-size: 0.95rem;
       }
-      
-      .footer-name {
-        font-size: 1.2rem;
-      }
     }
     
     @media (max-width: 600px) {
       #site-footer {
-        padding: 40px 2% 20px;
+        padding: 40px 3% 20px;
       }
       
       .footer-logo {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-      }
-      
-      .footer-name {
-        font-size: 1.1rem;
-      }
-      
-      .footer-tagline {
-        font-size: 0.85rem;
+        width: 52px;
+        height: 52px;
+        font-size: 18px;
       }
       
       .footer-marquee-fade {
@@ -466,15 +545,13 @@
         font-size: 0.85rem;
       }
       
-      .footer-social-btn {
-        padding: 10px;
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
+      .footer-social-link {
+        width: 44px;
+        height: 44px;
       }
       
       .footer-bottom {
-        gap: 12px;
+        gap: 8px;
       }
     }
   </style>
@@ -1479,31 +1556,17 @@
   <!-- Top: brand + nav + social -->
   <div class="footer-top">
 
-  <!-- Brand block -->
-<div class="footer-brand" style="display: flex; flex-direction: column; align-items: center; text-align: center; font-family: system-ui, -apple-system, sans-serif; width: 100%; margin-bottom: 20px;">
-  
-  <!-- Logo Icon Box -->
-  <div class="footer-logo" style="display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; background: linear-space; background-image: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #070b19; font-weight: 900; font-size: 20px; border-radius: 14px; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);">
-    NM
-  </div>
-  
-  <!-- Name Header
-  <h3 class="footer-name" style="color: #4f46e5; font-size: 22px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px;">
-    Navneet Mallick
-  </h3>
-  
-  Tagline Paragraph
-  <p class="footer-tagline" style="color: #8fa0be; font-size: 14px; line-height: 1.5; margin: 0 0 16px 0; font-weight: 400;">
-    Computer Engineering Student<br>Web Developer &amp; ML Engineer
-  </p> -->
-  
-  <!-- Status Badge / Pill -->
-  <div class="footer-status" style="display: inline-flex; align-items: center; gap: 8px; border: 1px solid #162c46; border-radius: 20px; padding: 6px 14px; font-size: 13px; color: #64748b; background-color: rgba(13, 21, 39, 0.4);">
-    <span class="footer-status-dot" style="width: 7px; height: 7px; background-color: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #10b981;"></span>
-    Open to opportunities
-  </div>
-
-</div>
+    <!-- Brand block -->
+    <div class="footer-brand">
+      <!-- Logo Icon Box -->
+      <div class="footer-logo">NM</div>
+      
+      <!-- Status Badge / Pill -->
+      <div class="footer-status">
+        <span class="footer-status-dot"></span>
+        Open to opportunities
+      </div>
+    </div>
 
     <!-- Nav links -->
     <nav class="footer-nav" aria-label="Footer navigation">
@@ -1520,62 +1583,52 @@
     </nav>
 
     <!-- Connect block -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <div class="footer-connect">
+      <h4 class="footer-nav-title">Connect</h4>
+      
+      <!-- Row container for social boxes -->
+      <div class="footer-social">
+        
+        <!-- GitHub Link Box -->
+        <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
+          <svg style="width: 22px; height: 22px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.061.069-.061 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
+        </a>
 
-<div class="footer-connect" style="font-family: system-ui, -apple-system, sans-serif; background-color: transparent; padding: 0; color: #ffffff; display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 30px;">
-  
-  <!-- Title matching your bright magenta/pink color, centered -->
-  <h4 class="footer-nav-title" style="color: #e00096; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 24px 0; text-align: center;">
-    Connect
-  </h4>
-  
-  <!-- Row container for social boxes, centered -->
-  <div class="footer-social" style="display: flex; gap: 14px; margin-bottom: 24px; justify-content: center;">
-    
-    <!-- GitHub Link Box -->
-    <a href="https://github.com/Navneet-Mallick/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" 
-       style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1px solid #162c46; border-radius: 10px; background-color: rgba(13, 21, 39, 0.6); color: #a5b4fc; text-decoration: none; transition: background 0.2s;">
-      <svg style="width: 22px; height: 22px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.061.069-.061 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-      </svg>
-    </a>
+        <!-- LinkedIn Link Box -->
+        <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-link">
+          <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+          </svg>
+        </a>
 
-    <!-- LinkedIn Link Box -->
-    <a href="https://www.linkedin.com/in/navneet-mallick-313829279" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" 
-       style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1px solid #162c46; border-radius: 10px; background-color: rgba(13, 21, 39, 0.6); color: #a5b4fc; text-decoration: none; transition: background 0.2s;">
-      <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
-        <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-      </svg>
-    </a>
+        <!-- Instagram Link Box -->
+        <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-link">
+          <svg style="width: 22px; height: 22px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+          </svg>
+        </a>
 
-    <!-- Instagram Link Box -->
-    <a href="https://www.instagram.com/navneet_nm07" target="_blank" rel="noopener noreferrer" aria-label="Instagram" 
-       style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1px solid #162c46; border-radius: 10px; background-color: rgba(13, 21, 39, 0.6); color: #a5b4fc; text-decoration: none; transition: background 0.2s;">
-      <svg style="width: 22px; height: 22px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-      </svg>
-    </a>
+        <!-- Email Link Box -->
+        <a href="mailto:navneetmallick092@gmail.com" aria-label="Email" class="footer-social-link">
+          <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
+      </div>
 
-    <!-- Email Link Box -->
-    <a href="mailto:navneetmallick092@gmail.com" aria-label="Email" 
-       style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1px solid #162c46; border-radius: 10px; background-color: rgba(13, 21, 39, 0.6); color: #a5b4fc; text-decoration: none; transition: background 0.2s;">
-      <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-      </svg>
-    </a>
-  </div>
+      <!-- Download CV Button Section (Disabled)
+      <a href="./Assets/Navneet _CV.pdf" download class="footer-cv-btn">
+        <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24">
+          <path d="M5 20h14v-2H5v2zm7-18L5.33 11h4V16h5.34v-5h4L12 2z"/>
+        </svg>
+        Download CV
+      </a>
+      -->
+    </div>
 
-  <!-- Download CV Button Section, centered -->
-  <!-- <a href="./Assets/Navneet _CV.pdf" download class="footer-cv-btn" 
-     style="display: inline-flex; align-items: center; gap: 10px; color: #8fa0be; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; justify-content: center;">
-    <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24">
-      <path d="M5 20h14v-2H5v2zm7-18L5.33 11h4V16h5.34v-5h4L12 2z"/>
-    </svg>
-    Download CV
-  </a>
-</div>
-
-  </div> -->
+  </div> <!-- Closing .footer-top -->
 
   <!-- Marquee strip -->
   <div class="footer-marquee-wrap">
