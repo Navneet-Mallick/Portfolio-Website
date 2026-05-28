@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function () {
       entry.target.style.transform = 'translateX(0)';
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.1 });
 
   items.forEach(item => observer.observe(item));
 
