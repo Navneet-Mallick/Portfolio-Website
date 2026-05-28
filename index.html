@@ -843,142 +843,255 @@
   </div>
 </section>
 
-<section id="projects" class="reveal">
+<section id="projects" class="reveal" style="padding: 40px 0;">
 
-    <h2 class="section-title">Projects</h2>
+  <h2 class="section-title">Projects</h2>
 
-    <!-- Project Filter Tabs -->
-    <div class="project-tabs">
-      <button class="project-tab active" data-filter="all">
-        <i class="fas fa-th"></i> All
-      </button>
-      <button class="project-tab" data-filter="web">
-        <i class="fas fa-globe"></i> Web
-      </button>
-      <button class="project-tab" data-filter="ml">
-        <i class="fas fa-brain"></i> ML / DS
-      </button>
-      <button class="project-tab" data-filter="cpp">
-        <i class="fas fa-code"></i> C / C++
-      </button>
+  <!-- Project Filter Tabs -->
+  <div class="project-tabs">
+    <button class="project-tab active" data-filter="all">
+      <i class="fas fa-th"></i> All
+    </button>
+    <button class="project-tab" data-filter="web">
+      <i class="fas fa-globe"></i> Web
+    </button>
+    <button class="project-tab" data-filter="ml">
+      <i class="fas fa-brain"></i> ML / DS
+    </button>
+    <button class="project-tab" data-filter="cpp">
+      <i class="fas fa-code"></i> C / C++
+    </button>
+  </div>
+
+  <!-- All Projects in one container -->
+  <div class="project-container" id="projects-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 24px;
+    padding: 20px 5%;
+    width: 100%;
+    box-sizing: border-box;
+  ">
+
+    <!-- ML/DS -->
+    <div class="project-card" data-category="ml" style="
+      position: relative;
+      border-radius: var(--radius, 12px);
+      overflow: hidden;
+      height: 280px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: 2px solid var(--border-color);
+      transition: transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s;
+      box-sizing: border-box;
+    ">
+      <img src="https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg" alt="Movie Recommender" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <span class="project-featured-badge">Featured</span>
+      <div class="overlay" style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to top, rgba(5,8,20,.97) 0%, rgba(5,8,20,.7) 45%, rgba(5,8,20,.1) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        opacity: 1;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        pointer-events: none;
+        z-index: 10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Movie Recommender</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">Python &middot; Scikit-learn &middot; Pandas &middot; Streamlit</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://movie-recommender-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/Navneet-Mallick/Movie-Recommender-System" target="_blank" rel="noopener noreferrer" class="btn btn-cv" style="pointer-events:auto;"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
     </div>
-<!-- change  -->
-    <!-- All Projects in one container -->
-    <div class="project-container" id="projects-grid">
 
-      <!-- ML/DS -->
-      <div class="project-card" data-category="ml">
-        <img src="https://img.freepik.com/premium-vector/movie-theater-signboard-blue_34230-295.jpg" alt="Movie Recommender" loading="lazy">
-        <span class="project-featured-badge">Featured</span>
-        <div class="overlay">
-          <h3>Movie Recommender</h3>
-          <p>Python &middot; Scikit-learn &middot; Pandas &middot; Streamlit</p>
-          <div class="overlay-btns">
-            <a href="https://movie-recommender-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="https://github.com/Navneet-Mallick/Movie-Recommender-System" target="_blank" rel="noopener noreferrer" class="btn btn-cv"><i class="fab fa-github"></i> Repo</a>
-          </div>
+    <div class="project-card" data-category="ml" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="https://storage.googleapis.com/kaggle-datasets-images/4210881/7265027/7dd70275b71ef22623be2a72c655675a/dataset-cover.jpg" alt="Car Price Predictor" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <span class="project-featured-badge">Featured</span>
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Car Price Predictor</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">Python &middot; Linear Regression &middot; Pandas &middot; Streamlit</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://carpredictor-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/Navneet-Mallick/Car-Price-Predictor" target="_blank" rel="noopener noreferrer" class="btn btn-cv" style="pointer-events:auto;"><i class="fab fa-github"></i> Repo</a>
         </div>
       </div>
-
-      <div class="project-card" data-category="ml">
-        <img src="https://storage.googleapis.com/kaggle-datasets-images/4210881/7265027/7dd70275b71ef22623be2a72c655675a/dataset-cover.jpg" alt="Car Price Predictor" loading="lazy">
-        <span class="project-featured-badge">Featured</span>
-        <div class="overlay">
-          <h3>Car Price Predictor</h3>
-          <p>Python &middot; Linear Regression &middot; Pandas &middot; Streamlit</p>
-          <div class="overlay-btns">
-            <a href="https://carpredictor-navneet.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="https://github.com/Navneet-Mallick/Car-Price-Predictor" target="_blank" rel="noopener noreferrer" class="btn btn-cv"><i class="fab fa-github"></i> Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="ml">
-        <img src="Assets/images/developer.jpg" alt="ETL Pipeline" loading="lazy">
-        <span class="project-featured-badge">Featured</span>
-        <div class="overlay">
-          <h3>Retail ETL Pipeline</h3>
-          <p>Python &middot; Pandas &middot; SQL &middot; Data Engineering</p>
-          <div class="overlay-btns">
-            <a href="https://github.com/Navneet-Mallick/Retail-ETL-Pipeline" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> View Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Web -->
-      <div class="project-card" data-category="web">
-        <img src="Assets/images/music.jpg" alt="GrooveBox" loading="lazy" onerror="this.src='Assets/images/developer.jpg'">
-        <span class="project-featured-badge">Featured</span>
-        <div class="overlay">
-          <h3>GrooveBox &mdash; Music Player</h3>
-          <p>JavaScript &middot; HTML &middot; CSS</p>
-          <div class="overlay-btns">
-            <a href="https://navneet-mallick.github.io/GrooveBox-Music/" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="https://github.com/Navneet-Mallick/GrooveBox-Music" target="_blank" rel="noopener noreferrer" class="btn btn-cv"><i class="fab fa-github"></i> Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="web">
-        <img src="Assets/images/poke.jpg" alt="Pokedex" loading="lazy" onerror="this.src='Assets/images/quiz.png'">
-        <div class="overlay">
-          <h3>PokeDex</h3>
-          <p>JavaScript &middot; PokeAPI &middot; HTML &middot; CSS</p>
-          <div class="overlay-btns">
-            <a href="https://navneet-mallick.github.io/Pokedex_for_Pokemon/" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            <a href="https://github.com/Navneet-Mallick/Pokedex_for_Pokemon" target="_blank" rel="noopener noreferrer" class="btn btn-cv"><i class="fab fa-github"></i> Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="web">
-        <img src="Assets/images/developer.jpg" alt="VoteSecure" loading="lazy">
-        <span class="project-featured-badge">Featured</span>
-        <div class="overlay">
-          <h3>VoteSecure Online</h3>
-          <p>MySQL &middot; PHP &middot; HTML &middot; CSS</p>
-          <div class="overlay-btns">
-            <a href="https://github.com/Navneet-Mallick/VoteSecure-OnlineVoting" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> View Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="web">
-        <img src="Assets/images/developer.jpg" alt="Hackathon Project" loading="lazy">
-        <div class="overlay">
-          <h3>Hackathon Project</h3>
-          <p>HTML &middot; CSS &middot; JavaScript</p>
-          <div class="overlay-btns">
-            <a href="https://github.com/Navneet-Mallick/XENOM" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> View Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- C/C++ -->
-      <div class="project-card" data-category="cpp">
-        <img src="Assets/images/quiz.png" alt="Quiz Game" loading="lazy">
-        <div class="overlay">
-          <h3>Quiz Master Game</h3>
-          <p>C++ &middot; OOP &middot; File I/O</p>
-          <div class="overlay-btns">
-            <a href="https://github.com/Navneet-Mallick/CPP-Project-Quiz-Master-Game" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-github"></i> View Repo</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="cpp">
-        <img src="Assets/images/books.jpg" alt="LMS" loading="lazy">
-        <div class="overlay">
-          <h3>Library Management System</h3>
-          <p>C &middot; File Handling &middot; Structs</p>
-          <div class="overlay-btns">
-            <a href="https://github.com/Navneet-Mallick/Library-Management-System" target="_blank" rel="noopener noreferrer" class="btn"><i class="fas fa-external-link-alt"></i> View Repo</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
+
+    <div class="project-card" data-category="ml" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/developer.jpg" alt="ETL Pipeline" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <span class="project-featured-badge">Featured</span>
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Retail ETL Pipeline</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">Python &middot; Pandas &middot; SQL &middot; Data Engineering</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://github.com/Navneet-Mallick/Retail-ETL-Pipeline" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fab fa-github"></i> View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web -->
+    <div class="project-card" data-category="web" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/music.jpg" alt="GrooveBox" loading="lazy" onerror="this.src='Assets/images/developer.jpg'" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <span class="project-featured-badge">Featured</span>
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">GrooveBox &mdash; Music Player</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">JavaScript &middot; HTML &middot; CSS</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://navneet-mallick.github.io/GrooveBox-Music/" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/Navneet-Mallick/GrooveBox-Music" target="_blank" rel="noopener noreferrer" class="btn btn-cv" style="pointer-events:auto;"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="web" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/poke.jpg" alt="Pokedex" loading="lazy" onerror="this.src='Assets/images/quiz.png'" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">PokeDex</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">JavaScript &middot; PokeAPI &middot; HTML &middot; CSS</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://navneet-mallick.github.io/Pokedex_for_Pokemon/" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="https://github.com/Navneet-Mallick/Pokedex_for_Pokemon" target="_blank" rel="noopener noreferrer" class="btn btn-cv" style="pointer-events:auto;"><i class="fab fa-github"></i> Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="web" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/developer.jpg" alt="VoteSecure" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <span class="project-featured-badge">Featured</span>
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">VoteSecure Online</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">MySQL &middot; PHP &middot; HTML &middot; CSS</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://github.com/Navneet-Mallick/VoteSecure-OnlineVoting" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fab fa-github"></i> View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="web" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/developer.jpg" alt="Hackathon Project" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Hackathon Project</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">HTML &middot; CSS &middot; JavaScript</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://github.com/Navneet-Mallick/XENOM" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fab fa-github"></i> View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- C/C++ -->
+    <div class="project-card" data-category="cpp" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/quiz.png" alt="Quiz Game" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Quiz Master Game</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">C++ &middot; OOP &middot; File I/O</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://github.com/Navneet-Mallick/CPP-Project-Quiz-Master-Game" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fab fa-github"></i> View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card" data-category="cpp" style="
+      position:relative;border-radius:var(--radius,12px);overflow:hidden;height:280px;
+      box-shadow:var(--shadow);cursor:pointer;border:2px solid var(--border-color);
+      transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s;box-sizing:border-box;
+    ">
+      <img src="Assets/images/books.jpg" alt="LMS" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div class="overlay" style="
+        position:absolute;top:0;left:0;width:100%;height:100%;
+        background:linear-gradient(to top,rgba(5,8,20,.97) 0%,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+        display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+        opacity:1;color:#fff;text-align:center;padding:20px;box-sizing:border-box;
+        pointer-events:none;z-index:10;
+      ">
+        <h3 style="font-size:1.1rem;margin:0 0 5px;color:#00d9ff;text-shadow:0 0 10px rgba(0,217,255,.5);">Library Management System</h3>
+        <p style="font-size:.78rem;margin:0 0 12px;color:rgba(232,240,255,.85);line-height:1.4;">C &middot; File Handling &middot; Structs</p>
+        <div class="overlay-btns" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;pointer-events:auto;">
+          <a href="https://github.com/Navneet-Mallick/Library-Management-System" target="_blank" rel="noopener noreferrer" class="btn" style="pointer-events:auto;"><i class="fas fa-external-link-alt"></i> View Repo</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- GitHub Stats Section -->
 <section id="github-stats" class="reveal">
