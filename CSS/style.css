@@ -917,72 +917,145 @@ header {
   box-shadow: 0 0 20px var(--accent-glow)
 }
 
-/* Fix 1: Grid collapses to single column on mobile */
-@media (max-width: 900px) {
-  .project-container {
-    grid-template-columns: 1fr;   /* one card per row */
-    padding: 0 5%;                /* reduce side padding */
-    gap: 20px;
-  }
-}
 
-@media (max-width: 600px) {
-  .project-container {
-    padding: 0 4%;
-    gap: 16px;
-  }
-}
-
-/* Fix 2: Mobile overlay — always visible, non-blocking */
-@media (max-width: 900px) {
-  .overlay {
-    opacity: 1;
-    pointer-events: none;         /* let taps pass through to the card */
-    background: linear-gradient(
-      to top,
-      rgba(5, 8, 20, .95) 0%,
-      rgba(5, 8, 20, .75) 50%,
-      rgba(5, 8, 20, .2) 100%
-    );
-    padding: 16px;
-  }
-
-  /* If the card itself is the tap target, re-enable on it */
-  .project-card {
-    pointer-events: auto;
-  }
-}
-
-/* Fix 3: Card height comfortable on mobile */
-@media (max-width: 900px) {
-  .project-card {
-    height: 260px;
-  }
-}
-
-@media (max-width: 600px) {
-  .project-card {
-    height: 240px;
-  }
-}
-
-/* Fix 4: Disable the lift-hover on touch devices (no hover state) */
-@media (hover: none) {
-  .project-card:hover {
-    transform: none;
-    box-shadow: var(--shadow);
-    border-color: var(--border-color);
-  }
-  .project-card:hover img {
-    transform: none;
-  }
-}
     
 
 
 
 
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 30px;
+  padding: 0 10%
+}
+.project-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  height: 300px;
+  box-shadow: var(--shadow);
+  transition: .4s cubic-bezier(.4, 0, .2, 1);
+  cursor: pointer;
+  border: 2px solid var(--border-color)
+}
 
+/* Mobile: Show overlay by default for better UX */
+@media (max-width: 900px) {
+  .project-card {
+    height: 320px;
+  }
+  .project-card .overlay {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    height: 300px;
+  }
+}
+.project-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px var(--accent-glow),0 0 40px var(--secondary-glow);
+  border-color: var(--accent)
+}
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s
+}
+.project-card:hover img {
+  transform: scale(1.1)
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top,rgba(5,8,20,.97) 0,rgba(5,8,20,.7) 45%,rgba(5,8,20,.1) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .4s;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  z-index: 10;
+  pointer-events: auto;
+}
+@media (max-width: 600px) {
+      body { padding: 20px 15px; }
+      .login-container { padding: 35px 25px; }
+      .dashboard-title { font-size: 1.6rem; }
+      .stat-value { font-size: 1.8rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      td, th { padding: 12px 15px; font-size: 0.8rem; }
+      .badge-desktop { display: none; }
+      .header-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      .footer-actions { flex-direction: column; }
+      .chart-card { height: 300px; }
+    }
+
+    @media (max-width: 400px) {
+      .dashboard-container { max-width: 100%; }
+      .login-container { padding: 25px 15px; max-width: 100%; }
+      .dashboard-title { font-size: 1.4rem; }
+      .footer-actions { gap: 8px; }
+      .btn { padding: 10px 12px; font-size: 0.85rem; }
+    }
+
+/* Mobile: Always show overlay with better visibility */
+@media (max-width: 900px) {
+  .overlay {
+    opacity: 1;
+    background: linear-gradient(to top,rgba(5,8,20,.95) 0,rgba(5,8,20,.75) 50%,rgba(5,8,20,.2) 100%);
+    padding: 16px;
+  }
+}
+body.light-mode .overlay {
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.75) 40%, rgba(15, 23, 42, 0.3) 100%);
+}
+.overlay h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: #00d9ff;
+  text-shadow: 0 0 10px rgba(0,217,255,.5)
+}
+.overlay p {
+  font-size: .8rem;
+  margin-bottom: 14px;
+  color: rgba(232,240,255,.85);
+  opacity: 1;
+  line-height: 1.4
+}
+body.light-mode .overlay h3 {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 0 8px rgba(37, 99, 235, 0.4);
+  font-weight: 700;
+}
+body.light-mode .overlay p {
+  color: #f0f4ff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}
+.project-card:hover .overlay {
+  opacity: 1
+}
+.theme-wrapper-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px
+}
 .exp-card,
 .timeline-content {
   background: var(--card-bg);
